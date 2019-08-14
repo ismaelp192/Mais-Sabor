@@ -50,7 +50,7 @@
                     <td class="td-log">
                         <div class="input-group">
                             <label>Valor Final:</label>
-                            <input type="text" name="valor_final" id="valor_final" value="<?php  echo $receita[0]["valor_final"]; ?>">            
+                            <input type="text" step="0.01" min="0" name="valor_final" id="valor_final" value="<?php  echo $receita[0]["valor_final"]; ?>">            
                         </div>
                     </td>       
                 </tr>

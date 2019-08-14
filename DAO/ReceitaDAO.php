@@ -26,9 +26,22 @@
 		public function listar() {
 			try{
 				$stmt = $this->con->prepare('SELECT * FROM tbReceita');
+				$stmt2 = $this->con->prepare('SELECT nome_categoria, idcategoria FROM tbCategoria INNER JOIN tbReceita on idcategoria = tbCategoria_idcategoria');
 				$stmt->execute();
+				$stmt2->execute();
 				$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
+				$result2 = $stmt2->SetFetchMode(PDO::FETCH_ASSOC);
 				$result = $stmt->fetchAll();
+				$result2 = $stmt2->fetchAll();
+				$i=0;
+				$o=0;
+				for($i=0; $i<count($result); $i++){
+					for($o=0; $o<count($result2); $o++){
+						if($result[$i]["tbCategoria_idcategoria"]== $result2[$o]["idcategoria"]){
+							$result[$i]["tbCategoria_idcategoria"]= $result2[$o]["nome_categoria"];
+						}
+					}
+				}
 				return $result;
 					}
 					catch(PDOException $e){

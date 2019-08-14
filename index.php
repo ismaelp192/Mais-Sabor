@@ -4,7 +4,6 @@
 		<link rel="shortcut icon" href="css/pao.ico" />
 		<title>Programa Mais Sabor Teste</title>
 		<meta charset="utf-8">
-		<script type="text/javascript" src="js/jQuery.js"></script>		
 		<script type="text/javascript" src="js/funcoes.js"></script>	
 		
 	</head>

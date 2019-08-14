@@ -35,9 +35,9 @@
                 echo "<td>".$r["idreceita"]."</td>";
                 echo "<td>".$r["nome"]."</td>";
                 echo "<td>".$r["descricao"]."</td>";
-                echo "<td>".$r["valor_receita"]."</td>";
-                echo "<td>".$r["lucro"]."</td>";
-                echo "<td>".$r["valor_final"]."</td>";
+                echo "<td>".$r["valor_receita"]."R$</td>";
+                echo "<td>".$r["lucro"]."%</td>";
+                echo "<td>".$r["valor_final"]."R$</td>";
                 echo "<td>".$r["tbCategoria_idcategoria"]."</td>";
                 echo "<td>
                         <button onclick='receita(3,".$r['idreceita'].")' >Alterar</button>

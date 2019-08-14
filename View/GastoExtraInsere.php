@@ -22,7 +22,7 @@
                   <td class="td-log">
                         <div class="input-group">
                             <label>Quantidade:</label>
-                            <input type="number" min="0" name="quantidade" id="quantidade" placeholder=" Quantidade">
+                            <input type="number" step="0.01" min="0" name="quantidade" id="quantidade" placeholder=" Quantidade">
                         </div>
                     </td>      
                </tr> 
@@ -31,7 +31,7 @@
                   <td class="td-log">
                         <div class="input-group">
                             <label>Valor:</label>
-                            <input type="number" min="0" name="valor" id="valor" placeholder=" Valor">
+                            <input type="number" step="0.01" min="0" name="valor" id="valor" placeholder=" Valor">
                         </div>
                     </td>       
                </tr> 

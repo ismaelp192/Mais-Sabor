@@ -20,7 +20,7 @@
                     <td class="td-log">
                         <div class="input-group">
                             <label>Valor:</label>
-                            <input type="number" min="0" name="valor_receita" id="valor_receita" placeholder="Valor ">
+                            <input type="number" step="0.01" min="0" name="valor_receita" id="valor_receita" placeholder="Valor ">
                         </div>
                     </td>       
                 </tr> 
@@ -38,7 +38,7 @@
                     <td class="td-log">
                         <div class="input-group">
                             <label>Lucro:</label>
-                            <input type="number"  min="0" name="Lucro" id="lucro" placeholder="Lucro">
+                            <input type="number" min="0" name="Lucro" id="lucro" placeholder="Lucro">
                         </div>
                     </td>        
                 </tr> 
@@ -46,7 +46,7 @@
                     <td class="td-log">
                         <div class="input-group">
                             <label>Valor Final:</label>
-                            <input type="number" name="valor_final" id="valor_final" placeholder="Valor Final">           
+                            <input type="number" step="0.01" min="0" name="valor_final" id="valor_final" placeholder="Valor Final">           
                         </div>
                     </td>       
                 </tr>

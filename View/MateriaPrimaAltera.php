@@ -33,7 +33,7 @@
                   <td class="td-log">
                         <div class="input-group">
                             <label>Quantidade:</label>
-                            <input type="number" min="0" name="quantidade" id="quantidade" value="<?php echo $materia_prima[0]["quantidade"]; ?>">
+                            <input type="number" step="0.01" min="0" name="quantidade" id="quantidade" value="<?php echo $materia_prima[0]["quantidade"]; ?>">
                         </div>
                     </td>   
                </tr> 
@@ -41,7 +41,7 @@
                   <td class="td-log">
                         <div class="input-group">
                             <label>Preço:</label>
-                            <input type="number" min="0" name="preco" id="preco" value="<?php  echo $materia_prima[0]["preco"]; ?>">
+                            <input type="number" step="0.01" min="0" name="preco" id="preco" value="<?php  echo $materia_prima[0]["preco"]; ?>">
                         </div>
                     </td>     
                </tr> 
@@ -49,7 +49,7 @@
                <tr>
                   <td class="td-log">
                      <div class="input-group">
-                        <label>Preço:</label>
+                        <label>Tipo:</label>
                         <div class="dropdown-tipo">
                             <input type="text" name="tipo_medida" id="tipo_medida" class="dropbtn-tipo" value="<?php  echo $materia_prima[0]["tipo_medida"]; ?>"/>
                             <div class="dropdown-content-tipo">
