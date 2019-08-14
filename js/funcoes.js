@@ -35,13 +35,12 @@ function select(tipo,numero){
     }
     document.getElementById("dropdown-content-tipo").style.display = "none"; 
 }
-
-function entrar(){
-  if (event.keyCode === 13) {
-   event.preventDefault();
-   document.getElementById("entrar").click();
-  }
-}
+document.addEventListener ('keypress', (event) => {
+    if (event.keyCode === 13 && document.getElementById("entrar") != null) {
+        event.preventDefault();
+        document.getElementById("entrar").click();
+    }
+  });
 window.onclick = function(event) {
     if (event.target.id!="Drop" ) {
       var dropdowns = document.getElementsByClassName("dropdown-content");

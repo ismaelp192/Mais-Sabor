@@ -4,7 +4,7 @@ class Conexao{
    static function conectar(){
     $host="localhost";
     $user="root";
-    $password="bancodedados";
+    $password="#NITpti!";//bancodedados"
     $banco="maissabor";
     try{
       $con = new PDO("mysql:host=$host;dbname=$banco",$user,$password); 

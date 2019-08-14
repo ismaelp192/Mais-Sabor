@@ -1,4 +1,3 @@
-
 <html>
 <meta charset="utf-8">
    <head>
@@ -11,7 +10,7 @@
                   <td class="td-log">
                      <div class="input-group">
                         <label>Login:</label>
-                        <input type="text" name="login" id="login" onkeypress="entrar()"placeholder=" Login"><br>
+                        <input type="text" name="login" id="login" placeholder=" Login"><br>
                         <div class="erro-msg" id="erro-log"></div>
                      </div>  
                   </td>      
@@ -20,7 +19,7 @@
                   <td class="td-log">
                      <div class="input-group">
                         <label>Senha:</label>
-                        <input type="password" name="senha" id="senha" onkeypress="entrar()" placeholder=" Senha"><br>
+                        <input type="password" name="senha" id="senha" placeholder=" Senha"><br>
                         <div class="erro-msg" id="erro-senha"></div>
                      <div>
                   </td>    
