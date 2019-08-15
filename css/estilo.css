@@ -52,24 +52,6 @@ td{
 	box-shadow: 0px 0px 0px 0px;
 	border-left: none;
 }
-
-   /* .tipo { 
-	background: #fff;
-	border: 1px solid #999;
-	border-radius:6px;
-	float: left;
-	font-size: 13px;
-	height: 33px;
-	margin: 0;
-	padding: 0 0 0 15px;
-	width: 100%;
-  } 
-  .tipo li { padding: 5px 10px; z-index: 2; }
-  .tipo li:not(.init) { float: left; width: 130px; display: none; background: #ddd; }
-  .tipo li:not(.init):hover, .tipo li.selected:not(.init) { background: #09f; }
-  li.init { cursor: pointer; }
-  
-  a#submit { z-index: 1; } */
   
 ul{
 	list-style-type: none;
@@ -84,7 +66,7 @@ ul{
 	border-right: 1px solid  #f8d0c7;
 }
 
-select{
+/* select{
 	background: #fff;
 	border: 1px solid #999;
 	border-radius:6px;
@@ -99,7 +81,7 @@ select{
 	-ms-appearance: none;
 	 -o-appearance: none;
 		appearance: none;	
-}
+} */
 input{
 	background: #fff;
 	border: 1px solid #999;
@@ -114,6 +96,12 @@ input{
 	-moz-appearance:textfield;
 	
   }
+
+
+.tab-receita{
+	width: 75%;
+	float: left;
+}
 .td-log{
 	border-radius: 0px;
 	border-width: 0px;
@@ -225,6 +213,7 @@ input{
 
 .row{
 	width: 100%;
+	margin-left: 9%;
 }
 .col-md-12{
 	width: 100%;	
@@ -232,6 +221,18 @@ input{
 .col-md-4{
 	width: 20%;
 }
+.rece{
+	width: 30%;
+	float: left;
+}
+.val{
+	width: 47.5%;
+	float: left;
+}
+.right{
+	margin-left: 10%;
+}
+
 
 .dropdown-content {
 	display: none;
@@ -257,7 +258,7 @@ input{
 
 /* ----------------------------------------------------------------------------------------------- */
 
-   .dropbtn-tipo {
+   .dropbtn-tipo, .dropbtn-cat {
 	background-color: white;
 	color: #333;
 	padding: 16px;
@@ -265,7 +266,7 @@ input{
 	border: none;
   }
   
-  .dropdown-tipo {
+  .dropdown-tipo, .dropdown-cat {
 	position: relative;
 	display: inline-block;
 	width: 99%;
@@ -273,7 +274,7 @@ input{
 	border-radius:6px;
   }
   
-  .dropdown-content-tipo {
+  .dropdown-content-tipo, .dropdown-content-cat {
 	margin-top: 30px;
 	display: none;
 	position: absolute;
@@ -283,7 +284,7 @@ input{
 	z-index: 1;
   }
   
-  .dropdown-content-tipo a {
+  .dropdown-content-tipo a, .dropdown-content-cat a {
 	color: black;
 	padding: 12px 16px;
 	text-decoration: none;
@@ -291,7 +292,13 @@ input{
   }
   
   .dropdown-content-tipo a:hover {background-color: #ddd;}
+  .dropdown-content-cat a:hover {background-color: #ddd;}
   
   .dropdown-tipo:hover .dropdown-content-tipo {display: block;}
+  .dropdown-cat:hover .dropdown-content-cat {display: block;}
+
   
   .dropdown-tipo:hover .dropbtn-tipo {background-color: white;}
+  .dropdown-cat:hover .dropbtn-cat {background-color: white;}
+
+  /* ------------------------------------------------------------------------------------------------- */

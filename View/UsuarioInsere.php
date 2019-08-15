@@ -51,7 +51,7 @@
                     <div class="input-group">
                         <label>Tipo:</label>
                         <div class="dropdown-tipo">
-                                <input type="text" name="tipo" id="tipo" class="dropbtn-tipo"/>
+                                <input type="text" disabled name="tipo" id="tipo" class="dropbtn-tipo"/>
                                 <div class="dropdown-content-tipo">
                                     <a onclick="select(1,1)">Administrador</a>
                                     <a onclick="select(1,2)">Funcionário</a>

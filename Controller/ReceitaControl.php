@@ -32,6 +32,7 @@
                 $DAO = new  ReceitaDAO;
                 $DAO->excluir($_REQUEST["idreceita"]);
                     break;
+                
             }
         }
 

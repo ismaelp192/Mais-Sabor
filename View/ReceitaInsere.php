@@ -4,67 +4,193 @@
 <head>
 	<title>Cadastro de Receita</title>
 </head>
+<?php 
+ error_reporting(E_ALL);
+ ini_set("display_errors", 1);
+
+ require_once("../Controller/CategoriaControl.php");
+   $c= new CategoriaControl();
+   $categorias=$c->listar();
+ ?>
     <body>
-        <center>
-             
-            <table >
-                <tr><td>Inserir Receita</td></tr>
-                </tr> 
-                    <td class="td-log">
-                        <div class="input-group">
-                            <label>Nome:</label>
-                            <input type="text" name="nome" id="nome" placeholder="Nome">
-                        </div>
-                    </td> 
-                <tr>
-                    <td class="td-log">
-                        <div class="input-group">
-                            <label>Valor:</label>
-                            <input type="number" step="0.01" min="0" name="valor_receita" id="valor_receita" placeholder="Valor ">
-                        </div>
-                    </td>       
-                </tr> 
+        <div class="row">
+             <div class="rece">
+                <table class="tab-receita">
+                    <tr><td>Receita</td></tr>
+                    </tr> 
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Nome:</label>
+                                <input type="text" name="nome" id="nome" placeholder="Nome">
+                            </div>
+                        </td> 
 
-                <tr>
-                    <td class="td-log">
-                        <div class="input-group">
-                            <label>Descrição:</label>
-                            <textarea rows="5" cols="30" name="descricao" id="descricao" placeholder="Descrição"></textarea>
-                        </div>
-                    </td>      
-                </tr> 
+                    <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Descrição:</label>
+                                <textarea rows="5" cols="30" name="descricao" id="descricao" placeholder="Descrição"></textarea>
+                            </div>
+                        </td>      
+                    </tr> 
 
-                <tr>
+                    <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Lucro:</label>
+                                <input type="number" min="0" name="Lucro" id="lucro" placeholder="Lucro">
+                            </div>
+                        </td>       
+                    </tr> 
+                    <tr> 
                     <td class="td-log">
-                        <div class="input-group">
-                            <label>Lucro:</label>
-                            <input type="number" min="0" name="Lucro" id="lucro" placeholder="Lucro">
-                        </div>
-                    </td>        
-                </tr> 
-                <tr>
-                    <td class="td-log">
-                        <div class="input-group">
-                            <label>Valor Final:</label>
-                            <input type="number" step="0.01" min="0" name="valor_final" id="valor_final" placeholder="Valor Final">           
-                        </div>
-                    </td>       
-                </tr>
-                <tr> 
-                  <td class="td-log">
-                        <div class="input-group">
-                            <label>Categoria:</label>
-                            <input type="text" name="tbCategoria_idcategoria" id="tbCategoria_idcategoria" placeholder="Id da Categoria">            
-                        </div>
-                    </td>
-               </tr>  
-                <tr>
+                            <div class="input-group">
+                                <label>Categoria:</label>
+                                <div class="dropdown-cat">
+                                    <input type="text" disabled name="tbCategoria_idcategoria" id="tbCategoria_idcategoria" class="dropbtn-cat"/>
+                                    <div class="dropdown-content-cat">
+                                         <?php
+                                            for($i=0; $i<sizeof($categorias); $i++){
+                                                echo "<a onclick='sel_cat(&quot;" .$categorias[$i]["nome_categoria"]. "&quot;)' >" .$categorias[$i]["nome_categoria"]."</a>";
+                                            }
+                                        ?> 
+                                    </div>
+                                </div>              
+                            </div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="td-log"> 
+                            <div class="input-group">
+                                <div class="val">
+                                    <label>Valor:</label>
+                                    <input type="number" step="0.01" min="0" name="valor_receita" id="valor_receita" disabled>   
+                                </div>
+                                <div class="val">
+                                    <label class="right">Valor Final:</label>
+                                    <input class="right" type="number" step="0.01" min="0" name="valor_final" id="valor_final" disabled>
+                                </div>
+                            </div>
+                            
+                        </td> 
+                        
+                    </tr>
+                    <tr>
                         <td class="forms" >
                         <button onclick="receita(2)" >Voltar</button>
                         <button onclick='receita(5)'>Salvar</button>
                         </td>
-                </tr>  
-            </table> 
-        </center>
+                    </tr>  
+                </table> 
+            </div>  
+            <div class="rece">
+                <table >
+                    <tr><td>Ingredientes</td></tr>
+                    </tr> 
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Nome:</label>
+                                <input type="text" name="nome" id="nome" placeholder="Nome">
+                            </div>
+                        </td> 
+                    <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Valor:</label>
+                                <input type="number" step="0.01" min="0" name="valor_receita" id="valor_receita" placeholder="Valor ">
+                            </div>
+                        </td>       
+                    </tr> 
+
+                    <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Descrição:</label>
+                                <textarea rows="5" cols="30" name="descricao" id="descricao" placeholder="Descrição"></textarea>
+                            </div>
+                        </td>      
+                    </tr> 
+
+                    <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Lucro:</label>
+                                <input type="number" min="0" name="Lucro" id="lucro" placeholder="Lucro">
+                            </div>
+                        </td>        
+                    </tr> 
+                    <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Valor Final:</label>
+                                <input type="number" step="0.01" min="0" name="valor_final" id="valor_final" placeholder="Valor Final">           
+                            </div>
+                        </td>       
+                    </tr>
+                    <tr> 
+                    <td class="td-log">
+                            <div class="input-group">
+                                <label>Categoria:</label>
+                                <input type="text" name="tbCategoria_idcategoria" id="tbCategoria_idcategoria" placeholder="Id da Categoria">            
+                            </div>
+                        </td>
+                </tr>   
+                </table> 
+            </div> 
+            <div class="rece">
+                <table >
+                    <tr><td>Gastos</td></tr>
+                    </tr> 
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Nome:</label>
+                                <input type="text" name="nome" id="nome" placeholder="Nome">
+                            </div>
+                        </td> 
+                    <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Valor:</label>
+                                <input type="number" step="0.01" min="0" name="valor_receita" id="valor_receita" placeholder="Valor ">
+                            </div>
+                        </td>       
+                    </tr> 
+
+                    <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Descrição:</label>
+                                <textarea rows="5" cols="30" name="descricao" id="descricao" placeholder="Descrição"></textarea>
+                            </div>
+                        </td>      
+                    </tr> 
+
+                    <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Lucro:</label>
+                                <input type="number" min="0" name="Lucro" id="lucro" placeholder="Lucro">
+                            </div>
+                        </td>        
+                    </tr> 
+                    <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Valor Final:</label>
+                                <input type="number" step="0.01" min="0" name="valor_final" id="valor_final" placeholder="Valor Final">           
+                            </div>
+                        </td>       
+                    </tr>
+                    <tr> 
+                    <td class="td-log">
+                            <div class="input-group">
+                                <label>Categoria:</label>
+                                <input type="text" name="tbCategoria_idcategoria" id="tbCategoria_idcategoria" placeholder="Id da Categoria">            
+                            </div>
+                        </td>
+                </tr>    
+                </table> 
+            </div>   
+        </div>
     </body>
 </html>

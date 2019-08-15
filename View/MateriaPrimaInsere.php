@@ -47,7 +47,7 @@
                      <div class="input-group">
                         <label>Tipo de Medida:</label>
                         <div class="dropdown-tipo">
-                              <input type="text" name="tipo_medida" id="tipo_medida" class="dropbtn-tipo"/>
+                              <input type="text" disabled name="tipo_medida" id="tipo_medida" class="dropbtn-tipo"/>
                               <div class="dropdown-content-tipo">
                                  <a onclick="select(3,1)">Quilo(s)</a>
                                  <a onclick="select(3,2)">Litro(s)</a>

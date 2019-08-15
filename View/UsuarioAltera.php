@@ -51,7 +51,7 @@
                         <div class="input-group">
                             <label>Tipo:</label><br>
                             <div class="dropdown-tipo">
-                                <input type="text" name="tipo" id="tipo" class="dropbtn-tipo" value="<?php  echo $usuario[0]["tipo"]; ?>"/>
+                                <input type="text" name="tipo" disabled id="tipo" class="dropbtn-tipo" value="<?php  echo $usuario[0]["tipo"]; ?>"/>
                                 <div class="dropdown-content-tipo">
                                     <a onclick="select(1,1)">Administrador</a>
                                     <a onclick="select(1,2)">Funcionário</a>

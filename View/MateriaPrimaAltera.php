@@ -51,7 +51,7 @@
                      <div class="input-group">
                         <label>Tipo:</label>
                         <div class="dropdown-tipo">
-                            <input type="text" name="tipo_medida" id="tipo_medida" class="dropbtn-tipo" value="<?php  echo $materia_prima[0]["tipo_medida"]; ?>"/>
+                            <input type="text" name="tipo_medida" disabled id="tipo_medida" class="dropbtn-tipo" value="<?php  echo $materia_prima[0]["tipo_medida"]; ?>"/>
                             <div class="dropdown-content-tipo">
                                 <a onclick="select(3,1)">Quilo(s)</a>
                                 <a onclick="select(3,2)">Litro(s)</a>

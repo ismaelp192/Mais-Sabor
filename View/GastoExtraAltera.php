@@ -46,7 +46,7 @@
                         <div class="input-group">
                            <label>Tipo de Medida:</label> 
                            <div class="dropdown-tipo">
-                                <input type="text" name="tipo_medida" id="tipo_medida" class="dropbtn-tipo" value="<?php  echo $gasto_extra[0]["tipo_medida"]; ?>"/>
+                                <input type="text" disabled name="tipo_medida" id="tipo_medida" class="dropbtn-tipo" value="<?php  echo $gasto_extra[0]["tipo_medida"]; ?>"/>
                                 <div class="dropdown-content-tipo">
                                     <a onclick="select(2,1)">Hora(s)</a>
                                     <a onclick="select(2,2)">Litro(s)</a>

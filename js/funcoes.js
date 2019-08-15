@@ -5,10 +5,10 @@ function alerta(oi){
 function Drop() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
-function Drop_tipo() {
-    document.getElementById("myDropdown-tipo").classList.toggle("show");
-}
 
+function sel_cat(cat){
+    document.getElementById("tbCategoria_idcategoria").value = cat;
+}
 function select(tipo,numero){
     switch (tipo){
         case 1:
@@ -95,6 +95,7 @@ function ajaxIni(){
 	}
 	return xmlhttp;
 }
+
 function login(acao){
 x = ajaxIni();
     switch (acao){
