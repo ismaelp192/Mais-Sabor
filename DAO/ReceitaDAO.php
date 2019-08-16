@@ -14,9 +14,14 @@
 		function inserir(Receita $receita)
 		{	
 			try{
+				$stmt2 = $this->con->prepare('SELECT idcategoria FROM tbCategoria WHERE nome_categoria ="'.$receita->getTbCategoria_nome_categoria().'"');
+				$stmt2->execute();
+				$result2 = $stmt2->SetFetchMode(PDO::FETCH_ASSOC);
+				$result2 = $stmt2->fetchAll();
+				$receita->setTbCategoria_idcategoria($result2[0]["idcategoria"]);
 				$stmt = $this->con->prepare('INSERT INTO tbReceita (nome, valor_receita, descricao, lucro, valor_final,tbCategoria_idcategoria) VALUES (:nome, :valor_receita, :descricao, :lucro, :valor_final, :tbCategoria_idcategoria)');
 				$stmt->execute(array(':nome'=> $receita->getNome(),':valor_receita'=> $receita->getValor_receita(),':descricao'=> $receita->getDescricao(),':lucro'=> $receita->getLucro(),':valor_final'=> $receita->getValor_final(),
-			':tbCategoria_idcategoria'=>$receita->getTbCategoria_idcategoria()));
+				':tbCategoria_idcategoria'=>$receita->getTbCategoria_idcategoria()));
 			 }
 			 catch(PDOException $e){
 				 echo "Error: ".$e->getMessage();
@@ -26,12 +31,12 @@
 		public function listar() {
 			try{
 				$stmt = $this->con->prepare('SELECT * FROM tbReceita');
-				$stmt2 = $this->con->prepare('SELECT nome_categoria, idcategoria FROM tbCategoria INNER JOIN tbReceita on idcategoria = tbCategoria_idcategoria');
 				$stmt->execute();
-				$stmt2->execute();
 				$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
-				$result2 = $stmt2->SetFetchMode(PDO::FETCH_ASSOC);
 				$result = $stmt->fetchAll();
+				$stmt2 = $this->con->prepare('SELECT nome_categoria, idcategoria FROM tbCategoria INNER JOIN tbReceita on idcategoria = tbCategoria_idcategoria');
+				$stmt2->execute();
+				$result2 = $stmt2->SetFetchMode(PDO::FETCH_ASSOC);
 				$result2 = $stmt2->fetchAll();
 				$i=0;
 				$o=0;

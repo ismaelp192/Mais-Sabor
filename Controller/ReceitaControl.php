@@ -48,7 +48,7 @@
             $receita-> setDescricao($_REQUEST["descricao"]);
             $receita-> setLucro($_REQUEST["lucro"]);
             $receita-> setValor_Final($_REQUEST["valor_final"]);
-            $receita-> setTbCategoria_idcategoria($_REQUEST["tbCategoria_idcategoria"]);
+            $receita-> setTbCategoria_nome_categoria($_REQUEST["tbCategoria_nome_categoria"]);
             return $receita; 
 	   }else {
             $receita = new Receita;
@@ -57,7 +57,7 @@
             $receita-> setDescricao($_REQUEST["descricao"]);
             $receita-> setLucro($_REQUEST["lucro"]);
             $receita-> setValor_Final($_REQUEST["valor_final"]);
-            $receita-> setTbCategoria_idcategoria($_REQUEST["tbCategoria_idcategoria"]);
+            $receita-> setTbCategoria_nome_categoria($_REQUEST["tbCategoria_nome_categoria"]);
             return $receita; 
 	   }
 		

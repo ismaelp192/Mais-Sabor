@@ -5,9 +5,11 @@ function alerta(oi){
 function Drop() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
-
 function sel_cat(cat){
-    document.getElementById("tbCategoria_idcategoria").value = cat;
+    document.getElementById("tbCategoria_nome_categoria").value = cat;
+}
+function plus_ingrediente(){
+    
 }
 function select(tipo,numero){
     switch (tipo){
@@ -397,15 +399,15 @@ function receita(acao,idreceita){
         descricao=document.getElementById("descricao").value;
         lucro=document.getElementById("lucro").value;
         valor_final=document.getElementById("valor_final").value;
-        tbCategoria_idcategoria=document.getElementById("tbCategoria_idcategoria").value;
+        tbCategoria_nome_categoria=document.getElementById("tbCategoria_nome_categoria").value;
         switch (acao){
             case 5:
                 console.log("oi");
-                x.open("POST", "Controller/ReceitaControl.php?nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_idcategoria="+tbCategoria_idcategoria+"&acao=1", true);
+                x.open("POST", "Controller/ReceitaControl.php?nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&acao=1", true);
             break;
             case 6:
             idreceita=document.getElementById("idreceita").value;
-            x.open("POST", "Controller/ReceitaControl.php?idreceita="+idreceita+"&nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_idcategoria="+tbCategoria_idcategoria+"&acao=2", true);
+            x.open("POST", "Controller/ReceitaControl.php?idreceita="+idreceita+"&nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&acao=2", true);
             break;
         }
         x.send();

@@ -7,6 +7,7 @@
         private $lucro;
         private $valor_final;
         private $tbCategoria_idcategoria;
+        private $tbCategoria_nome_categoria;
 
         public function getIdreceita()
         {
@@ -88,6 +89,17 @@
         public function setTbCategoria_idcategoria($tbCategoria_idcategoria)
         {
                 $this->tbCategoria_idcategoria = $tbCategoria_idcategoria;
+
+                return $this;
+        }
+
+        public function getTbCategoria_nome_categoria()
+        {
+                return $this->tbCategoria_nome_categoria;
+        }
+        public function setTbCategoria_nome_categoria($tbCategoria_nome_categoria)
+        {
+                $this->tbCategoria_nome_categoria = $tbCategoria_nome_categoria;
 
                 return $this;
         }

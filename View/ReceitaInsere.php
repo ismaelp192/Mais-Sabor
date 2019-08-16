@@ -47,7 +47,7 @@
                             <div class="input-group">
                                 <label>Categoria:</label>
                                 <div class="dropdown-cat">
-                                    <input type="text" disabled name="tbCategoria_idcategoria" id="tbCategoria_idcategoria" class="dropbtn-cat"/>
+                                    <input type="text" disabled name="tbCategoria_nome_categoria" id="tbCategoria_nome_categoria" class="dropbtn-cat"/>
                                     <div class="dropdown-content-cat">
                                          <?php
                                             for($i=0; $i<sizeof($categorias); $i++){
@@ -83,10 +83,18 @@
                     </tr>  
                 </table> 
             </div>  
-            <div class="rece">
-                <table >
+             <div class="rece">
+                <table class="tab-receita" >
                     <tr><td>Ingredientes</td></tr>
                     </tr> 
+                        <td class="td-log">
+                            <div class="input-group">
+                                <button onclick="plus_ingrediente()"><img src="../img/plus.png"  width="20" height="20"></button>
+                            </div>
+                        </td> 
+                    <tr>
+                     
+                    <!-- </tr> 
                         <td class="td-log">
                             <div class="input-group">
                                 <label>Nome:</label>
@@ -134,9 +142,10 @@
                                 <input type="text" name="tbCategoria_idcategoria" id="tbCategoria_idcategoria" placeholder="Id da Categoria">            
                             </div>
                         </td>
-                </tr>   
+                </tr>    -->
                 </table> 
             </div> 
+            <!--
             <div class="rece">
                 <table >
                     <tr><td>Gastos</td></tr>
@@ -190,7 +199,7 @@
                         </td>
                 </tr>    
                 </table> 
-            </div>   
+            </div>    -->
         </div>
     </body>
 </html>
