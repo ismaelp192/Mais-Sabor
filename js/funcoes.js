@@ -9,7 +9,22 @@ function sel_cat(cat){
     document.getElementById("tbCategoria_nome_categoria").value = cat;
 }
 function plus_ingrediente(){
-    
+    var table = document.getElementById("plus_ingrediente");
+    console.log(table.rows.length); 
+  var row = table.insertRow(table.rows.length-1);
+  var cell1 = row.insertCell(0);
+  var cell2 = row.insertCell(1);
+  console.log(table.rows.length);
+  id=table.rows.length-3;
+  quantidade=table.rows.length-3;
+  valor=table.rows.length-3;
+  cell1.innerHTML = '<div class="input-group"><div class="val_ingre"><label>Nome:</label><input type="text" name="nome" id="nome_'+id+'" placeholder="Nome"></div><div class="val_ingre"><label class="middle">Quantidade:</label><input class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+quantidade+'" placeholder=" Quantidade"> </div><div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+valor+'" disabled></div></div> ';
+  cell1.className = 'td-log';
+  cell2.innerHTML = '<div class="input-group"><button onclick="this.parentElement.parentElement.parentElement.remove()"><img src="../img/plus.png"  width="20" height="20"></button></div> ';
+  cell2.className = 'td-log';
+
+console.log(table.rows.length); 
+
 }
 function select(tipo,numero){
     switch (tipo){

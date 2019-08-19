@@ -67,9 +67,10 @@
                                     <input type="number" step="0.01" min="0" name="valor_receita" id="valor_receita" disabled>   
                                 </div>
                                 <div class="val">
-                                    <label class="right">Valor Final:</label>
-                                    <input class="right" type="number" step="0.01" min="0" name="valor_final" id="valor_final" disabled>
+                                    <label class="middle">Valor Final:</label>
+                                    <input class="middle" type="number" step="0.01" min="0" name="valor_final" id="valor_final" disabled>
                                 </div>
+   
                             </div>
                             
                         </td> 
@@ -84,7 +85,7 @@
                 </table> 
             </div>  
              <div class="rece">
-                <table class="tab-receita" >
+                <table id="plus_ingrediente" class="tab-receita" >
                     <tr><td>Ingredientes</td></tr>
                     </tr> 
                         <td class="td-log">
@@ -92,114 +93,10 @@
                                 <button onclick="plus_ingrediente()"><img src="../img/plus.png"  width="20" height="20"></button>
                             </div>
                         </td> 
-                    <tr>
-                     
-                    <!-- </tr> 
-                        <td class="td-log">
-                            <div class="input-group">
-                                <label>Nome:</label>
-                                <input type="text" name="nome" id="nome" placeholder="Nome">
-                            </div>
-                        </td> 
-                    <tr>
-                        <td class="td-log">
-                            <div class="input-group">
-                                <label>Valor:</label>
-                                <input type="number" step="0.01" min="0" name="valor_receita" id="valor_receita" placeholder="Valor ">
-                            </div>
-                        </td>       
-                    </tr> 
-
-                    <tr>
-                        <td class="td-log">
-                            <div class="input-group">
-                                <label>Descrição:</label>
-                                <textarea rows="5" cols="30" name="descricao" id="descricao" placeholder="Descrição"></textarea>
-                            </div>
-                        </td>      
-                    </tr> 
-
-                    <tr>
-                        <td class="td-log">
-                            <div class="input-group">
-                                <label>Lucro:</label>
-                                <input type="number" min="0" name="Lucro" id="lucro" placeholder="Lucro">
-                            </div>
-                        </td>        
-                    </tr> 
-                    <tr>
-                        <td class="td-log">
-                            <div class="input-group">
-                                <label>Valor Final:</label>
-                                <input type="number" step="0.01" min="0" name="valor_final" id="valor_final" placeholder="Valor Final">           
-                            </div>
-                        </td>       
                     </tr>
-                    <tr> 
-                    <td class="td-log">
-                            <div class="input-group">
-                                <label>Categoria:</label>
-                                <input type="text" name="tbCategoria_idcategoria" id="tbCategoria_idcategoria" placeholder="Id da Categoria">            
-                            </div>
-                        </td>
-                </tr>    -->
                 </table> 
             </div> 
-            <!--
-            <div class="rece">
-                <table >
-                    <tr><td>Gastos</td></tr>
-                    </tr> 
-                        <td class="td-log">
-                            <div class="input-group">
-                                <label>Nome:</label>
-                                <input type="text" name="nome" id="nome" placeholder="Nome">
-                            </div>
-                        </td> 
-                    <tr>
-                        <td class="td-log">
-                            <div class="input-group">
-                                <label>Valor:</label>
-                                <input type="number" step="0.01" min="0" name="valor_receita" id="valor_receita" placeholder="Valor ">
-                            </div>
-                        </td>       
-                    </tr> 
-
-                    <tr>
-                        <td class="td-log">
-                            <div class="input-group">
-                                <label>Descrição:</label>
-                                <textarea rows="5" cols="30" name="descricao" id="descricao" placeholder="Descrição"></textarea>
-                            </div>
-                        </td>      
-                    </tr> 
-
-                    <tr>
-                        <td class="td-log">
-                            <div class="input-group">
-                                <label>Lucro:</label>
-                                <input type="number" min="0" name="Lucro" id="lucro" placeholder="Lucro">
-                            </div>
-                        </td>        
-                    </tr> 
-                    <tr>
-                        <td class="td-log">
-                            <div class="input-group">
-                                <label>Valor Final:</label>
-                                <input type="number" step="0.01" min="0" name="valor_final" id="valor_final" placeholder="Valor Final">           
-                            </div>
-                        </td>       
-                    </tr>
-                    <tr> 
-                    <td class="td-log">
-                            <div class="input-group">
-                                <label>Categoria:</label>
-                                <input type="text" name="tbCategoria_idcategoria" id="tbCategoria_idcategoria" placeholder="Id da Categoria">            
-                            </div>
-                        </td>
-                </tr>    
-                </table> 
-            </div>    -->
+         
         </div>
     </body>
 </html>

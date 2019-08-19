@@ -220,9 +220,16 @@ input:focus{
 	float: left;
 }
 .right{
-	margin-left: 10%;
+	margin-left: 20%;
 }
+.middle{
+	margin-left: 10%;
 
+}
+.val_ingre{
+	width: 33.33%;
+	float: left;
+}
 
 .dropdown-content {
 	display: none;
