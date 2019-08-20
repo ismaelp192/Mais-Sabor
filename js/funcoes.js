@@ -18,9 +18,9 @@ function plus_ingrediente(){
   id=table.rows.length-3;
   quantidade=table.rows.length-3;
   valor=table.rows.length-3;
-  cell1.innerHTML = '<div class="input-group"><div class="val_ingre"><label>Nome:</label><input type="text" name="nome" id="nome_'+id+'" placeholder="Nome"></div><div class="val_ingre"><label class="middle">Quantidade:</label><input class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+quantidade+'" placeholder=" Quantidade"> </div><div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+valor+'" disabled></div></div> ';
+  cell1.innerHTML = '<div class="input-group"><div class="val_ingre"><label>Nome:</label><input type="text" name="nome" id="nome_'+id+'" placeholder="Nome"></div><div class="val_ingre"><label class="middle">Quantidade:</label><input class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+quantidade+'" placeholder="Quantidade"> </div><div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+valor+'" disabled></div></div> ';
   cell1.className = 'td-log';
-  cell2.innerHTML = '<div class="input-group"><button onclick="this.parentElement.parentElement.parentElement.remove()"><img src="../img/plus.png"  width="20" height="20"></button></div> ';
+  cell2.innerHTML = '<div class="input-group"><button id="lixo_'+id+'" class="lixo" onclick="this.parentElement.parentElement.parentElement.remove()"></button></div> ';
   cell2.className = 'td-log';
 
 console.log(table.rows.length); 
@@ -164,43 +164,6 @@ x = ajaxIni();
                     document.getElementById("erro-senha").innerHTML="* senha não preecnhida";
                     document.getElementById("senha").className = "input-erro";
                 }
-
-                // if(a!=" 0"){
-                //     document.getElementById("login").classList.remove("input-erro");
-                //     document.getElementById("senha").classList.remove("input-erro");
-                //     document.getElementById("erro-log").innerHTML="";
-                //     document.getElementById("erro-senha").innerHTML="";
-                // }
-                // console.log(a);
-                // console.log(a.length);
-                // switch (a){
-                //     case " 0":
-                //         location.reload();
-                //     break;
-                //     case " 1":
-                //         document.getElementById("senha").className = "input-erro";
-                //         document.getElementById("erro-senha").innerHTML="* senha incorreta";
-                //     break;
-                //     case " 2":
-                //         document.getElementById("login").className = "input-erro";
-                //         document.getElementById("erro-log").innerHTML="* usuario não encontrado";
-                //     break;
-                //     case " 3":
-                //         document.getElementById("senha").className = "input-erro";
-                //         document.getElementById("login").className = "input-erro";
-                //         document.getElementById("erro-log").innerHTML="* usuario não preenchido";
-                //         document.getElementById("erro-senha").innerHTML="* senha não preecnhida";
-                //     break;
-                //     case " 4":
-                //         document.getElementById("login").className = "input-erro";
-                //         document.getElementById("erro-log").innerHTML="* usuario não preenchido";
-                //     break;
-                //     case " 5":
-                //         document.getElementById("erro-senha").innerHTML="* senha não preecnhida";
-                //         document.getElementById("senha").className = "input-erro";
-                //     break;
-
-                // }
             }
         }      
     }  

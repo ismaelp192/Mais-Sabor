@@ -28,6 +28,15 @@ button:hover {
 	box-shadow:1px 1px #f8d0c7;
 	color: black;
 }
+button.lixo{
+	background-image: url("../img/close_lixo.png");
+	background-size: 30px 30px;
+	width:33px;
+	height:33px;
+}
+button.lixo:hover{
+	background-image: url("../img/open_lixo.png");
+}
 button:active {
 	background-color: #f8d0c7;
 	box-shadow:2px 2px rgb(43, 43, 43);
@@ -41,7 +50,7 @@ textarea{
 	float: left;
 	font-size: 13px;
 	margin: 0;
-	padding: 0 0 0 15px;
+	padding: 0 0 0 8px;
 	width: 100%;
 	-webkit-appearance:none;
 }
@@ -78,7 +87,7 @@ input{
 	font-size: 13px;
 	height: 33px;
 	margin: 0;
-	padding: 0 0 0 15px;
+	padding: 0 0 0 8px;
 	width: 100%;
 	-webkit-appearance:none;
 	-moz-appearance:textfield;
