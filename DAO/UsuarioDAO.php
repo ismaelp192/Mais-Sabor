@@ -76,7 +76,7 @@ class UsuarioDAO{
 
 	function deslogar(){
 		session_destroy();
-		echo true;
+		echo 0;
 	}
 	function login($login,$senha){
 
@@ -96,9 +96,9 @@ class UsuarioDAO{
 				$_SESSION['nome'] = $result['nome'];
 				$_SESSION['senha'] = $result['senha'];
 				$_SESSION['idusuario'] = $result['idusuario'];
-				echo true;
+				echo 0;
 			}else{
-				echo false;
+				echo 1;
 			}
 		}
 		 }catch(PDOException $e){

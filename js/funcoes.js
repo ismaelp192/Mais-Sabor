@@ -138,15 +138,15 @@ x = ajaxIni();
                     document.getElementById("conteudo").innerHTML=x.responseText;
             }else{
                 a=x.responseText;
-                if(a!=true){
+                if(a!=0){
                     document.getElementById("login").classList.remove("input-erro");
                     document.getElementById("senha").classList.remove("input-erro");
                     document.getElementById("erro-log").innerHTML="";
                     document.getElementById("erro-senha").innerHTML="";
                 }
-                if(a==true){
+                if(a==0){
                     location.reload();
-                }else if(a==false){
+                }else if(a==1){
                     document.getElementById("senha").className = "input-erro";
                     document.getElementById("erro-senha").innerHTML="* senha incorreta";
                 }else if(a==2){
@@ -164,6 +164,43 @@ x = ajaxIni();
                     document.getElementById("erro-senha").innerHTML="* senha não preecnhida";
                     document.getElementById("senha").className = "input-erro";
                 }
+
+                // if(a!=" 0"){
+                //     document.getElementById("login").classList.remove("input-erro");
+                //     document.getElementById("senha").classList.remove("input-erro");
+                //     document.getElementById("erro-log").innerHTML="";
+                //     document.getElementById("erro-senha").innerHTML="";
+                // }
+                // console.log(a);
+                // console.log(a.length);
+                // switch (a){
+                //     case " 0":
+                //         location.reload();
+                //     break;
+                //     case " 1":
+                //         document.getElementById("senha").className = "input-erro";
+                //         document.getElementById("erro-senha").innerHTML="* senha incorreta";
+                //     break;
+                //     case " 2":
+                //         document.getElementById("login").className = "input-erro";
+                //         document.getElementById("erro-log").innerHTML="* usuario não encontrado";
+                //     break;
+                //     case " 3":
+                //         document.getElementById("senha").className = "input-erro";
+                //         document.getElementById("login").className = "input-erro";
+                //         document.getElementById("erro-log").innerHTML="* usuario não preenchido";
+                //         document.getElementById("erro-senha").innerHTML="* senha não preecnhida";
+                //     break;
+                //     case " 4":
+                //         document.getElementById("login").className = "input-erro";
+                //         document.getElementById("erro-log").innerHTML="* usuario não preenchido";
+                //     break;
+                //     case " 5":
+                //         document.getElementById("erro-senha").innerHTML="* senha não preecnhida";
+                //         document.getElementById("senha").className = "input-erro";
+                //     break;
+
+                // }
             }
         }      
     }  
