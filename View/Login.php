@@ -9,6 +9,7 @@
                <tr>
                   <td class="td-log">
                      <div class="input-group">
+                     <div class="erro-msg" id="erro-banco"></div><br>
                         <label>Login:</label>
                         <input type="text" name="login" id="login" placeholder=" Login"><br>
                         <div class="erro-msg" id="erro-log"></div>

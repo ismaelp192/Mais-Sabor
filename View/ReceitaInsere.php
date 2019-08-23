@@ -90,7 +90,7 @@
                     </tr> 
                         <td class="td-log">
                             <div class="input-group">
-                                <button onclick="plus_ingrediente()"><img src="../img/plus.png"  width="20" height="20"></button>
+                                <button onclick="plus_ingrediente()"><img src="img/plus.png"  width="20" height="20"></button>
                             </div>
                         </td> 
                     </tr>

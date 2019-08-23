@@ -160,9 +160,11 @@ x = ajaxIni();
                 }else if(a==4){
                     document.getElementById("login").className = "input-erro";
                     document.getElementById("erro-log").innerHTML="* usuario não preenchido";
-                }else{
+                }else if(a==5){
                     document.getElementById("erro-senha").innerHTML="* senha não preecnhida";
                     document.getElementById("senha").className = "input-erro";
+                }else{
+                    document.getElementById("erro-banco").innerHTML="* Problema no banco de dados";
                 }
             }
         }      
