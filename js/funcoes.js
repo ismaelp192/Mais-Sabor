@@ -396,7 +396,7 @@ function receita(acao,idreceita){
                 x.open("GET", "View/ReceitaAltera.php?idreceita="+idreceita,true);
             break;
             case 4:
-            x.open("POST", "Controller/ReceitaControl.php?idreceita="+idreceita+"&acao=3", true);
+                x.open("POST", "Controller/ReceitaControl.php?idreceita="+idreceita+"&acao=3", true);
             break;
         }
         x.send();
