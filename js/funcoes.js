@@ -9,21 +9,20 @@ function sel_cat(cat){
     document.getElementById("tbCategoria_nome_categoria").value = cat;
 }
 function plus_ingrediente(){
-    var table = document.getElementById("plus_ingrediente");
+     table = document.getElementById("plus_ingrediente");
     console.log(table.rows.length); 
-  var row = table.insertRow(table.rows.length-1);
-  var cell1 = row.insertCell(0);
-  var cell2 = row.insertCell(1);
+   row = table.insertRow(table.rows.length-1);
+   cell1 = row.insertCell(0);
+//   var cell2 = row.insertCell(1);
   console.log(table.rows.length);
   id=table.rows.length-3;
   quantidade=table.rows.length-3;
   valor=table.rows.length-3;
-  cell1.innerHTML = '<div class="input-group"><div class="val_ingre"><label>Nome:</label><input type="text" name="nome" id="nome_'+id+'" placeholder="Nome"></div><div class="val_ingre"><label class="middle">Quantidade:</label><input class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+quantidade+'" placeholder="Quantidade"> </div><div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+valor+'" disabled></div></div> ';
+  cell1.innerHTML = '<div class="input-group"><div class="val_ingre"><label>Nome:</label><input type="text" name="nome" id="nome_'+id+'" ></div><div class="val_ingre"><label class="middle">Qtd:</label><input class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+quantidade+'" > </div><div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+valor+'" disabled></div><div class="val_ingre"><button class="lixo" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()"></button></div></div> ';
   cell1.className = 'td-log';
-  cell2.innerHTML = '<div class="input-group"><button id="lixo_'+id+'" class="lixo" onclick="this.parentElement.parentElement.parentElement.remove()"></button></div> ';
-  cell2.className = 'td-log';
 
-console.log(table.rows.length); 
+
+// console.log(table.rows.length); 
 
 }
 function select(tipo,numero){
@@ -417,10 +416,19 @@ function receita(acao,idreceita){
         lucro=document.getElementById("lucro").value;
         valor_final=document.getElementById("valor_final").value;
         tbCategoria_nome_categoria=document.getElementById("tbCategoria_nome_categoria").value;
+        table = document.getElementById("plus_ingrediente");
+
         switch (acao){
             case 5:
                 console.log("oi");
-                x.open("POST", "Controller/ReceitaControl.php?nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&acao=1", true);
+                for(i=0;i<table.rows.length-3;i++){
+                    console.log("oi");
+                    nome_i=document.getElementById("nome_".i);
+                    quantidade_i=document.getElementById("quantidade_".i);
+                    valor_i=document.getElementById("valor_".i);
+
+                }
+                // x.open("POST", "Controller/ReceitaControl.php?nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&acao=1", true);
             break;
             case 6:
             idreceita=document.getElementById("idreceita").value;

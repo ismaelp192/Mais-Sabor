@@ -235,6 +235,9 @@ input:focus{
 	margin-left: 10%;
 
 }
+.lixo{
+	margin: 31% 2px 0% 40%;
+}
 .val_ingre{
 	width: 25%;
 	float: left;
