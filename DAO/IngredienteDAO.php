@@ -27,7 +27,7 @@ class IngredienteDAO{
    
    public function listar() {
 	   try{
-		$stmt = $this->con->prepare('SELECT * FROM tbMateria_prima');
+		$stmt = $this->con->prepare('SELECT * FROM tbIngrediente');
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();

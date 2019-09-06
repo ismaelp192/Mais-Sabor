@@ -9,8 +9,11 @@
  ini_set("display_errors", 1);
 
  require_once("../Controller/CategoriaControl.php");
-   $c= new CategoriaControl();
-   $categorias=$c->listar();
+ $c= new CategoriaControl();
+ $categorias=$c->listar();
+ require_once("../Controller/MateriaPrimaControl.php");
+ $m= new MateriaPrimaControl();
+ $materias=$m->listar();
  ?>
     <body>
         <div class="row">
@@ -39,6 +42,7 @@
                             <div class="input-group">
                                 <label>Lucro:</label>
                                 <input type="number" min="0" name="Lucro" id="lucro" placeholder="Lucro">
+                                         
                             </div>
                         </td>       
                     </tr> 
@@ -51,7 +55,7 @@
                                     <div class="dropdown-content-cat">
                                          <?php
                                             for($i=0; $i<sizeof($categorias); $i++){
-                                                echo "<a onclick='sel_cat(&quot;" .$categorias[$i]["nome_categoria"]. "&quot;)' >" .$categorias[$i]["nome_categoria"]."</a>";
+                                                echo "<a onclick='sel_cat(&quot;" .$categorias[$i]["nome_categoria"]. "&quot; ,tbCategoria_nome_categoria )' >" .$categorias[$i]["nome_categoria"]."</a>";
                                             }
                                         ?> 
                                     </div>
