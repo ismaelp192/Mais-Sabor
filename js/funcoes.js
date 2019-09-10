@@ -19,24 +19,21 @@ function plus_ingrediente(){
   id=table.rows.length-3;
   quantidade=table.rows.length-3;
   valor=table.rows.length-3;
-//   <div class="dropdown-cat">
-//   <input type="text" disabled name="tbMateria_prima_idmateria_prima" id="tbMateria_prima_idmateria_prima" class="dropbtn-cat"/>
-//   <div class="dropdown-content-cat">
-//        <?php
-//           for($i=0; $i<sizeof($materias); $i++){
-//               echo "<a onclick='sel_cat(&quot;" .$materias[$i]["nome"]. "&quot; ,tbMateria_prima_idmateria_prima)' >" .$materias[$i]["nome"]."</a>";
-//           }
-//       ?> 
-//   </div>
-// </div> 
+    
    
-  mat ='<div class="input-group">';
-  mat +='<div class="dropdown-cat">';
-  mat +='<div class="val_ingre"><label>Nome:</label><input type="text" name="nome" id="nome_'+id+'" ></div>';
-  mat +='</div></div>';
-  mat +='<div class="val_ingre"><label class="middle">Qtd:</label><input class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+quantidade+'" ></div>';
-  mat +='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+valor+'" disabled></div>';
-  mat +='<div class="val_ingre"><button class="lixo" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()"></button></div></div>';
+  mat='<div class="input-group">';
+  mat+='<div class="val_ingre">'; 
+  mat+='<label>Nome:</label>';
+  mat+='<div class="dropdown-cat">';
+  mat+='<input type="text" disabled name="nome" id="nome_'+id+'" class="dropbtn-cat">';
+  mat+='<div class="dropdown-content-cat">';
+  mat+='<?php for($a=0; $a<sizeof($materias); $a++){';
+  mat+='echo "<a onclick="sel_cat(&quot;" .$materias[$i]["nome"]. "&quot; , nome)">&quot;.$materias[$i]["nome"].&quot;</a>";}?></div>';
+ 
+  mat+='</div></div>';
+  mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+quantidade+'" ></div>';
+  mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+valor+'" disabled></div>';
+  mat+='<div class="val_ingre"><button class="lixo" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()"></button></div></div>';
   cell1.innerHTML= mat;
   cell1.className = 'td-log';
 

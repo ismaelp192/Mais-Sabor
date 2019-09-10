@@ -14,6 +14,7 @@
  require_once("../Controller/MateriaPrimaControl.php");
  $m= new MateriaPrimaControl();
  $materias=$m->listar();
+ var_dump($materias);
  ?>
     <body>
         <div class="row">
