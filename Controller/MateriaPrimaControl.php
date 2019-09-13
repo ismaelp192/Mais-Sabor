@@ -3,7 +3,8 @@
 //inclusões dos codigos das Classe Model e DAO
 require_once '../Model/MateriaPrima.Class.php'; 
 require_once '../DAO/MateriaPrimaDAO.php'; 
-
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 //declaração da classe Produto.Control
 class MateriaPrimaControl
 {
@@ -28,8 +29,11 @@ class MateriaPrimaControl
                break;
            case 3:
            $DAO = new MateriaPrimaDAO;
-           var_dump($_REQUEST["idmateria_prima"]);
            $DAO->excluir($_REQUEST["idmateria_prima"]);
+               break;
+           case 4:
+           $DAO = new MateriaPrimaDAO;
+           return $DAO->listar();
                break;
        }
    }

@@ -1,7 +1,16 @@
+var table_id;
+var table_quantidade;
+var table_valor;
+var cell1;
 function alerta(oi){
     alert(oi);
 }
-
+function get_numeric($val) {
+    if (is_numeric($val)) {
+      return $val + 0;
+    }
+    return 0;
+  } 
 function Drop() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
@@ -12,34 +21,16 @@ function sel_cat(cat,id){
 function plus_ingrediente(){
      table = document.getElementById("plus_ingrediente");
     console.log(table.rows.length); 
-   row = table.insertRow(table.rows.length-1);
-   cell1 = row.insertCell(0);
+    row = table.insertRow(table.rows.length-1);
+    cell1 = row.insertCell(0);
 //   var cell2 = row.insertCell(1);
   console.log(table.rows.length);
-  id=table.rows.length-3;
-  quantidade=table.rows.length-3;
-  valor=table.rows.length-3;
+  table_id=table.rows.length-3;
+  table_quantidade=table.rows.length-3;
+  table_valor=table.rows.length-3;
     
-   
-  mat='<div class="input-group">';
-  mat+='<div class="val_ingre">'; 
-  mat+='<label>Nome:</label>';
-  mat+='<div class="dropdown-cat">';
-  mat+='<input type="text" disabled name="nome" id="nome_'+id+'" class="dropbtn-cat">';
-  mat+='<div class="dropdown-content-cat">';
-  mat+='<?php for($a=0; $a<sizeof($materias); $a++){';
-  mat+='echo "<a onclick="sel_cat(&quot;" .$materias[$i]["nome"]. "&quot; , nome)">&quot;.$materias[$i]["nome"].&quot;</a>";}?></div>';
+  materiaprima(0);
  
-  mat+='</div></div>';
-  mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+quantidade+'" ></div>';
-  mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+valor+'" disabled></div>';
-  mat+='<div class="val_ingre"><button class="lixo" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()"></button></div></div>';
-  cell1.innerHTML= mat;
-  cell1.className = 'td-log';
-
-
-// console.log(table.rows.length); 
-
 }
 function select(tipo,numero){
     switch (tipo){
@@ -68,9 +59,9 @@ function select(tipo,numero){
     document.getElementById("dropdown-content-tipo").style.display = "none"; 
 }
 document.addEventListener ('keypress', (event) => {
-    if (event.keyCode === 13 && document.getElementById("entrar") != null) {
+    if (event.keyCode === 13 ) {
         event.preventDefault();
-        document.getElementById("entrar").click();
+        document.getElementById("submit").click();
     }
   });
 window.onclick = function(event) {
@@ -295,6 +286,9 @@ function materiaprima(acao,idmateria_prima){
     x = ajaxIni();
     if(acao<5){
         switch (acao){
+            case 0:
+                x.open("GET", "Controller/MateriaPrimaControl.php?acao=4", true);
+            break;
             case 1:
                 x.open("GET", "View/MateriaPrimaInsere.php",true);
             break;
@@ -313,10 +307,29 @@ function materiaprima(acao,idmateria_prima){
         x.onreadystatechange = function () {
 
             if (x.readyState==4 && x.status==200){
+                if(acao!=0){
                 document.getElementById("conteudo").innerHTML=x.responseText;
                     if(acao==4){
                         materiaprima(2);  
-                    }        
+                    }   
+                }else{
+                    obj=x.responseText;
+                    console.log(obj[0]);
+                    mat='<div class="input-group">';
+                    mat+='<div class="val_ingre">'; 
+                    mat+='<label>Nome:</label>';
+                    mat+='<div class="dropdown-cat">';
+                    mat+='<input type="text" disabled name="nome" id="nome_'+table_id+'" class="dropbtn-cat">';
+                    mat+='<div class="dropdown-content-cat">';
+                    mat+='<?php echo"<a>oi</a>"; ?>';
+                  
+                    mat+='</div></div></div>';
+                    mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+table_quantidade+'" ></div>';
+                    mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+table_valor+'" disabled></div>';
+                    mat+='<div class="val_ingre"><button class="lixo" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()"></button></div></div>';
+                    cell1.innerHTML= mat;
+                    cell1.className = 'td-log';
+                }         
             } 
         }
     }else{

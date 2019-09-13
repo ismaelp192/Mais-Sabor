@@ -66,7 +66,7 @@
                         <td class="forms" >
                         <input type="hidden" name="idreceita" id="idreceita" value="<?php echo $_REQUEST["idreceita"]?>">
                         <button onclick="receita(2)" >Voltar</button>
-                        <button onclick='receita(6)'>Salvar</button>
+                        <button id="submit" onclick='receita(6)'>Salvar</button>
                         </td>
                 </tr>  
             </table> 

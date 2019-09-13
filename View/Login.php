@@ -27,7 +27,7 @@
                </tr> 
                <tr >
                   <td >
-                     <button class="log-button" onclick='login(1)' id="entrar">Entrar</button> 
+                     <button class="log-button" onclick='login(1)' id="submit">Entrar</button> 
                   </td>
                <tr>  
          </table> 

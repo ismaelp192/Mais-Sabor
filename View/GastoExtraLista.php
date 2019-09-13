@@ -9,6 +9,8 @@
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
+
+  require_once '../Controller/PHPFunction.php';
   require_once '../Controller/GastoExtraControl.php';
   //instanciando o objeto da classe ClienteControl
   echo "<button onclick='gastos(1)' >New</button>";
@@ -26,10 +28,11 @@ ini_set('display_errors', 1);
       echo "<tr ><td>id</td><td>Nome</td><td>Quantidade</td><td>Tipo medida</td><td>Valor</td><td>Ações</td></tr>";
 	  //recuperando os objetos da lista retornada pela controller
 	  foreach ($lista as $p){
+
                   //recuperação do objeto e impressão na tabela
 		  echo "<td>".$p["idgastos_extras"]."</td>";
           echo "<td>".$p["nome"]."</td>";
-          echo "<td>".$p["quantidade"]."</td>";
+          echo "<td>".get_numeric($p["quantidade"])."</td>";
           echo "<td>".$p["tipo_medida"]."</td>";
           echo "<td>".$p["valor"]."R$</td>";
           echo "<td>

@@ -65,7 +65,7 @@
                         
                         <td class="forms" >
                         <button onclick="usu(2)" >Voltar</button>
-                        <button onclick='usu(5)'>Salvar</button>
+                        <button id="submit" onclick='usu(5)'>Salvar</button>
                         </td>
                 </tr>  
             </table> 

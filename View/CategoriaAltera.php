@@ -27,7 +27,7 @@
                     <td class="forms">
                     <input type="hidden" name="idcategoria" id="idcategoria" value="<?php echo $_REQUEST["idcategoria"]?>">
                     <button onclick="categoria(2)" >Voltar</button>
-                    <button onclick='categoria(6)'>Salvar</button>
+                    <button id="submit" onclick='categoria(6)'>Salvar</button>
                     </td>
               </tr>  
          </table> 

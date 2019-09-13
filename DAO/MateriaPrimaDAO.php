@@ -3,7 +3,8 @@
 //inclusão do arquivo com declaracao da Classe Conexao - conecta no MySql.
 require_once 'Conexao.php';
 require_once '../Model/MateriaPrima.Class.php';
-
+error_reporting(E_ALL);
+ini_set("display_errors", 1);
 //declaracacao da Classe DAO que irá persistir os objetos de usuario no banco.
 class MateriaPrimaDAO{
    
@@ -31,7 +32,9 @@ class MateriaPrimaDAO{
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
+		// var_dump($result);
 		return $result;
+		
 	   }
 	   catch(PDOException $e){
 		echo "Error: ".$e->getMessage();

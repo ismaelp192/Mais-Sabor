@@ -19,7 +19,7 @@
                <tr>
                     <td class="forms">
                     <button onclick="categoria(2)" >Voltar</button>
-                    <button onclick='categoria(5)'>Salvar</button>
+                    <button id="submit" onclick='categoria(5)'>Salvar</button>
                     </td>
               </tr>  
          </table> 

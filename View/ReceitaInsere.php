@@ -11,10 +11,10 @@
  require_once("../Controller/CategoriaControl.php");
  $c= new CategoriaControl();
  $categorias=$c->listar();
- require_once("../Controller/MateriaPrimaControl.php");
- $m= new MateriaPrimaControl();
- $materias=$m->listar();
- var_dump($materias);
+//  require_once("../Controller/MateriaPrimaControl.php");
+//  $m= new MateriaPrimaControl();
+//  $materias=$m->listar();
+//  var_dump($materias);
  ?>
     <body>
         <div class="row">
@@ -84,7 +84,7 @@
                     <tr>
                         <td class="forms" >
                         <button onclick="receita(2)" >Voltar</button>
-                        <button onclick='receita(5)'>Salvar</button>
+                        <button id="submit" onclick='receita(5)'>Salvar</button>
                         </td>
                     </tr>  
                 </table> 
