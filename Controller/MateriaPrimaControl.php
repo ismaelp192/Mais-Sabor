@@ -31,10 +31,6 @@ class MateriaPrimaControl
            $DAO = new MateriaPrimaDAO;
            $DAO->excluir($_REQUEST["idmateria_prima"]);
                break;
-           case 4:
-           $DAO = new MateriaPrimaDAO;
-           return $DAO->listar();
-               break;
        }
    }
    

@@ -1,7 +1,4 @@
-var table_id;
-var table_quantidade;
-var table_valor;
-var cell1;
+var Gmaterias =Object;
 function alerta(oi){
     alert(oi);
 }
@@ -15,22 +12,55 @@ function Drop() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 function sel_cat(cat,id){
-    console.log(cat,id.id);
     document.getElementById(id.id).value = cat;
 }
-function plus_ingrediente(){
-     table = document.getElementById("plus_ingrediente");
-    console.log(table.rows.length); 
+function sel_mat(mat,id,tipo){
+    document.getElementById(id.id).value = mat;
+    id_tipo=id.id.replace("nome","tipo");    
+    switch (tipo){
+        case "quilo(s)":
+            t="Kg";
+            document.getElementById(id_tipo).value = t;
+        break;
+        case "litro(s)":
+            t="L";
+            document.getElementById(id_tipo).value = t;
+        break;
+    }
+
+}
+function cal_val(val,id){
+    console.log(val,id);
+    console.log(Gmaterias);
+}
+function plus_ingrediente(materias){
+    table = document.getElementById("plus_ingrediente");
     row = table.insertRow(table.rows.length-1);
     cell1 = row.insertCell(0);
-//   var cell2 = row.insertCell(1);
-  console.log(table.rows.length);
-  table_id=table.rows.length-3;
-  table_quantidade=table.rows.length-3;
-  table_valor=table.rows.length-3;
+    table_id=table.rows.length-3;
+    table_quantidade=table.rows.length-3;
+    table_valor=table.rows.length-3;
+    mat='<div class="input-group">';
+    mat+='<div class="val_ingre">'; 
+    mat+='<label>Nome:</label>';
+    mat+='<div class="dropdown-cat">';
+    mat+='<input type="text" disabled name="nome" id="nome_'+table_id+'" class="dropbtn-cat">';
+    mat+='<div class="dropdown-content-cat">';
+    console.log(materias);
     
-  materiaprima(0);
- 
+    for(a=0; a<materias.length; a++){
+        mat+='<a onclick="sel_mat(&quot; '+materias[a]["nome"]+' &quot;,nome_'+table_id+',&quot;'+materias[a]["tipo_medida"]+'&quot;)">'+materias[a]["nome"]+'</a>';
+    }
+    mat+='</div></div></div>';
+  Gmaterias=materias;
+    // mat+=`<div class="val_ingre"><label class="middle">Qtd:</label><input onKeyUp="cal_val('${JSON.stringify(materias)}',${this.value},${table_quantidade})" class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_`+table_quantidade+'" ></div>';
+    // materias=JSON.parse(materias);
+    mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input onKeyUp="cal_val(this.value,'+table_quantidade+')" class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+table_quantidade+'" ></div>';
+    mat+='<div class="val_tipo"><input class="middle" type="text" name="tipo" id="tipo_'+table_quantidade+'" disabled></div>';
+    mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+table_valor+'" disabled></div>';
+    mat+='<div class="val_ingre"><button class="lixo" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()"></button></div></div>';
+    cell1.innerHTML= mat;
+    cell1.className = 'td-log';
 }
 function select(tipo,numero){
     switch (tipo){
@@ -286,9 +316,6 @@ function materiaprima(acao,idmateria_prima){
     x = ajaxIni();
     if(acao<5){
         switch (acao){
-            case 0:
-                x.open("GET", "Controller/MateriaPrimaControl.php?acao=4", true);
-            break;
             case 1:
                 x.open("GET", "View/MateriaPrimaInsere.php",true);
             break;
@@ -307,31 +334,12 @@ function materiaprima(acao,idmateria_prima){
         x.onreadystatechange = function () {
 
             if (x.readyState==4 && x.status==200){
-                if(acao!=0){
                 document.getElementById("conteudo").innerHTML=x.responseText;
                     if(acao==4){
                         materiaprima(2);  
                     }   
-                }else{
-                    obj=x.responseText;
-                    console.log(obj[0]);
-                    mat='<div class="input-group">';
-                    mat+='<div class="val_ingre">'; 
-                    mat+='<label>Nome:</label>';
-                    mat+='<div class="dropdown-cat">';
-                    mat+='<input type="text" disabled name="nome" id="nome_'+table_id+'" class="dropbtn-cat">';
-                    mat+='<div class="dropdown-content-cat">';
-                    mat+='<?php echo"<a>oi</a>"; ?>';
-                  
-                    mat+='</div></div></div>';
-                    mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+table_quantidade+'" ></div>';
-                    mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+table_valor+'" disabled></div>';
-                    mat+='<div class="val_ingre"><button class="lixo" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()"></button></div></div>';
-                    cell1.innerHTML= mat;
-                    cell1.className = 'td-log';
-                }         
+                }      
             } 
-        }
     }else{
         nome=document.getElementById("nome").value;
         data_validade=document.getElementById("data_validade").value;

@@ -11,10 +11,10 @@
  require_once("../Controller/CategoriaControl.php");
  $c= new CategoriaControl();
  $categorias=$c->listar();
-//  require_once("../Controller/MateriaPrimaControl.php");
-//  $m= new MateriaPrimaControl();
-//  $materias=$m->listar();
-//  var_dump($materias);
+ require_once("../Controller/MateriaPrimaControl.php");
+ $m= new MateriaPrimaControl();
+ $materias=$m->listar();
+ $materias=json_encode($materias);
  ?>
     <body>
         <div class="row">
@@ -95,7 +95,7 @@
                     </tr> 
                         <td class="td-log">
                             <div class="input-group">
-                                <button onclick="plus_ingrediente()"><img src="img/plus.png"  width="20" height="20"></button>
+                                <button onclick='plus_ingrediente(<?php echo $materias ?>)'> <img src="img/plus.png"  width="20" height="20"></button>
                             </div>
                         </td> 
                     </tr>

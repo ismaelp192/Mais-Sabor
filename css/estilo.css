@@ -78,6 +78,19 @@ ul{
 	border:1px #f8d0c7;
 	border-right: 1px solid  #f8d0c7;
 }
+span.tipo{
+	background: #fff;
+	border: 1px solid #999;
+	border-radius:6px;
+	float: left;
+	font-size: 13px;
+	height: 33px;
+	margin: 0;
+	padding: 0 0 0 0px;
+	width: 10%;
+	-webkit-appearance:none;
+	-moz-appearance:textfield;
+}
 
 input{
 	background: #fff;
@@ -96,7 +109,14 @@ input{
 input:focus{
 	box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.7);
 }
-
+input[name="quantidade"].middle{
+	border-top-right-radius:0px; 
+	border-bottom-right-radius:0px; 
+}
+input[name="tipo"].middle{
+	border-top-left-radius:0px; 
+	border-bottom-left-radius:0px; 
+}
 .tab-receita{
 	width: 75%;
 	float: left;
@@ -236,11 +256,17 @@ input:focus{
 
 }
 .lixo{
-	margin: 17% 0% 0% 40%;
+	margin: 26% 0% 0% 35%;
 }
 .val_ingre{
-	width: 25%;
+	width: 22%;
 	float: left;
+}
+.val_tipo{
+	width: 10%;
+	padding-top: 6%;
+	float: left;
+
 }
 
 .dropdown-content {
@@ -271,20 +297,19 @@ input:focus{
 /* ----------------------------------------------------------------------------------------------- */
 
    .dropbtn-tipo, .dropbtn-cat {
-	background-color: white;
+	background-color: #fff;
 	color: #333;
-	padding: 16px;
+	padding: 1%;
 	border: 1px solid #999;
 	font-size: 13px;
-	border: none;
+	height: 33px;
   }
-  
   .dropdown-tipo, .dropdown-cat {
 	position: relative;
+	height: 33px;
 	display: inline-block;
 	width: 99%;
-	border: 1px solid #999;
-	border-radius:6px;
+	border-radius:6px; 
   }
   
   .dropdown-content-tipo, .dropdown-content-cat {
