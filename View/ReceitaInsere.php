@@ -96,6 +96,8 @@
                         <td class="td-log">
                             <div class="input-group">
                                 <button onclick='plus_ingrediente(<?php echo $materias ?>)'> <img src="img/plus.png"  width="20" height="20"></button>
+                                <label>Total</label>
+                                <input  type="number" step="0.01" min="0" name="ingreT" id="ingreT" disabled>
                             </div>
                         </td> 
                     </tr>

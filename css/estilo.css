@@ -104,8 +104,7 @@ input{
 	width: 100%;
 	-webkit-appearance:none;
 	-moz-appearance:textfield;
-	
-  }
+}
 input:focus{
 	box-shadow: 5px 5px 10px 2px rgba(0,0,0,0.7);
 }
@@ -113,7 +112,17 @@ input[name="quantidade"].middle{
 	border-top-right-radius:0px; 
 	border-bottom-right-radius:0px; 
 }
+input[name="valor"].middle{
+	color: black;
+	border-top-right-radius:0px; 
+	border-bottom-right-radius:0px; 
+}
+
 input[name="tipo"].middle{
+	border-top-left-radius:0px; 
+	border-bottom-left-radius:0px; 
+}
+input[name="sifrao"].middle{
 	border-top-left-radius:0px; 
 	border-bottom-left-radius:0px; 
 }
@@ -256,15 +265,15 @@ input[name="tipo"].middle{
 
 }
 .lixo{
-	margin: 26% 0% 0% 35%;
+	margin: 22% 0% 0% 35%;
 }
 .val_ingre{
-	width: 22%;
+	width: 20%;
 	float: left;
 }
 .val_tipo{
 	width: 10%;
-	padding-top: 6%;
+	padding-top: 4.5%;
 	float: left;
 
 }

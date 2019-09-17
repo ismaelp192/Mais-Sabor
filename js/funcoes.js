@@ -1,4 +1,5 @@
 var Gmaterias =Object;
+var ingreT;
 function alerta(oi){
     alert(oi);
 }
@@ -14,8 +15,9 @@ function Drop() {
 function sel_cat(cat,id){
     document.getElementById(id.id).value = cat;
 }
-function sel_mat(mat,id,tipo){
+function sel_mat(mat,id,tipo,bdid){
     document.getElementById(id.id).value = mat;
+    document.getElementById(id.id).name = bdid;
     id_tipo=id.id.replace("nome","tipo");    
     switch (tipo){
         case "quilo(s)":
@@ -30,8 +32,24 @@ function sel_mat(mat,id,tipo){
 
 }
 function cal_val(val,id){
-    console.log(val,id);
-    console.log(Gmaterias);
+    linha = document.getElementById("nome_"+id);
+    if(!linha.value){
+        v=null;
+    }else{
+        v=true;
+    }
+    if(v==true){
+        for(a=0; a<Gmaterias.length; a++){
+            if(Gmaterias[a]["idmateria_prima"]==linha.name){
+                final=(Gmaterias[a]["preco"]*val)/Gmaterias[a]["quantidade"]
+            }
+            finalf=final.toFixed(2);
+            document.getElementById("valor_"+id).value=finalf;
+        }
+    }
+    table = document.getElementById("plus_ingrediente").rows;
+    console.log(table);
+    
 }
 function plus_ingrediente(materias){
     table = document.getElementById("plus_ingrediente");
@@ -49,15 +67,14 @@ function plus_ingrediente(materias){
     console.log(materias);
     
     for(a=0; a<materias.length; a++){
-        mat+='<a onclick="sel_mat(&quot; '+materias[a]["nome"]+' &quot;,nome_'+table_id+',&quot;'+materias[a]["tipo_medida"]+'&quot;)">'+materias[a]["nome"]+'</a>';
+        mat+='<a onclick="sel_mat(&quot; '+materias[a]["nome"]+' &quot;,nome_'+table_id+',&quot;'+materias[a]["tipo_medida"]+'&quot;,&quot;'+materias[a]["idmateria_prima"]+'&quot;)">'+materias[a]["nome"]+'</a>';
     }
     mat+='</div></div></div>';
   Gmaterias=materias;
-    // mat+=`<div class="val_ingre"><label class="middle">Qtd:</label><input onKeyUp="cal_val('${JSON.stringify(materias)}',${this.value},${table_quantidade})" class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_`+table_quantidade+'" ></div>';
-    // materias=JSON.parse(materias);
     mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input onKeyUp="cal_val(this.value,'+table_quantidade+')" class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+table_quantidade+'" ></div>';
     mat+='<div class="val_tipo"><input class="middle" type="text" name="tipo" id="tipo_'+table_quantidade+'" disabled></div>';
     mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+table_valor+'" disabled></div>';
+    mat+='<div class="val_tipo"><input class="middle" type="text" name="sifrao" value="R$" id="sifrao_'+table_quantidade+'" disabled></div>';
     mat+='<div class="val_ingre"><button class="lixo" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()"></button></div></div>';
     cell1.innerHTML= mat;
     cell1.className = 'td-log';
