@@ -231,14 +231,11 @@ input[name="sifrao"].middle{
 	background-color: black;
 	color: #fff;
 }
-
-
 .conteudo{	 
 	margin-left:10%;
 	padding: 8px;
 	height: 100%;
 }
-
 .row{
 	width: 100%;
 	margin-left: 9%;
@@ -273,9 +270,21 @@ input[name="sifrao"].middle{
 }
 .val_tipo{
 	width: 10%;
-	padding-top: 4.5%;
+	padding-top: 6%;
 	float: left;
-
+}
+.val_ingre_total{
+	width: 15%;
+	text-align: left;
+	float: right;
+	border-top-right-radius:0px; 
+	border-bottom-right-radius:0px; 
+}
+.val_ingre_cifrao{
+	width: 10%;
+	float: right;
+	border-top-left-radius:0px; 
+	border-bottom-left-radius:0px; 
 }
 
 .dropdown-content {

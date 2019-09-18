@@ -1,5 +1,7 @@
 var Gmaterias =Object;
 var ingreT;
+var table_id=0;
+var mat_id=[];
 function alerta(oi){
     alert(oi);
 }
@@ -18,6 +20,7 @@ function sel_cat(cat,id){
 function sel_mat(mat,id,tipo,bdid){
     document.getElementById(id.id).value = mat;
     document.getElementById(id.id).name = bdid;
+    // console.log(mat,id,tipo,bdid);
     id_tipo=id.id.replace("nome","tipo");    
     switch (tipo){
         case "quilo(s)":
@@ -29,53 +32,74 @@ function sel_mat(mat,id,tipo,bdid){
             document.getElementById(id_tipo).value = t;
         break;
     }
+}
+function valor_ingrediente_final(){
+    total=00,00;
+    for(i=0;i<mat_id.length;i++){
+        a=mat_id[i];
+        valor=document.getElementById("valor_"+a).value;
+        if(!Number.isNaN(valor)&&valor!=''){
+            total=parseFloat(total)+parseFloat(valor);
+        }
+    }
+    document.getElementById("ingreT").value=total;
 
 }
 function cal_val(val,id){
     linha = document.getElementById("nome_"+id);
+    console.log(Gmaterias,linha.name);
     if(!linha.value){
         v=null;
     }else{
         v=true;
     }
     if(v==true){
-        for(a=0; a<Gmaterias.length; a++){
-            if(Gmaterias[a]["idmateria_prima"]==linha.name){
-                final=(Gmaterias[a]["preco"]*val)/Gmaterias[a]["quantidade"]
+        // for(a=0; a<mat_id.length; a++){
+            for(i=0;i<Gmaterias.length;i++){
+                if(Gmaterias[i]["idmateria_prima"]==linha.name){
+                    final=(Gmaterias[i]["preco"]*val)/Gmaterias[i]["quantidade"];
+                    finalf=final.toFixed(2);
+                }
+                document.getElementById("valor_"+id).value=finalf;
             }
-            finalf=final.toFixed(2);
-            document.getElementById("valor_"+id).value=finalf;
+        
+    } 
+    valor_ingrediente_final();
+}
+function lixo(elemento){
+    a=elemento.id.substring(5,6); 
+    a=Number(a);   
+    for( var i = 0; i < mat_id.length; i++){ 
+        if ( mat_id[i] === a) {
+          mat_id.splice(i, 1); 
         }
-    }
-    table = document.getElementById("plus_ingrediente").rows;
-    console.log(table);
-    
+     }
+    elemento.parentElement.parentElement.parentElement.parentElement.remove();
+    valor_ingrediente_final();
 }
 function plus_ingrediente(materias){
     table = document.getElementById("plus_ingrediente");
     row = table.insertRow(table.rows.length-1);
     cell1 = row.insertCell(0);
-    table_id=table.rows.length-3;
-    table_quantidade=table.rows.length-3;
-    table_valor=table.rows.length-3;
+    table_id++;
+    mat_id.push(table_id);
     mat='<div class="input-group">';
     mat+='<div class="val_ingre">'; 
     mat+='<label>Nome:</label>';
     mat+='<div class="dropdown-cat">';
-    mat+='<input type="text" disabled name="nome" id="nome_'+table_id+'" class="dropbtn-cat">';
+    mat+='<input type="text" disabled name="nome" id="nome_'+mat_id[mat_id.length-1]+'" class="dropbtn-cat">';
     mat+='<div class="dropdown-content-cat">';
-    console.log(materias);
     
     for(a=0; a<materias.length; a++){
-        mat+='<a onclick="sel_mat(&quot; '+materias[a]["nome"]+' &quot;,nome_'+table_id+',&quot;'+materias[a]["tipo_medida"]+'&quot;,&quot;'+materias[a]["idmateria_prima"]+'&quot;)">'+materias[a]["nome"]+'</a>';
+        mat+='<a onclick="sel_mat(&quot; '+materias[a]["nome"]+' &quot;,nome_'+mat_id[mat_id.length-1]+',&quot;'+materias[a]["tipo_medida"]+'&quot;,&quot;'+materias[a]["idmateria_prima"]+'&quot;)">'+materias[a]["nome"]+'</a>';
     }
     mat+='</div></div></div>';
   Gmaterias=materias;
-    mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input onKeyUp="cal_val(this.value,'+table_quantidade+')" class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+table_quantidade+'" ></div>';
-    mat+='<div class="val_tipo"><input class="middle" type="text" name="tipo" id="tipo_'+table_quantidade+'" disabled></div>';
-    mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+table_valor+'" disabled></div>';
-    mat+='<div class="val_tipo"><input class="middle" type="text" name="sifrao" value="R$" id="sifrao_'+table_quantidade+'" disabled></div>';
-    mat+='<div class="val_ingre"><button class="lixo" onclick="this.parentElement.parentElement.parentElement.parentElement.remove()"></button></div></div>';
+    mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input onKeyUp="cal_val(this.value,'+mat_id[mat_id.length-1]+')" class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+mat_id[mat_id.length-1]+'" ></div>';
+    mat+='<div class="val_tipo"><input class="middle" type="text" name="tipo" id="tipo_'+mat_id[mat_id.length-1]+'" disabled></div>';
+    mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+mat_id[mat_id.length-1]+'" disabled></div>';
+    mat+='<div class="val_tipo"><input class="middle" type="text" name="sifrao" value="R$" id="sifrao_'+mat_id[mat_id.length-1]+'" disabled></div>';
+    mat+='<div class="val_ingre"><button class="lixo" id="lixo_'+mat_id[mat_id.length-1]+'" onclick="lixo(this)"></button></div></div>';
     cell1.innerHTML= mat;
     cell1.className = 'td-log';
 }
@@ -474,9 +498,9 @@ function receita(acao,idreceita){
 
         switch (acao){
             case 5:
-                console.log("oi");
+                // console.log("oi");
                 for(i=0;i<table.rows.length-3;i++){
-                    console.log("oi");
+                    // console.log("oi");
                     nome_i=document.getElementById("nome_".i);
                     quantidade_i=document.getElementById("quantidade_".i);
                     valor_i=document.getElementById("valor_".i);
