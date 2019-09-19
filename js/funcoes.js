@@ -1,7 +1,12 @@
 var Gmaterias =Object;
+var Ggastos =Object;
 var ingreT;
-var table_id=0;
+var tablem_id=0;
+var tableg_id=0;
 var mat_id=[];
+var gas_id=[];
+var obj_mat=[];
+var obj_gas=[];
 function alerta(oi){
     alert(oi);
 }
@@ -20,7 +25,6 @@ function sel_cat(cat,id){
 function sel_mat(mat,id,tipo,bdid){
     document.getElementById(id.id).value = mat;
     document.getElementById(id.id).name = bdid;
-    // console.log(mat,id,tipo,bdid);
     id_tipo=id.id.replace("nome","tipo");    
     switch (tipo){
         case "quilo(s)":
@@ -33,73 +37,176 @@ function sel_mat(mat,id,tipo,bdid){
         break;
     }
 }
-function valor_ingrediente_final(){
-    total=00,00;
-    for(i=0;i<mat_id.length;i++){
-        a=mat_id[i];
-        valor=document.getElementById("valor_"+a).value;
-        if(!Number.isNaN(valor)&&valor!=''){
-            total=parseFloat(total)+parseFloat(valor);
-        }
+function sel_gas(mat,id,tipo,bdid){
+    document.getElementById(id.id).value = mat;
+    document.getElementById(id.id).name = bdid;
+    id_tipo=id.id.replace("nome","tipo");    
+    switch (tipo){
+        case "hora(s)":
+            t="h";
+            document.getElementById(id_tipo).value = t;
+        break;
+        case "litro(s)":
+            t="L";
+            document.getElementById(id_tipo).value = t;
+        break;
     }
-    document.getElementById("ingreT").value=total;
+}
+function valor_ingrediente_final(t){
+    total=00,00;
+    if(t=="m"){
+        for(i=0;i<mat_id.length;i++){
+            a=mat_id[i];
+            valor=document.getElementById("m_valor_"+a).value;
+            if(!Number.isNaN(valor)&&valor!=''){
+                total=parseFloat(total)+parseFloat(valor);
+            }
+        }
+        document.getElementById("ingreT").value=total;
+    }else{
+        for(i=0;i<gas_id.length;i++){
+            a=gas_id[i];
+            valor=document.getElementById("g_valor_"+a).value;
+            if(!Number.isNaN(valor)&&valor!=''){
+                total=parseFloat(total)+parseFloat(valor);
+            }
+        }
+        document.getElementById("gastoT").value=total;
+    }
+    gv=document.getElementById("gastoT").value;
+    iv=document.getElementById("ingreT").value;
+    gv=Number(gv);   
+    iv=Number(iv);   
+    document.getElementById("valor_receita").value=(parseFloat(gv)+parseFloat(iv)).toFixed(2);
+    att();
 
 }
-function cal_val(val,id){
-    linha = document.getElementById("nome_"+id);
-    console.log(Gmaterias,linha.name);
-    if(!linha.value){
-        v=null;
-    }else{
-        v=true;
+function att(){
+    por=document.getElementById("lucro").value;
+    if(por!=''){
+        valb=document.getElementById("valor_receita").value;
+        valt=parseFloat(valb)+parseFloat((valb*por)/100);
+        document.getElementById("valor_final").value=valt.toFixed(2);
     }
-    if(v==true){
-        // for(a=0; a<mat_id.length; a++){
-            for(i=0;i<Gmaterias.length;i++){
-                if(Gmaterias[i]["idmateria_prima"]==linha.name){
-                    final=(Gmaterias[i]["preco"]*val)/Gmaterias[i]["quantidade"];
-                    finalf=final.toFixed(2);
-                }
-                document.getElementById("valor_"+id).value=finalf;
-            }
-        
-    } 
-    valor_ingrediente_final();
+    
 }
-function lixo(elemento){
-    a=elemento.id.substring(5,6); 
-    a=Number(a);   
-    for( var i = 0; i < mat_id.length; i++){ 
-        if ( mat_id[i] === a) {
-          mat_id.splice(i, 1); 
+function cal_bruto(por){
+    valb=document.getElementById("valor_receita").value;
+    valt=parseFloat(valb)+parseFloat((valb*por)/100);
+    document.getElementById("valor_final").value=valt.toFixed(2);
+
+}
+function cal_val(val,id,t){
+    if(t=="m"){
+        linha = document.getElementById("m_nome_"+id);
+        if(!linha.value){
+            v=null;
+        }else{
+            v=true;
         }
-     }
-    elemento.parentElement.parentElement.parentElement.parentElement.remove();
-    valor_ingrediente_final();
+        if(v==true){
+                for(i=0;i<Gmaterias.length;i++){
+                    if(Gmaterias[i]["idmateria_prima"]==linha.name){
+                        final=(Gmaterias[i]["preco"]*val)/Gmaterias[i]["quantidade"];
+                        finalf=final.toFixed(2);
+                    }
+                }
+            document.getElementById("m_valor_"+id).value=finalf;
+
+            
+        } 
+        valor_ingrediente_final('m');
+    }else{
+        linha = document.getElementById("g_nome_"+id);
+        if(!linha.value){
+            v=null;
+        }else{
+            v=true;
+        }
+        if(v==true){
+                for(i=0;i<Ggastos.length;i++){
+                    if(Ggastos[i]["idgastos_extras"]==linha.name){
+                        final=(Ggastos[i]["valor"]*val)/Ggastos[i]["quantidade"];
+                        finalf=final.toFixed(2);
+                    }
+                }
+            document.getElementById("g_valor_"+id).value=finalf; 
+        } 
+        valor_ingrediente_final('g');
+    }
+  
+}
+function lixo(elemento,t){
+    a=elemento.id.substring(7,8);
+    a=Number(a);   
+    if(t=="m"){
+        for( var i = 0; i < mat_id.length; i++){ 
+            if ( mat_id[i] === a) {
+            mat_id.splice(i, 1); 
+            }
+        }
+        elemento.parentElement.parentElement.parentElement.parentElement.remove();
+        valor_ingrediente_final('m');
+    }else{
+         for( var i = 0; i < gas_id.length; i++){ 
+            if ( gas_id[i] === a) {
+            gas_id.splice(i, 1); 
+            }
+        }
+        elemento.parentElement.parentElement.parentElement.parentElement.remove();
+        valor_ingrediente_final('g');
+    }
+    att();
 }
 function plus_ingrediente(materias){
     table = document.getElementById("plus_ingrediente");
     row = table.insertRow(table.rows.length-1);
     cell1 = row.insertCell(0);
-    table_id++;
-    mat_id.push(table_id);
+    tablem_id++;
+    mat_id.push(tablem_id);
     mat='<div class="input-group">';
     mat+='<div class="val_ingre">'; 
     mat+='<label>Nome:</label>';
     mat+='<div class="dropdown-cat">';
-    mat+='<input type="text" disabled name="nome" id="nome_'+mat_id[mat_id.length-1]+'" class="dropbtn-cat">';
+    mat+='<input type="text" disabled name="nome" id="m_nome_'+mat_id[mat_id.length-1]+'" class="dropbtn-cat">';
     mat+='<div class="dropdown-content-cat">';
     
     for(a=0; a<materias.length; a++){
-        mat+='<a onclick="sel_mat(&quot; '+materias[a]["nome"]+' &quot;,nome_'+mat_id[mat_id.length-1]+',&quot;'+materias[a]["tipo_medida"]+'&quot;,&quot;'+materias[a]["idmateria_prima"]+'&quot;)">'+materias[a]["nome"]+'</a>';
+        mat+='<a onclick="sel_mat(&quot; '+materias[a]["nome"]+' &quot;,m_nome_'+mat_id[mat_id.length-1]+',&quot;'+materias[a]["tipo_medida"]+'&quot;,&quot;'+materias[a]["idmateria_prima"]+'&quot;)">'+materias[a]["nome"]+'</a>';
     }
     mat+='</div></div></div>';
-  Gmaterias=materias;
-    mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input onKeyUp="cal_val(this.value,'+mat_id[mat_id.length-1]+')" class="middle" type="number" step="0.01" min="0" name="quantidade" id="quantidade_'+mat_id[mat_id.length-1]+'" ></div>';
-    mat+='<div class="val_tipo"><input class="middle" type="text" name="tipo" id="tipo_'+mat_id[mat_id.length-1]+'" disabled></div>';
-    mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="valor_'+mat_id[mat_id.length-1]+'" disabled></div>';
-    mat+='<div class="val_tipo"><input class="middle" type="text" name="sifrao" value="R$" id="sifrao_'+mat_id[mat_id.length-1]+'" disabled></div>';
-    mat+='<div class="val_ingre"><button class="lixo" id="lixo_'+mat_id[mat_id.length-1]+'" onclick="lixo(this)"></button></div></div>';
+    Gmaterias=materias;
+    mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input onwmousewheel="cal_val(this.value,'+mat_id[mat_id.length-1]+',&quot;m&quot;)" onKeyUp="cal_val(this.value,'+mat_id[mat_id.length-1]+',&quot;m&quot;)" class="middle" type="number" step="0.01" min="0" name="quantidade" id="m_quantidade_'+mat_id[mat_id.length-1]+'" ></div>';
+    mat+='<div class="val_tipo"><input class="middle" type="text" name="tipo" id="m_tipo_'+mat_id[mat_id.length-1]+'" disabled></div>';
+    mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="m_valor_'+mat_id[mat_id.length-1]+'" disabled></div>';
+    mat+='<div class="val_tipo"><input class="middle" type="text" name="sifrao" value="R$" id="m_sifrao_'+mat_id[mat_id.length-1]+'" disabled></div>';
+    mat+='<div class="val_ingre"><button class="lixo" nome="oi" id="m_lixo_'+mat_id[mat_id.length-1]+'" onclick="lixo(this,&quot;m&quot;)"></button></div></div>';
+    cell1.innerHTML= mat;
+    cell1.className = 'td-log';
+}
+function plus_gasto(gastos){
+    table = document.getElementById("plus_gasto");
+    row = table.insertRow(table.rows.length-1);
+    cell1 = row.insertCell(0);
+    tableg_id++;
+    gas_id.push(tableg_id);
+    mat='<div class="input-group">';
+    mat+='<div class="val_ingre">'; 
+    mat+='<label>Nome:</label>';
+    mat+='<div class="dropdown-cat">';
+    mat+='<input type="text" disabled name="nome" id="g_nome_'+gas_id[gas_id.length-1]+'" class="dropbtn-cat">';
+    mat+='<div class="dropdown-content-cat">';
+    
+    for(a=0; a<gastos.length; a++){
+        mat+='<a onclick="sel_gas(&quot; '+gastos[a]["nome"]+' &quot;,g_nome_'+gas_id[gas_id.length-1]+',&quot;'+gastos[a]["tipo_medida"]+'&quot;,&quot;'+gastos[a]["idgastos_extras"]+'&quot;)">'+gastos[a]["nome"]+'</a>';
+    }
+    mat+='</div></div></div>';
+    Ggastos=gastos;
+    mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input onwmousewheel="cal_val(this.value,'+gas_id[gas_id.length-1]+',&quot;g&quot;)" onKeyUp="cal_val(this.value,'+gas_id[gas_id.length-1]+',&quot;g&quot;)" class="middle" type="number" step="0.01" min="0" name="quantidade" id="g_quantidade_'+gas_id[gas_id.length-1]+'" ></div>';
+    mat+='<div class="val_tipo"><input class="middle" type="text" name="tipo" id="g_tipo_'+gas_id[gas_id.length-1]+'" disabled></div>';
+    mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="g_valor_'+gas_id[gas_id.length-1]+'" disabled></div>';
+    mat+='<div class="val_tipo"><input class="middle" type="text" name="sifrao" value="R$" id="g_sifrao_'+gas_id[gas_id.length-1]+'" disabled></div>';
+    mat+='<div class="val_ingre"><button class="lixo" nome="oi" id="g_lixo_'+gas_id[gas_id.length-1]+'" onclick="lixo(this,&quot;g&quot;)"></button></div></div>';
     cell1.innerHTML= mat;
     cell1.className = 'td-log';
 }
@@ -114,7 +221,7 @@ function select(tipo,numero){
         break;
         case 2:
             if(numero==1){
-                document.getElementById("tipo_medida").value = "horas(s)";
+                document.getElementById("tipo_medida").value = "hora(s)";
             }else{
                 document.getElementById("tipo_medida").value = "litro(s)";
             }
@@ -495,17 +602,26 @@ function receita(acao,idreceita){
         valor_final=document.getElementById("valor_final").value;
         tbCategoria_nome_categoria=document.getElementById("tbCategoria_nome_categoria").value;
         table = document.getElementById("plus_ingrediente");
+        for(i=0;i<mat_id.length;i++){
+            id_m=document.getElementById("m_nome_"+mat_id[i]).name;
+            nome_m=document.getElementById("m_nome_"+mat_id[i]).value;
+            quantidade_m=document.getElementById("m_quantidade_"+mat_id[i]).value;
+            valor_m=document.getElementById("m_valor_"+mat_id[i]).value;
+            obj_mat[i]={id: id_m,nome : nome_m.trim(),quantidade : quantidade_m,valor : valor_m};
+        }
+        for(i=0;i<gas_id.length;i++){
+            id_g=document.getElementById("g_nome_"+gas_id[i]).name;
+            nome_g=document.getElementById("g_nome_"+gas_id[i]).value;
+            quantidade_g=document.getElementById("g_quantidade_"+gas_id[i]).value;
+            valor_g=document.getElementById("g_valor_"+gas_id[i]).value;
+            obj_gas[i]={id: id_g,nome : nome_g.trim(),quantidade : quantidade_g,valor : valor_g};
+        }
+        o_mat=JSON.stringify(obj_mat);
+        o_gas=JSON.stringify(obj_gas);
 
         switch (acao){
             case 5:
-                // console.log("oi");
-                for(i=0;i<table.rows.length-3;i++){
-                    // console.log("oi");
-                    nome_i=document.getElementById("nome_".i);
-                    quantidade_i=document.getElementById("quantidade_".i);
-                    valor_i=document.getElementById("valor_".i);
-                }
-                // x.open("POST", "Controller/ReceitaControl.php?nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&acao=1", true);
+                x.open("POST", "Controller/ReceitaControl.php?nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&materiais="+o_mat+"&gastos="+o_gas+"&acao=1", true);
             break;
             case 6:
             idreceita=document.getElementById("idreceita").value;

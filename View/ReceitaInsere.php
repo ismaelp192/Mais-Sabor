@@ -7,7 +7,6 @@
 <?php 
  error_reporting(E_ALL);
  ini_set("display_errors", 1);
-
  require_once("../Controller/CategoriaControl.php");
  $c= new CategoriaControl();
  $categorias=$c->listar();
@@ -15,6 +14,10 @@
  $m= new MateriaPrimaControl();
  $materias=$m->listar();
  $materias=json_encode($materias);
+ require_once("../Controller/GastoExtraControl.php");
+ $g= new GastoExtraControl();
+ $gastos=$g->listar();
+ $gastos=json_encode($gastos);
  ?>
     <body>
         <div class="row">
@@ -42,8 +45,8 @@
                         <td class="td-log">
                             <div class="input-group">
                                 <label>Lucro:</label>
-                                <input type="number" min="0" name="Lucro" id="lucro" placeholder="Lucro">
-                                         
+                                <input type="number" onKeyUp="cal_bruto(this.value)" min="0" name="lucro" id="lucro" placeholder="Lucro">
+                                <input class="val_ingre_cifrao" type="text" name="por" value="%" id="por" disabled>  
                             </div>
                         </td>       
                     </tr> 
@@ -67,15 +70,11 @@
                     <tr>
                         <td class="td-log"> 
                             <div class="input-group">
-                                <div class="val">
-                                    <label>Valor:</label>
-                                    <input type="number" step="0.01" min="0" name="valor_receita" id="valor_receita" disabled>   
-                                </div>
-                                <div class="val">
-                                    <label class="middle">Valor Final:</label>
-                                    <input class="middle" type="number" step="0.01" min="0" name="valor_final" id="valor_final" disabled>
-                                </div>
-   
+                                    <label for="valor_receita" >Valor Bruto:</label><label for="valor_valor_final" class="rightf">Valor Final:</label><br>
+                                    <input type="number" class="val_bruto" value="0" step="0.01" min="0" name="valor_receita" id="valor_receita" disabled>  
+                                    <input class="val_bruto_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorGT" disabled>
+                                    <input class="val_ingre_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorGT" disabled>
+                                    <input class="val_ingre_total" type="number" step="0.01" value="0" min="0" name="valor_final" id="valor_final" disabled>
                             </div>
                             
                         </td> 
@@ -102,7 +101,21 @@
                         </td> 
                     </tr>
                 </table> 
-            </div> 
+            </div>
+            <div class="rece">
+                <table id="plus_gasto" class="tab-receita" >
+                    <tr><td>Gastos</td></tr>
+                    </tr> 
+                        <td class="td-log">
+                            <div class="input-group">
+                                <button onclick='plus_gasto(<?php echo $gastos ?>)'> <img src="img/plus.png"  width="20" height="20"></button>
+                                <input class="val_ingre_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorGT" disabled>
+                                <input class="val_ingre_total" value="0" type="number" step="0.01" min="0" name="gastoT" id="gastoT" disabled>
+                            </div>
+                        </td> 
+                    </tr>
+                </table> 
+            </div>  
          
         </div>
     </body>

@@ -38,6 +38,7 @@
 
         private function setObj()
    {
+       var_dump($_REQUEST["materiais"]);
 	   $usu = new Receita;
 	   If (isset ($_REQUEST["idreceita"]))
 	   {
