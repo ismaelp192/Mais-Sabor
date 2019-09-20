@@ -26,6 +26,7 @@ CREATE TABLE IF NOT EXISTS `maissabor`.`tbUsuario` (
   `email` VARCHAR(65) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
   `tipo` VARCHAR(45) NOT NULL,
+  `image` VARCHAR(100) NULL,
   PRIMARY KEY (`idusuario`));
 
 
@@ -87,7 +88,7 @@ CREATE TABLE IF NOT EXISTS `maissabor`.`tbReceita` (
     FOREIGN KEY (`tbCategoria_idcategoria`)
     REFERENCES `maissabor`.`tbCategoria` (`idcategoria`)
     ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
@@ -104,13 +105,13 @@ CREATE TABLE IF NOT EXISTS `maissabor`.`tbReceita_has_tbMateria_Prima` (
   CONSTRAINT `fk_tbMateria_prima_has_tbReceita_tbMateria_prima1`
     FOREIGN KEY (`tbMateria_prima_idmateria_prima`)
     REFERENCES `maissabor`.`tbMateria_prima` (`idmateria_prima`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_tbMateria_prima_has_tbReceita_tbReceita1`
     FOREIGN KEY (`tbReceita_idreceita`)
     REFERENCES `maissabor`.`tbReceita` (`idreceita`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
@@ -127,13 +128,13 @@ CREATE TABLE IF NOT EXISTS `maissabor`.`tbReceita_has_tbGastos_extras` (
   CONSTRAINT `fk_tbReceita_has_tbGastos_extras_tbReceita1`
     FOREIGN KEY (`tbReceita_idreceita`)
     REFERENCES `maissabor`.`tbReceita` (`idreceita`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_tbReceita_has_tbGastos_extras_tbGastos_extras1`
     FOREIGN KEY (`tbGastos_extras_idgastos_extras`)
     REFERENCES `maissabor`.`tbGastos_extras` (`idgastos_extras`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 
 -- -----------------------------------------------------
@@ -150,12 +151,12 @@ CREATE TABLE IF NOT EXISTS `maissabor`.`tbUsuario_has_tbReceita` (
   CONSTRAINT `fk_tbUsuario_has_tbReceita_tbUsuario1`
     FOREIGN KEY (`tbUsuario_idusuario`)
     REFERENCES `maissabor`.`tbUsuario` (`idusuario`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION,
+    ON DELETE CASCADE
+    ON UPDATE CASCADE,
   CONSTRAINT `fk_tbUsuario_has_tbReceita_tbReceita1`
     FOREIGN KEY (`tbReceita_idreceita`)
     REFERENCES `maissabor`.`tbReceita` (`idreceita`)
-    ON DELETE NO ACTION
-    ON UPDATE NO ACTION);
+    ON DELETE CASCADE
+    ON UPDATE CASCADE);
 
 

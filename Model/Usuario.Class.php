@@ -7,6 +7,7 @@ class Usuario {
     private $email;
     private $senha;
     private $tipo;
+    private $image;
 
 
 	
@@ -75,7 +76,18 @@ class Usuario {
 		$this->idusuario = $idusuario;
 
 		return $this;
-	}
+    }
+    public function getImage()
+    {
+        return $this->image;
+    }
+ 
+    public function setImage($image)
+    {
+        $this->image = $image;
+        return $this;
+    }
+ 
 }
 
 ?>
