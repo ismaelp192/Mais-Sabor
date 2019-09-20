@@ -1,5 +1,6 @@
 <?php
     require_once '../Model/Receita.Class.php';
+    require_once '../Model/Ingrediente.Class.php';
     require_once '../DAO/ReceitaDAO.php';
     ini_set('display_errors', 1);
 	ini_set('display_startup_errors', 1);
@@ -18,8 +19,7 @@
   		function verificaAcao($acao){
             switch ($acao){
                 case 1:
-                $DAO = new  ReceitaDAO;
-                $DAO->inserir($this->setObj());
+                $this->setObj();
                     break;
                 case 2:
                 $DAO = new  ReceitaDAO;  
@@ -38,11 +38,16 @@
 
         private function setObj()
    {
-       var_dump($_REQUEST["materiais"]);
-	   $usu = new Receita;
+   
+    //    var_dump($_REQUEST["materiais"]);
+    //    var_dump($_REQUEST["gastos"]);
+       $m=$_REQUEST["materiais"];
+       $g=$_REQUEST["gastos"];
+       $DAO = new  ReceitaDAO;
+       $receita = new Receita;
+        $ingrediente = new Ingrediente;
 	   If (isset ($_REQUEST["idreceita"]))
 	   {
-            $receita = new Receita;
             $receita-> setIdreceita($_REQUEST["idreceita"]);
             $receita-> setNome($_REQUEST["nome"]);
             $receita-> setValor_Receita($_REQUEST["valor_receita"]);
@@ -50,16 +55,26 @@
             $receita-> setLucro($_REQUEST["lucro"]);
             $receita-> setValor_Final($_REQUEST["valor_final"]);
             $receita-> setTbCategoria_nome_categoria($_REQUEST["tbCategoria_nome_categoria"]);
-            return $receita; 
+            $DAO->inserir($receita);
 	   }else {
-            $receita = new Receita;
             $receita-> setNome($_REQUEST["nome"]);
             $receita-> setValor_Receita($_REQUEST["valor_receita"]);
             $receita-> setDescricao($_REQUEST["descricao"]);
             $receita-> setLucro($_REQUEST["lucro"]);
             $receita-> setValor_Final($_REQUEST["valor_final"]);
             $receita-> setTbCategoria_nome_categoria($_REQUEST["tbCategoria_nome_categoria"]);
-            return $receita; 
+            $idreceita=$DAO->inserir($receita);
+            $materias= json_decode($m);
+            $ms=count($materias);
+            
+            for($i=0;$i<$ms;$i++){
+                print_r($materias[$i]);
+                $ingrediente-> setNome($_REQUEST["nome"]);
+                $ingrediente-> setValor_Receita($_REQUEST["valor_receita"]);
+                $ingrediente-> setDescricao($_REQUEST["descricao"]);
+                $ingrediente-> setLucro($_REQUEST["lucro"]);
+            }
+            
 	   }
 		
 	   

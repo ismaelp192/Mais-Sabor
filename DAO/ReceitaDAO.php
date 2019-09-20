@@ -22,6 +22,8 @@
 				$stmt = $this->con->prepare('INSERT INTO tbReceita (nome, valor_receita, descricao, lucro, valor_final,tbCategoria_idcategoria) VALUES (:nome, :valor_receita, :descricao, :lucro, :valor_final, :tbCategoria_idcategoria)');
 				$stmt->execute(array(':nome'=> $receita->getNome(),':valor_receita'=> $receita->getValor_receita(),':descricao'=> $receita->getDescricao(),':lucro'=> $receita->getLucro(),':valor_final'=> $receita->getValor_final(),
 				':tbCategoria_idcategoria'=>$receita->getTbCategoria_idcategoria()));
+				$last_id=$this->con->lastInsertId();
+				return $last_id;
 			 }
 			 catch(PDOException $e){
 				 echo "Error: ".$e->getMessage();
