@@ -64,8 +64,9 @@
                 <tr>
                     <td class="td-log">
                         <div class="input-group">
-                                <input type="file" id="image" name="files"/>
-                                <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
+                            <label>Foto de perfil:</label>
+                            <input type="file" id="image" name="files"/>
+                            <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
                         </div>
                     </td>      
                 </tr> 
