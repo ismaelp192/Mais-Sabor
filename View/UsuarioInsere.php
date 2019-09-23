@@ -62,6 +62,18 @@
                     </td>      
                 </tr> 
                 <tr>
+                    <td class="td-log">
+                        <div class="input-group">
+                            <form method="post" action="Controller/UsuarioControl.php?acao=1" enctype="multipart/form-data">
+                                <input type="file" id="image" name="files"/>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
+                                <input type="submit" value="Upload File" name="submit" />
+                            </form>
+                        </div>
+                    </td>      
+                </tr> 
+               
+                <tr>
                         
                         <td class="forms" >
                         <button onclick="usu(2)" >Voltar</button>

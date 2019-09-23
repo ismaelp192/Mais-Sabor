@@ -22,8 +22,7 @@ class UsuarioControl
    function verificaAcao($acao){
        switch ($acao){
            case 1:
-           $DAO = new UsuarioDAO;
-           $DAO->inserir($this->setObj());
+           $this->setObj();
                break;
            case 2:
            $DAO = new UsuarioDAO;  
@@ -61,6 +60,25 @@ class UsuarioControl
    private function setObj()
    {
        $usu = new Usuario;
+       $DAO = new UsuarioDAO;
+    //    $servername = "localhost";
+    //     $username = "root";
+    //     $password = "bancodedados";
+    //     try{
+    //         $con = new PDO("mysql:host=$servername;dbname=revisao", $username, $password);
+    //         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+    //     }catch(PDOException $e){
+    //         echo "Connection failed: ".$e->getMessage();
+    //     }
+    //     $dir = "img";
+    //     $file = $_FILES["files"];
+    //     $fname=$file["name"];
+    //     var_dump($_FILES["files"]);
+    //     if(move_uploaded_file($file["tmp_name"], "../img/" . $file["name"])){
+    //     }else{
+    //         echo "<h3>Erro, o arquivo não pode ser enviado:</h3><br>";
+    //         echo "O ARQUIVO SUPERA O LIMITE DE TAMANHO PERMITIDO, ADICIONE UMA FOTO MENOR <br><br><a href='clienteform.php'>VOLTAR</a>";
+    //     }
        
 	   if (isset ($_REQUEST["idusuario"]))
 	   {
@@ -70,14 +88,17 @@ class UsuarioControl
             $usu->setLogin($_REQUEST["login"]);
             $usu->setSenha($_REQUEST["senha"]);
             $usu->setTipo($_REQUEST["tipo"]);
-            return $usu; 
-	   }else {
+            $usu->setImage($_REQUEST["image"]);
+            $DAO->inserir($usu); 
+
+       }else {
             $usu->setNome($_REQUEST["nome"]);
             $usu->setEmail($_REQUEST["email"]);
             $usu->setLogin($_REQUEST["login"]);
             $usu->setSenha($_REQUEST["senha"]);
             $usu->setTipo($_REQUEST["tipo"]);
-		    return $usu;
+            $usu->setImage($_REQUEST["image"]);
+            $DAO->inserir($usu); 
 	   }
 		
 	   

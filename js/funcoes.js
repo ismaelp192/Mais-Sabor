@@ -389,21 +389,23 @@ function usu(acao,idusuario){
         login=document.getElementById("login").value;
         senha=document.getElementById("senha").value;
         tipo=document.getElementById("tipo").value;
-        switch (acao){
-            case 5:
-                x.open("POST", "Controller/UsuarioControl.php?nome="+nome+"&email="+email+"&login="+login+"&senha="+senha+"&tipo="+tipo+"&acao=1", true);
-            break;
-            case 6:
-            idusuario=document.getElementById("idusuario").value;
-            x.open("POST", "Controller/UsuarioControl.php?idusuario="+idusuario+"&nome="+nome+"&email="+email+"&login="+login+"&senha="+senha+"&tipo="+tipo+"&acao=2", true);
-            break;
-        }
-        x.send();
-        x.onreadystatechange = function() {
-            if (x.readyState == 4 && x.status == 200) {
-               usu(2);   
-            }
-        }
+        image=document.getElementById("image").value;
+        console.log(image);        
+        // switch (acao){
+        //     case 5:
+        //         x.open("POST", "Controller/UsuarioControl.php?nome="+nome+"&email="+email+"&login="+login+"&senha="+senha+"&tipo="+tipo+"&acao=1", true);
+        //     break;
+        //     case 6:
+        //     idusuario=document.getElementById("idusuario").value;
+        //     x.open("POST", "Controller/UsuarioControl.php?idusuario="+idusuario+"&nome="+nome+"&email="+email+"&login="+login+"&senha="+senha+"&tipo="+tipo+"&acao=2", true);
+        //     break;
+        // }
+        // x.send();
+        // x.onreadystatechange = function() {
+        //     if (x.readyState == 4 && x.status == 200) {
+        //        usu(2);   
+        //     }
+        // }
     } 
 }
 function gastos(acao,idgastos_extras){
