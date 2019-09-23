@@ -26,7 +26,7 @@ CREATE TABLE IF NOT EXISTS `maissabor`.`tbUsuario` (
   `email` VARCHAR(65) NOT NULL,
   `senha` VARCHAR(45) NOT NULL,
   `tipo` VARCHAR(45) NOT NULL,
-  `image` VARCHAR(100) NULL,
+  `image` longblob NULL,
   PRIMARY KEY (`idusuario`));
 
 

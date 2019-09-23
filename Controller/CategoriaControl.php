@@ -6,7 +6,6 @@ require_once '../DAO/CategoriaDAO.php';
 ini_set('display_errors', 1);
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
-//declaração da classe Produto.Control
 class CategoriaControl
 {
    private $acao;

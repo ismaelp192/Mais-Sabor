@@ -9,8 +9,9 @@
 
         <?php
         require_once '../Controller/ReceitaControl.php';
-        
-        echo "<button onclick='receita(1)' >New</button>";
+        require_once '../Controller/PHPFunction.php';
+
+        echo "<button onclick='receita(1)' ><img src='img/plus.png'  width='20' height='20'></button>";
         $objReceita= new ReceitaControl();
         $lista=$objReceita->listar();
         if((sizeof($lista))>0){
@@ -35,9 +36,9 @@
                 echo "<td>".$r["idreceita"]."</td>";
                 echo "<td>".$r["nome"]."</td>";
                 echo "<td>".$r["descricao"]."</td>";
-                echo "<td>".$r["valor_receita"]."R$</td>";
+                echo "<td>R$".get_numeric($r["valor_receita"])."</td>";
                 echo "<td>".$r["lucro"]."%</td>";
-                echo "<td>".$r["valor_final"]."R$</td>";
+                echo "<td>R$".get_numeric($r["valor_final"])."</td>";
                 echo "<td>".$r["tbCategoria_idcategoria"]."</td>";
                 echo "<td>
                         <button onclick='receita(3,".$r['idreceita'].")' >Alterar</button>

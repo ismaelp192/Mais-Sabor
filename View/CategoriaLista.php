@@ -14,7 +14,7 @@
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
   //instanciando o objeto da classe ClienteControl
-  echo "<button onclick='categoria(1)' >New</button>";
+  echo "<button onclick='categoria(1)' ><img src='img/plus.png'  width='20' height='20'></button>";
   $objCategoria= new CategoriaControl();
   $lista=$objCategoria->listar();
   //montagem da tabela com a lita de Usuarios

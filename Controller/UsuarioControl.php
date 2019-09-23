@@ -13,16 +13,21 @@ class UsuarioControl
    private $acao;
    
    function __construct()
-   {
-       if(isset($_REQUEST["acao"])){
-           $acao=$_REQUEST["acao"];
-           $this->verificaAcao($acao);
-   }
+   {     
+        $_POST=  json_decode(file_get_contents("php://input"),true);  
+        if(isset($_REQUEST)&& !isset($_POST)){
+            $_POST=$_REQUEST;
+        }  
+        if(isset($_POST["acao"])){
+            $acao=$_POST["acao"];
+            $this->verificaAcao($acao);
+    }
    }
    function verificaAcao($acao){
        switch ($acao){
            case 1:
-           $this->setObj();
+           $DAO = new UsuarioDAO;  
+           $DAO->inserir($this->setObj());
                break;
            case 2:
            $DAO = new UsuarioDAO;  
@@ -30,11 +35,11 @@ class UsuarioControl
                break;
            case 3:
            $DAO = new UsuarioDAO;
-           $DAO->excluir($_REQUEST["idusuario"]);
+           $DAO->excluir($_POST["idusuario"]);
                break;
            case 4:
            $DAO = new UsuarioDAO;  
-           $DAO->login($_REQUEST["login"],$_REQUEST["senha"]);
+           $DAO->login($_POST["login"],$_POST["senha"]);
                break;
            case 5:
            $DAO = new UsuarioDAO;  
@@ -59,51 +64,18 @@ class UsuarioControl
     }
    private function setObj()
    {
+        var_dump($_POST);
        $usu = new Usuario;
-       $DAO = new UsuarioDAO;
-    //    $servername = "localhost";
-    //     $username = "root";
-    //     $password = "bancodedados";
-    //     try{
-    //         $con = new PDO("mysql:host=$servername;dbname=revisao", $username, $password);
-    //         $con->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-    //     }catch(PDOException $e){
-    //         echo "Connection failed: ".$e->getMessage();
-    //     }
-    //     $dir = "img";
-    //     $file = $_FILES["files"];
-    //     $fname=$file["name"];
-    //     var_dump($_FILES["files"]);
-    //     if(move_uploaded_file($file["tmp_name"], "../img/" . $file["name"])){
-    //     }else{
-    //         echo "<h3>Erro, o arquivo não pode ser enviado:</h3><br>";
-    //         echo "O ARQUIVO SUPERA O LIMITE DE TAMANHO PERMITIDO, ADICIONE UMA FOTO MENOR <br><br><a href='clienteform.php'>VOLTAR</a>";
-    //     }
-       
-	   if (isset ($_REQUEST["idusuario"]))
-	   {
-            $usu->setIdusuario($_REQUEST["idusuario"]);
-            $usu->setNome($_REQUEST["nome"]);
-            $usu->setEmail($_REQUEST["email"]);
-            $usu->setLogin($_REQUEST["login"]);
-            $usu->setSenha($_REQUEST["senha"]);
-            $usu->setTipo($_REQUEST["tipo"]);
-            $usu->setImage($_REQUEST["image"]);
-            $DAO->inserir($usu); 
-
-       }else {
-            $usu->setNome($_REQUEST["nome"]);
-            $usu->setEmail($_REQUEST["email"]);
-            $usu->setLogin($_REQUEST["login"]);
-            $usu->setSenha($_REQUEST["senha"]);
-            $usu->setTipo($_REQUEST["tipo"]);
-            $usu->setImage($_REQUEST["image"]);
-            $DAO->inserir($usu); 
-	   }
-		
-	   
+	   if (isset ($_POST["idusuario"])){
+            $usu->setIdusuario($_POST["idusuario"]);
+        }
+        $usu->setNome($_POST["nome"]);
+        $usu->setEmail($_POST["email"]);
+        $usu->setLogin($_POST["login"]);
+        $usu->setSenha($_POST["senha"]);
+        $usu->setTipo($_POST["tipo"]);
+        $usu->setImage($_POST["image"]);
+        return $usu; 	   
    }
-   
-  
 }
 new UsuarioControl();

@@ -13,7 +13,7 @@ ini_set('display_errors', 1);
   require_once '../Controller/PHPFunction.php';
   require_once '../Controller/GastoExtraControl.php';
   //instanciando o objeto da classe ClienteControl
-  echo "<button onclick='gastos(1)' >New</button>";
+  echo "<button onclick='gastos(1)' ><img src='img/plus.png'  width='20' height='20'></button>";
   $objGastos= new GastoExtraControl();
   $lista=$objGastos->listar();
   //montagem da tabela com a lita de Gastoss
@@ -34,7 +34,7 @@ ini_set('display_errors', 1);
           echo "<td>".$p["nome"]."</td>";
           echo "<td>".get_numeric($p["quantidade"])."</td>";
           echo "<td>".$p["tipo_medida"]."</td>";
-          echo "<td>".$p["valor"]."R$</td>";
+          echo "<td>R$".get_numeric($p["valor"])."</td>";
           echo "<td>
                  <button onclick='gastos(3,".$p['idgastos_extras'].")'>Alterar</button>
                  <button onclick='gastos(4,".$p['idgastos_extras'].")'>Excluir</button> 

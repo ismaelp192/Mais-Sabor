@@ -234,7 +234,7 @@ function select(tipo,numero){
             }
         break;
     }
-    document.getElementById("dropdown-content-tipo").style.display = "none"; 
+    // document.getElementById("dropdown-content-tipo").style.display = "none"; 
 }
 document.addEventListener ('keypress', (event) => {
     if (event.keyCode === 13 ) {
@@ -322,6 +322,7 @@ x = ajaxIni();
                     document.getElementById("conteudo").innerHTML=x.responseText;
             }else{
                 a=x.responseText;
+                console.log(a);
                 if(a!=0){
                     document.getElementById("login").classList.remove("input-erro");
                     document.getElementById("senha").classList.remove("input-erro");
@@ -389,23 +390,33 @@ function usu(acao,idusuario){
         login=document.getElementById("login").value;
         senha=document.getElementById("senha").value;
         tipo=document.getElementById("tipo").value;
-        image=document.getElementById("image").value;
-        console.log(image);        
-        // switch (acao){
-        //     case 5:
-        //         x.open("POST", "Controller/UsuarioControl.php?nome="+nome+"&email="+email+"&login="+login+"&senha="+senha+"&tipo="+tipo+"&acao=1", true);
-        //     break;
-        //     case 6:
-        //     idusuario=document.getElementById("idusuario").value;
-        //     x.open("POST", "Controller/UsuarioControl.php?idusuario="+idusuario+"&nome="+nome+"&email="+email+"&login="+login+"&senha="+senha+"&tipo="+tipo+"&acao=2", true);
-        //     break;
-        // }
-        // x.send();
-        // x.onreadystatechange = function() {
-        //     if (x.readyState == 4 && x.status == 200) {
-        //        usu(2);   
-        //     }
-        // }
+        image=document.getElementById("image");
+
+        console.log(image);
+        let reader = new FileReader();
+        reader.onloadend = () => {console.log(image);image=reader.result;obj={nome:nome,email:email,login:login,senha:senha,tipo:tipo,image:image}
+         switch (acao){
+            case 5:
+                obj["acao"]=1;
+                x.open("POST", "Controller/UsuarioControl.php", true);
+            break;
+            case 6:
+            idusuario=document.getElementById("idusuario").value;
+            obj["acao"]=2;
+            obj["idusuario"]=idusuario;
+            x.open("POST", "Controller/UsuarioControl.php", true);
+            break;
+        }
+        console.log(obj);
+        x.setRequestHeader("Content-type","application/x-www-form-urlencoded");
+        x.send(JSON.stringify(obj));
+        x.onreadystatechange = function() {
+            if (x.readyState == 4 && x.status == 200) {
+               usu(2);   
+            }
+        }};
+        reader.readAsDataURL(image.files[0]);
+        
     } 
 }
 function gastos(acao,idgastos_extras){

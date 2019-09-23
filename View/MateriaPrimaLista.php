@@ -11,9 +11,10 @@
 <?php
   //incluindo a declaracao da classe ClienteControl
   require_once '../Controller/MateriaPrimaControl.php';
-  
+  require_once '../Controller/PHPFunction.php';
+
   //instanciando o objeto da classe ClienteControl
-  echo "<button onclick='materiaprima(1)' >New</button>";
+  echo "<button onclick='materiaprima(1)'><img src='img/plus.png'  width='20' height='20'></button>";
   $objMateria_prima= new MateriaPrimaControl();
   $lista=$objMateria_prima->listar();
   //montagem da tabela com a lita de Usuarios
@@ -33,9 +34,9 @@
 		  echo "<td>".$p["idmateria_prima"]."</td>";
           echo "<td>".$p["nome"]."</td>";
           echo "<td>".$p["data_validade"]."</td>";
-          echo "<td>".$p["quantidade"]."</td>";
+          echo "<td>".get_numeric($p["quantidade"])."</td>";
           echo "<td>".$p["tipo_medida"]."</td>";
-          echo "<td>".$p["preco"]."R$</td>";
+          echo "<td>R$".get_numeric($p["preco"])."</td>";
           echo "<td>
                  <button onclick='materiaprima(3,".$p['idmateria_prima'].")' >Alterar</button>
                  

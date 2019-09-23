@@ -61,6 +61,14 @@
                     </td>      
                 </tr>
                 <tr>
+                    <td class="td-log">
+                        <div class="input-group">
+                                <input type="file" id="image" name="files"/>
+                                <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
+                        </div>
+                    </td>      
+                </tr> 
+                <tr>
                     <td class="forms" >
                         <input type="hidden" name="idusuario" id="idusuario" value="<?php echo $_REQUEST["idusuario"]?>">
                         <button onclick="usu(2)" >Voltar</button>

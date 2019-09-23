@@ -18,9 +18,11 @@ class UsuarioDAO{
   
    function inserir(Usuario $usu)
    {
+	   
 		try{
-			$stmt = $this->con->prepare('INSERT INTO tbUsuario (nome, email, login, senha, tipo) VALUES (:nome, :email, :login, :senha, :tipo)');
-        	$stmt->execute(array(':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getLogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo()));
+			$stmt = $this->con->prepare('INSERT INTO tbUsuario (nome, email, login, senha, tipo, image) VALUES (:nome, :email, :login, :senha, :tipo, :image)');
+			$stmt->execute(array(':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getLogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo(),':image'=> $usu->getImage()));
+			var_dump($stmt->debugDumpParams());
 		 }
 		 catch(PDOException $e){
 			 echo "Error: ".$e->getMessage();
@@ -55,8 +57,8 @@ class UsuarioDAO{
    
    function alterar(Usuario $usu){
 		try{
-			$stmt = $this->con->prepare('UPDATE tbUsuario SET nome = :nome, email = :email, login = :login, senha = :senha, tipo = :tipo WHERE idusuario = :id');
-			 $stmt->execute(array(':id'=>$usu->getIdusuario(),':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getLogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo()));
+			$stmt = $this->con->prepare('UPDATE tbUsuario SET nome = :nome, email = :email, login = :login, senha = :senha, tipo = :tipo, image = :image WHERE idusuario = :id');
+			 $stmt->execute(array(':id'=>$usu->getIdusuario(),':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getLogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo(),':image'=> $usu->getImage()));
 		}	
 		catch(PDOException $e){
 			echo "Error: ".$e->getMessage();
@@ -65,7 +67,7 @@ class UsuarioDAO{
    
    function excluir($idusuario){
 		
-	   try{
+	   try{	
 		$stmt = $this->con->prepare('DELETE FROM tbUsuario WHERE idusuario =:id');
 		$stmt->execute(array(':id'=>$idusuario));
 	   }
