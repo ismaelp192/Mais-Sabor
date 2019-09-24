@@ -36,7 +36,9 @@
   }
   else
   {
-      echo "não há registros no banco de dados";
+    echo "<div class='list_list_usu'>";
+    echo "<button onclick='usu(1)' id='plus_usu'></button>";
+    echo "</div>";
   }
 
 ?> 

@@ -32,7 +32,9 @@ ini_set('display_errors', 1);
   }
   else
   {
-      echo "não há registros no banco de dados";
+    echo "<div class='list_list_gas'>";
+    echo "<button onclick='gastos(1)' id='plus_gas'></button>";
+    echo "</div>";
   }
 
 ?> 

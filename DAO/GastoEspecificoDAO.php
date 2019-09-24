@@ -17,7 +17,7 @@ class GastoEspecificoDAO{
    function inserir(GastoEspecifico $gastoespecifico)
    {
 		try{
-			$stmt = $this->con->prepare('INSERT INTO tbReceita_has_tbGastos_extras(tbGastos_extras_idgastos_extras, tbReceita_idreceita, tempo, preco_gasto_extra) VALUES (:tbGastos_extras_idgastos_extras,:tbReceita_idreceita,:quantidade,:preco_gasto_extra)');
+			$stmt = $this->con->prepare('INSERT INTO tbReceita_has_tbGastos_extras(tbGastos_extras_idgastos_extras, tbReceita_idreceita, quantidade, preco_gasto_extra) VALUES (:tbGastos_extras_idgastos_extras,:tbReceita_idreceita,:quantidade,:preco_gasto_extra)');
         	$stmt->execute(array(':tbGastos_extras_idgastos_extras'=> $gastoespecifico->getTbGastos_extras_idgastos_extras(),':tbReceita_idreceita'=> $gastoespecifico->getTbReceita_idreceita(),':quantidade'=> $gastoespecifico->getQuantidade(),':preco_gasto_extra'=> $gastoespecifico->getPreco_gasto_extra()));
 		 }
 		 catch(PDOException $e){

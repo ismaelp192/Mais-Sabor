@@ -42,10 +42,10 @@ class IngredienteControl
    }
 
     //listagem 1 Usuario cadastrado por id
-    public function listarPorId($tbMateria_prima_idmateria_prima) 
+    public function listarPorId($tbReceita_idreceita) 
     {
         $IngredienteDAO = new IngredienteDAO;
-        return $IngredienteDAO->listarPorId($tbMateria_prima_idmateria_prima);	   
+        return $IngredienteDAO->listarPorId($tbReceita_idreceita);	   
         
     }
    private function setObj()

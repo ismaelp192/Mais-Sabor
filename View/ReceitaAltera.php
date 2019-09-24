@@ -1,84 +1,5 @@
-<!-- <?php 
-  require_once '../Controller/ReceitaControl.php';
-    $receitaControl=new ReceitaControl();
-    $receita=$receitaControl->listarPorId($_REQUEST["idreceita"]);
-    require_once '../Controller/CategoriaControl.php';
-    $categoriaControl=new CategoriaControl();
-    $categoria=$categoriaControl->listarPorId(intval($receita[0]["tbCategoria_idcategoria"]));
-    var_dump($categoria[0]);
 
-?>
-<meta charset="utf-8">
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Alterações no Receitas</title>
-</head>
-    <body>
-        <center>
-         <table >
-                <tr><td>Alterar Receita</td></tr>
-                </tr> 
-                    <td class="td-log">
-                        <div class="input-group">
-                            <label>Nome:</label>
-                            <input type="text" name="nome" id="nome" value="<?php echo $receita[0]["nome"]; ?>">
-                        </div>
-                    </td> 
-                <tr>
-                    <td class="td-log">
-                        <div class="input-group">
-                            <label>Valor:</label>
-                            <input type="text" min="0" name="valor_receita" id="valor_receita" value="<?php  echo $receita[0]["valor_receita"]; ?>">
-                        </div>
-                    </td>       
-                </tr> 
 
-                <tr>
-                    <td class="td-log">
-                        <div class="input-group">
-                            <label>Descrição:</label>
-                            <textarea rows="5" cols="30" name="descricao" id="descricao"><?php echo $receita[0]["descricao"]; ?></textarea>
-                        </div>
-                    </td>      
-                </tr> 
-
-                <tr>
-                    <td class="td-log">
-                        <div class="input-group">
-                            <label>Lucro:</label>
-                            <input type="text" min="0" name="lucro" id="lucro" value="<?php  echo $receita[0]["lucro"]; ?>">
-                        </div>
-                    </td>        
-                </tr> 
-                <tr>
-                    <td class="td-log">
-                        <div class="input-group">
-                            <label>Valor Final:</label>
-                            <input type="text" step="0.01" min="0" name="valor_final" id="valor_final" value="<?php  echo $receita[0]["valor_final"]; ?>">            
-                        </div>
-                    </td>       
-                </tr>
-                <tr> 
-                  <td class="td-log">
-                        <div class="input-group">
-                            <label>Categoria:</label>
-                            <input type="text" name="tbCategoria_idcategoria" id="tbCategoria_idcategoria" value="<?php  echo $receita[0]["tbCategoria_idcategoria"]; ?>">            
-                        </div>
-                    </td>
-               </tr>  
-                <tr>
-                        <td class="forms" >
-                        <input type="hidden" name="idreceita" id="idreceita" value="<?php echo $_REQUEST["idreceita"]?>">
-                        <button onclick="receita(2)" >Voltar</button>
-                        <button id="submit" onclick='receita(6)'>Salvar</button>
-                        </td>
-                </tr>  
-            </table> 
-        </center>
-    </body>
-</html>
-//---------------------------------------------------------------------- -->
 <meta charset="utf-8">
 <!DOCTYPE html>
 <html>
@@ -88,19 +9,54 @@
 <?php 
  error_reporting(E_ALL);
  ini_set("display_errors", 1);
+ require_once '../Controller/ReceitaControl.php';
+ $receitaControl=new ReceitaControl();
+ $receita=$receitaControl->listarPorId($_REQUEST["idreceita"]);
+ //--------------------------------------------------
+ require_once '../Controller/CategoriaControl.php';
+ $categoriaControl=new CategoriaControl();
+ $categoria=$categoriaControl->listarPorId(intval($receita[0]["tbCategoria_idcategoria"]));
+ //------------------------------------------------
  require_once("../Controller/CategoriaControl.php");
  $c= new CategoriaControl();
  $categorias=$c->listar();
+ //------------------------------------------------
  require_once("../Controller/MateriaPrimaControl.php");
  $m= new MateriaPrimaControl();
  $materias=$m->listar();
  $materias=json_encode($materias);
+ //----------------------------------------------
  require_once("../Controller/GastoExtraControl.php");
  $g= new GastoExtraControl();
  $gastos=$g->listar();
  $gastos=json_encode($gastos);
+ //---------------------------------------------
+ require_once("../Controller/IngredienteControl.php");
+ $i= new IngredienteControl();
+ $ingredientes=$i->listarPorId($_REQUEST["idreceita"]);
+//  var_dump($ingredientes);
+ foreach ($ingredientes as $key => $value) {
+     var_dump($value);
+     echo '<script async >',
+     'const onload(lala=()=>"show");',
+     '</script>'
+;
+echo "<body onload='plus_ingrediente('".$materias."')'>";
+// function addScript( src,callback) {
+//     var s = document.createElement( 'script' );
+//     s.setAttribute( 'src', src );
+//     s.onload=callback;
+//     document.body.appendChild( s );
+//   }
+  
+ }
+ //------------------------------------------------------
+//  require_once("../Controller/GastoEspecificoControl.php");
+//  $ge= new GastoEspecificoControl();
+//  $gastos_e=$ge->listarPorId($_REQUEST["idreceita"]);
+//  var_dump($gastos_e);
  ?>
-    <body>
+    <!-- <body> -->
         <div class="row">
              <div class="rece">
                 <table class="tab-receita">
@@ -164,7 +120,7 @@
                     <tr>
                         <td class="forms" >
                         <button onclick="receita(2)" >Voltar</button>
-                        <button id="submit" onclick='receita(5)'>Salvar</button>
+                        <button id="submit" onclick='receita(6)'>Alterar</button>
                         </td>
                     </tr>  
                 </table> 

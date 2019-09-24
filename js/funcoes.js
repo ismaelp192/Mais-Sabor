@@ -20,7 +20,7 @@ function Drop() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
 function sel_cat(cat,id){
-    document.getElementById(id.id).value = cat;
+      document.getElementById("tbCategoria_nome_categoria").value = cat;
 }
 function sel_mat(mat,id,tipo,bdid){
     document.getElementById(id.id).value = mat;
@@ -322,7 +322,6 @@ x = ajaxIni();
                     document.getElementById("conteudo").innerHTML=x.responseText;
             }else{
                 a=x.responseText;
-                console.log(a);
                 if(a!=0){
                     document.getElementById("login").classList.remove("input-erro");
                     document.getElementById("senha").classList.remove("input-erro");
@@ -392,9 +391,8 @@ function usu(acao,idusuario){
         tipo=document.getElementById("tipo").value;
         image=document.getElementById("image");
 
-        console.log(image);
         let reader = new FileReader();
-        reader.onloadend = () => {console.log(image);image=reader.result;obj={nome:nome,email:email,login:login,senha:senha,tipo:tipo,image:image}
+        reader.onloadend = () => {image=reader.result;obj={nome:nome,email:email,login:login,senha:senha,tipo:tipo,image:image}
          switch (acao){
             case 5:
                 obj["acao"]=1;
@@ -407,7 +405,6 @@ function usu(acao,idusuario){
             x.open("POST", "Controller/UsuarioControl.php", true);
             break;
         }
-        console.log(obj);
         x.setRequestHeader("Content-type","application/x-www-form-urlencoded");
         x.send(JSON.stringify(obj));
         x.onreadystatechange = function() {
@@ -644,6 +641,8 @@ function receita(acao,idreceita){
         x.send();
         x.onreadystatechange = function() {
             if (x.readyState == 4 && x.status == 200) {
+                mat_id=[];
+                gas_id=[];
                receita(2);   
             }
         }

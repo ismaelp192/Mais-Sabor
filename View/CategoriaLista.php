@@ -35,7 +35,9 @@
   
   else
   {
-      echo "não há registros no banco de dados";
+    echo "<div class='list_list_cat'>";
+    echo "<button onclick='categoria(1)' id='plus_cat'></button>";
+    echo "</div>";
   }
 
 ?> 

@@ -34,13 +34,15 @@
           echo "</div>";
       }
       echo "<div class='list_list_mat'>";
-      echo "<button onclick='materiaprima(1)' id='plus_gas'></button>";
+      echo "<button onclick='materiaprima(1)' id='plus_mat'></button>";
       echo "</div>";
     }
   
   else
   {
-      echo "não há registros no banco de dados";
+    echo "<div class='list_list_mat'>";
+    echo "<button onclick='materiaprima(1)' id='plus_mat'></button>";
+    echo "</div>";
   }
 
 ?> 
