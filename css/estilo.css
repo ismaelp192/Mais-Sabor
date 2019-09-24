@@ -90,6 +90,48 @@ span.tipo{
 	-webkit-appearance:none;
 	-moz-appearance:textfield;
 }
+img#user{
+	width:100px;
+	height:100px;
+	border-radius: 50px 50px 50px 50px;
+}
+button#plus_usu{
+	background-image: url("../img/plus.png");
+	background-position: center;
+    background-repeat: no-repeat;
+	margin: auto;
+	align:center;
+	margin-top: 15%;
+	border-radius: 50px 50px 50px 50px;
+	height: 100px;
+	width: 100px;
+}
+button#plus_gas{
+	background-image: url("../img/plus.png");
+	background-position: center;
+    background-repeat: no-repeat;
+	margin: auto;
+	align:center;
+	margin-top: 10%;
+	border-radius: 50px 50px 50px 50px;
+	height: 100px;
+	width: 100px;
+}
+button#plus_cat{
+	background-image: url("../img/plus.png");
+	background-position: center;
+	background-size: 40px 40px;
+    background-repeat: no-repeat;
+	margin: auto;
+	align:center;
+	margin-top: 5%;
+	border-radius: 50px 50px 50px 50px;
+	height: 50px;
+	width: 50px;
+}
+.list_til{
+	text-align: center;
+}
 
 input{
 	background: #fff;
@@ -260,6 +302,42 @@ input[type=number]::-webkit-outer-spin-button {
 .rece{
 	width: 30%;
 	float: left;
+}
+.list_list_usu{
+	width: 20%;
+	float: left;
+	margin-bottom: 5%;
+}
+.list_list_gas{
+	width: 15%;
+	float: left;
+	margin-bottom: 5%;
+}
+.list_list_cat{
+	width: 10%;
+	float: left;
+	margin-bottom: 5%;
+}
+.list_list_mat{
+	width: 15%;
+	float: left;
+	margin-bottom: 5%;
+}
+.list_table_usu{
+	width: 300px;
+	height: 350px;
+}
+.list_table_gas{
+	width: 203px;
+	height: 207px;
+}
+.list_table_cat{
+	width: 173px;
+	height: 96px;
+}
+.list_table_mat{
+	width: 228px;
+	height: 263px;
 }
 .val{
 	width: 50%;

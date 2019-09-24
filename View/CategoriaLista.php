@@ -14,34 +14,25 @@
         ini_set('display_startup_errors', 1);
         error_reporting(E_ALL);
   //instanciando o objeto da classe ClienteControl
-  echo "<button onclick='categoria(1)' ><img src='img/plus.png'  width='20' height='20'></button>";
   $objCategoria= new CategoriaControl();
   $lista=$objCategoria->listar();
   //montagem da tabela com a lita de Usuarios
-  if((sizeof($lista))>0){
-    if((sizeof($lista))>1){
-      $comp="s";
-  }else{
-      $comp="";
-  }
-    echo "<table  style=text-align:center;>";
-    echo "<tr><td colspan=3><b>Categoria".$comp."</b></td></tr>";
-    echo "<tr><td>ID</td><td>Nome</td><td>Ações</td></tr>";
 
-	  //recuperando os objetos da lista retornada pela controller
-	  foreach ($lista as $p){
-                  //recuperação do objeto e impressão na tabela
-		  echo "<td>".$p["idcategoria"]."</td>";
-          echo "<td>".$p["nome_categoria"]."</td>";
-          echo "<td>
-                 <button onclick='categoria(3,".$p['idcategoria'].")' >Alterar</button>
-                 <button onclick='categoria(4,".$p['idcategoria'].")'>Excluir</button>  
-                 </td></tr>";
-        //   echo "<hr>";                   
+      if((sizeof($lista))>0){
+        foreach ($lista as $p){
+          echo "<div class='list_list_cat'>";
+          echo "<table class='list_table_cat'>";
+          echo "<tr><td class='list_til' colspan=2><b>".$p["nome_categoria"]."</b></td></tr>";
+          echo "<tr><td> <button onclick='categoria(3,".$p['idcategoria'].")' >Alterar</button></td><td><button onclick='categoria(4,".$p['idcategoria'].")'>Excluir</button></td></tr>";   
+          echo "</table>";
+          echo "</div>";
       }
+      echo "<div class='list_list_cat'>";
+      echo "<button onclick='categoria(1)' id='plus_cat'></button>";
+      echo "</div>";
+    }
       
-      echo "</table>";
-  }
+  
   else
   {
       echo "não há registros no banco de dados";

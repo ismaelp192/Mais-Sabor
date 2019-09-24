@@ -12,35 +12,23 @@ ini_set('display_errors', 1);
 
   require_once '../Controller/PHPFunction.php';
   require_once '../Controller/GastoExtraControl.php';
-  //instanciando o objeto da classe ClienteControl
-  echo "<button onclick='gastos(1)' ><img src='img/plus.png'  width='20' height='20'></button>";
   $objGastos= new GastoExtraControl();
   $lista=$objGastos->listar();
-  //montagem da tabela com a lita de Gastoss
   if((sizeof($lista))>0){
-    if((sizeof($lista))>1){
-        $comp="s";
-    }else{
-        $comp="";
+      foreach ($lista as $p){
+        echo "<div class='list_list_gas'>";
+        echo "<table class='list_table_gas'>";
+        echo "<tr><td class='list_til' colspan=2><b>".$p["nome"]."</b></td></tr>";
+        echo "<tr><td>Quantidade:</td><td>".get_numeric($p["quantidade"])."</td></tr>";
+        echo "<tr><td>Tipo:</td><td>".$p["tipo_medida"]."</td></tr>";
+        echo "<tr><td>Valor:</td><td>R$".get_numeric($p["valor"])."</td></tr>";
+        echo "<tr><td><button onclick='gastos(3,".$p['idgastos_extras'].")'>Alterar</button></td><td><button onclick='gastos(4,".$p['idgastos_extras'].")'>Excluir</button> </td></tr>";   
+        echo "</table>";
+        echo "</div>";
     }
-      echo "<table style=text-align:center;>";
-      echo "<tr><td colspan=6><b>Gasto".$comp."</b></td></tr>";
-      echo "<tr ><td>id</td><td>Nome</td><td>Quantidade</td><td>Tipo medida</td><td>Valor</td><td>Ações</td></tr>";
-	  //recuperando os objetos da lista retornada pela controller
-	  foreach ($lista as $p){
-
-                  //recuperação do objeto e impressão na tabela
-		  echo "<td>".$p["idgastos_extras"]."</td>";
-          echo "<td>".$p["nome"]."</td>";
-          echo "<td>".get_numeric($p["quantidade"])."</td>";
-          echo "<td>".$p["tipo_medida"]."</td>";
-          echo "<td>R$".get_numeric($p["valor"])."</td>";
-          echo "<td>
-                 <button onclick='gastos(3,".$p['idgastos_extras'].")'>Alterar</button>
-                 <button onclick='gastos(4,".$p['idgastos_extras'].")'>Excluir</button> 
-                 </td></tr>";            
-      }
-      echo "</table>";
+    echo "<div class='list_list_gas'>";
+    echo "<button onclick='gastos(1)' id='plus_gas'></button>";
+    echo "</div>";
   }
   else
   {

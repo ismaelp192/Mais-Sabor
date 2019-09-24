@@ -12,36 +12,27 @@
   require_once '../Controller/UsuarioControl.php';
   
   //instanciando o objeto da classe ClienteControl
-  echo "<button onclick='usu(1)' ><img src='img/plus.png'  width='20' height='20'></button>";
   $objUsuario= new UsuarioControl();
   $lista=$objUsuario->listar();
   //montagem da tabela com a lita de Usuarios
   if((sizeof($lista))>0){
-    if((sizeof($lista))>1){
-        $comp="s";
-    }else{
-        $comp="";
-    }
-      echo "<table style=text-align:center;>";
-      echo "<tr><td colspan=6><b>Usuario".$comp."</b></td></tr>";
-      echo "<tr><td>Foto</td><td>Nome</td><td>Login</td><td>Email</td><td>Tipo</td><td>Ações</td></tr>";
 	  //recuperando os objetos da lista retornada pela controller
 	  foreach ($lista as $p){
-                  //recuperação do objeto e impressão na tabela
-		  echo "<td><img width='40px' height='40px' src='".$p["image"]."'></td>";
-          echo "<td>".$p["nome"]."</td>";
-          echo "<td>".$p["login"]."</td>";
-          echo "<td>".$p["email"]."</td>";
-          echo "<td>".$p["tipo"]."</td>";
-          echo "<td>
-                 <button class='but' onclick='usu(3,".$p['idusuario'].")' >Alterar</button>
-                 
-                 <button class='but' onclick='usu(4,".$p['idusuario'].")'>Excluir</button>
-               
-                 </td></tr>";            
+          echo "<div class='list_list_usu'>";
+          echo "<table class='list_table_usu'>";
+          echo "<tr><td align=center colspan=2><img id='user' src='".$p["image"]."' alt='descrição da imagem'></td></tr>";
+          echo "<tr><td>Nome:</td><td>".$p["nome"]."</td></tr>";
+          echo "<tr><td>Login:</td><td>".$p["login"]."</td></tr>";
+          echo "<tr><td>Email:</td><td>".$p["email"]."</td></tr>";
+          echo "<tr><td>Tipo:</td><td>".$p["tipo"]."</td></tr>";
+          echo "<tr><td><button class='but' onclick='usu(3,".$p['idusuario'].")' >Alterar</button></td><td><button class='but' onclick='usu(4,".$p['idusuario'].")'>Excluir</button></td></tr>";   
+          echo "</table>";
+          echo "</div>";
       }
+      echo "<div class='list_list_usu'>";
+      echo "<button onclick='usu(1)' id='plus_usu'></button>";
+      echo "</div>";
       
-      echo "</table>";
   }
   else
   {
@@ -52,3 +43,5 @@
 </center>
 </body>
 </html>
+
+
