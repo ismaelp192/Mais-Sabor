@@ -63,9 +63,13 @@
                 <tr>
                     <td class="td-log">
                         <div class="input-group">
-                            <label>Foto de perfil:</label>
+                            <!-- <label>Foto de perfil:</label>
                             <input type="file" id="image" name="files"/>
-                            <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
+                            <input type="hidden" name="MAX_FILE_SIZE" value="500000000"> -->
+                            <form id="myForm" method="post" enctype="multipart/form-data">
+                                <input type="file" name="files" multiple />
+                                <input type="submit" id="upload"value="Upload File" name="Upsubmit" hidden/>
+                            </form>
                         </div>
                     </td>      
                 </tr> 

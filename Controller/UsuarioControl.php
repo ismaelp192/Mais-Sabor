@@ -64,18 +64,18 @@ class UsuarioControl
     }
    private function setObj()
    {
-        var_dump($_POST);
+        var_dump($_FILES);
        $usu = new Usuario;
-	   if (isset ($_POST["idusuario"])){
-            $usu->setIdusuario($_POST["idusuario"]);
-        }
-        $usu->setNome($_POST["nome"]);
-        $usu->setEmail($_POST["email"]);
-        $usu->setLogin($_POST["login"]);
-        $usu->setSenha($_POST["senha"]);
-        $usu->setTipo($_POST["tipo"]);
-        $usu->setImage($_POST["image"]);
-        return $usu; 	   
+	//    if (isset ($_POST["idusuario"])){
+    //         $usu->setIdusuario($_POST["idusuario"]);
+    //     }
+    //     $usu->setNome($_POST["nome"]);
+    //     $usu->setEmail($_POST["email"]);
+    //     $usu->setLogin($_POST["login"]);
+    //     $usu->setSenha($_POST["senha"]);
+    //     $usu->setTipo($_POST["tipo"]);
+    //     $usu->setImage($_POST["image"]);
+    //     return $usu; 	   
    }
 }
 new UsuarioControl();

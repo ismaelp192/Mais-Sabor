@@ -390,12 +390,28 @@ function usu(acao,idusuario){
         senha=document.getElementById("senha").value;
         tipo=document.getElementById("tipo").value;
         image=document.getElementById("image");
+        url = 'process.php'
+        form = document.querySelector('form');
+        oi=document.getElementById("upload");
+        form.addEventListener('click', e => {
+        e.preventDefault()
 
+        const files = document.querySelector('[type=file]').files
+        const formData = new FormData()
+
+        for (let i = 0; i < files.length; i++) {
+            let file = files[i]
+            formData.append('files', file);
+
+        }
         let reader = new FileReader();
-        reader.onloadend = () => {image=reader.result;obj={nome:nome,email:email,login:login,senha:senha,tipo:tipo,image:image}
+        reader.onloadend = () => {obj={nome:nome,email:email,login:login,senha:senha,tipo:tipo,image:formData}
+        console.log("oi");
+
          switch (acao){
             case 5:
                 obj["acao"]=1;
+                console.log("oi");
                 x.open("POST", "Controller/UsuarioControl.php", true);
             break;
             case 6:
@@ -412,7 +428,16 @@ function usu(acao,idusuario){
                usu(2);   
             }
         }};
-        reader.readAsDataURL(image.files[0]);
+        // fetch(url, {
+        //     method: 'POST',
+        //     body: formData,
+        // }).then(response => {
+        //     console.log(response)
+        // })
+        });
+        oi.click();
+       
+        reader.readAsDataURL(files);
         
     } 
 }
