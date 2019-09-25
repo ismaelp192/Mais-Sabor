@@ -390,55 +390,38 @@ function usu(acao,idusuario){
         senha=document.getElementById("senha").value;
         tipo=document.getElementById("tipo").value;
         image=document.getElementById("image");
-        url = 'process.php'
+        var obj={};
+        var formData = new FormData()
         form = document.querySelector('form');
         oi=document.getElementById("upload");
-        form.addEventListener('click', e => {
-        e.preventDefault()
-
-        const files = document.querySelector('[type=file]').files
-        const formData = new FormData()
-
-        for (let i = 0; i < files.length; i++) {
-            let file = files[i]
-            formData.append('files', file);
-
-        }
-        let reader = new FileReader();
-        reader.onloadend = () => {obj={nome:nome,email:email,login:login,senha:senha,tipo:tipo,image:formData}
-        console.log("oi");
-
+            form.addEventListener('click', e => {
+            e.preventDefault()
+            const files = document.querySelector('[type=file]').files
+                for (let i = 0; i < files.length; i++) {
+                    let file = files[i]
+                    formData.append('files', file);
+                }
+            });
+        oi.click();
          switch (acao){
             case 5:
-                obj["acao"]=1;
-                console.log("oi");
-                x.open("POST", "Controller/UsuarioControl.php", true);
+                url = 'Controller/UsuarioControl.php?nome='+nome+'&email='+email+'&login='+login+'&senha='+senha+'&tipo='+tipo+'&acao=1';
             break;
             case 6:
-            idusuario=document.getElementById("idusuario").value;
-            obj["acao"]=2;
-            obj["idusuario"]=idusuario;
-            x.open("POST", "Controller/UsuarioControl.php", true);
+                idusuario=document.getElementById("idusuario").value;
+                file=document.getElementById("file").name;
+                console.log(file);
+                url = 'Controller/UsuarioControl.php?nome='+nome+'&email='+email+'&login='+login+'&senha='+senha+'&tipo='+tipo+'&idusuario='+idusuario+'&image='+file+'&acao=2';
             break;
         }
-        x.setRequestHeader("Content-type","application/x-www-form-urlencoded");
-        x.send(JSON.stringify(obj));
-        x.onreadystatechange = function() {
-            if (x.readyState == 4 && x.status == 200) {
+         fetch(url, {
+            method: 'POST',
+            body: formData,
+        }).then(response => {
+            if (response.status == 200) {
                usu(2);   
             }
-        }};
-        // fetch(url, {
-        //     method: 'POST',
-        //     body: formData,
-        // }).then(response => {
-        //     console.log(response)
-        // })
-        });
-        oi.click();
-       
-        reader.readAsDataURL(files);
-        
+        })        
     } 
 }
 function gastos(acao,idgastos_extras){
@@ -572,10 +555,17 @@ function categoria(acao,idcategoria){
         x.onreadystatechange = function () {
 
             if (x.readyState==4 && x.status==200){
-                document.getElementById("conteudo").innerHTML=x.responseText;
-                    if(acao==4){
+                if(acao==4){
+                    if(x.responseText==0){
+                        console.log(x.responseText);
+                        document.getElementById("erro-"+idcategoria).innerHTML="*categoria está em uso";
+                         document.getElementById("tab-"+idcategoria).style.borderColor = "red";
+                    }else{
                         categoria(2);  
-                    }        
+                    }
+                }else{
+                    document.getElementById("conteudo").innerHTML=x.responseText;
+                }       
             } 
         }
     }else{

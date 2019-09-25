@@ -69,7 +69,8 @@ class CategoriaDAO{
 		$stmt->execute(array(':idcategoria'=>$idcategoria));
 	   }
 	   catch(PDOException $e){
-		echo "Error: ".$e->getMessage();
+		// echo "Error: ".$e->getMessage();
+		echo 0;
 	}
    }   
    

@@ -31,7 +31,6 @@
 				echo'</div>';
 				echo'<div id="myDropdown" class="dropdown-content">
 				<a class="list" onclick="login(4)">Perfil</a>
-				<a class="list">About</a>
 				<a class="list" onclick="login(3)" >Deslogar</a>
 			</div>';
 		} else {

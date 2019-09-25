@@ -21,10 +21,10 @@
           echo "<div class='list_list_usu'>";
           echo "<table class='list_table_usu'>";
           echo "<tr><td align=center colspan=2><img id='user' src='".$p["image"]."' alt='descrição da imagem'></td></tr>";
-          echo "<tr><td>Nome:</td><td>".$p["nome"]."</td></tr>";
-          echo "<tr><td>Login:</td><td>".$p["login"]."</td></tr>";
-          echo "<tr><td>Email:</td><td>".$p["email"]."</td></tr>";
-          echo "<tr><td>Tipo:</td><td>".$p["tipo"]."</td></tr>";
+          echo "<tr><td align=center colspan=2><b>".$p["nome"]."</b></td></tr>";
+          echo "<tr><td><b>Login:</b></td><td>".$p["login"]."</td></tr>";
+          echo "<tr><td><b>Email:</b></td><td>".$p["email"]."</td></tr>";
+          echo "<tr><td><b>Tipo:</b></td><td>".$p["tipo"]."</td></tr>";
           echo "<tr><td><button class='but' onclick='usu(3,".$p['idusuario'].")' >Alterar</button></td><td><button class='but' onclick='usu(4,".$p['idusuario'].")'>Excluir</button></td></tr>";   
           echo "</table>";
           echo "</div>";

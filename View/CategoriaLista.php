@@ -21,8 +21,8 @@
       if((sizeof($lista))>0){
         foreach ($lista as $p){
           echo "<div class='list_list_cat'>";
-          echo "<table class='list_table_cat'>";
-          echo "<tr><td class='list_til' colspan=2><b>".$p["nome_categoria"]."</b></td></tr>";
+          echo "<table id='tab-".$p['idcategoria']."'class='list_table_cat'>";
+          echo "<tr><td class='list_til' colspan=2><b>".$p["nome_categoria"]."</b><div class='erro-msg' id='erro-".$p['idcategoria']."'></div></td></tr>";
           echo "<tr><td> <button onclick='categoria(3,".$p['idcategoria'].")' >Alterar</button></td><td><button onclick='categoria(4,".$p['idcategoria'].")'>Excluir</button></td></tr>";   
           echo "</table>";
           echo "</div>";

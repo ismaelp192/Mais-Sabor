@@ -26,7 +26,7 @@
                     <td class="td-log">
                     <div class="input-group">
                         <label>Email:</label>
-                        <input type="text" name="email" id="email" value="<?php  echo $usuario[0]["email"]; ?>">
+                        <input type="email" name="email" id="email" value="<?php  echo $usuario[0]["email"]; ?>">
                     </div>
                     </td>      
                 </tr>  
@@ -63,9 +63,12 @@
                 <tr>
                     <td class="td-log">
                         <div class="input-group">
-                            <label>Foto de perfil:</label>
-                            <input type="file" id="image" name="files"/>
-                            <input type="hidden" name="MAX_FILE_SIZE" value="500000000">
+                           <!-- <input type="hidden" name="MAX_FILE_SIZE" value="500000000">  -->
+                           <label>Foto de perfil:</label>
+                            <form id="myForm" method="post" enctype="multipart/form-data">
+                                <input type="file" id="file" name="<?php echo $usuario[0]["image"]; ?>" multiple />
+                                <input type="submit" id="upload"value="Upload File" name="Upsubmit" hidden/>
+                            </form>
                         </div>
                     </td>      
                 </tr> 

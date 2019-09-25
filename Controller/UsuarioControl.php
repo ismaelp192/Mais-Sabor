@@ -26,12 +26,10 @@ class UsuarioControl
    function verificaAcao($acao){
        switch ($acao){
            case 1:
-           $DAO = new UsuarioDAO;  
-           $DAO->inserir($this->setObj());
+           $this->setObj($acao);
                break;
            case 2:
-           $DAO = new UsuarioDAO;  
-           $DAO->alterar($this->setObj());
+           $this->setObj($acao);
                break;
            case 3:
            $DAO = new UsuarioDAO;
@@ -62,20 +60,44 @@ class UsuarioControl
         return $usuarioDAO->listarPorId($idusuario);	   
         
     }
-   private function setObj()
+   private function setObj($acao)
    {
-        var_dump($_FILES);
+    var_dump($_FILES);
+    
+      
        $usu = new Usuario;
-	//    if (isset ($_POST["idusuario"])){
-    //         $usu->setIdusuario($_POST["idusuario"]);
-    //     }
-    //     $usu->setNome($_POST["nome"]);
-    //     $usu->setEmail($_POST["email"]);
-    //     $usu->setLogin($_POST["login"]);
-    //     $usu->setSenha($_POST["senha"]);
-    //     $usu->setTipo($_POST["tipo"]);
-    //     $usu->setImage($_POST["image"]);
-    //     return $usu; 	   
+       $DAO = new UsuarioDAO;  
+
+	   if (isset ($_POST["idusuario"])){
+            $usu->setIdusuario($_POST["idusuario"]);
+        }
+        $usu->setNome($_POST["nome"]);
+        $usu->setEmail($_POST["email"]);
+        $usu->setLogin($_POST["login"]);
+        $usu->setSenha($_POST["senha"]);
+        $usu->setTipo($_POST["tipo"]);
+        if(sizeof($_FILES)>0){
+            $file=$_FILES["files"];
+            $fname=$file["name"];
+            $usu->setImage("../imagens/".$fname);
+        }else if(isset($_POST["image"])){
+            var_dump($_POST["image"]);
+            $usu->setImage($_POST["image"]);
+        }else{
+            $usu->setImage("../imagens/default_user.png");  
+        }
+        if($acao==1){
+            $move=$DAO->inserir($usu);
+        }else{
+            $move=$DAO->alterar($usu); 	   
+        }
+        if($move==true){
+            if(move_uploaded_file($file["tmp_name"], "../imagens/" . $file["name"])){
+            }else{
+                echo "<h3>Erro, o arquivo não pode ser enviado:</h3><br>";
+                echo "O ARQUIVO SUPERA O LIMITE DE TAMANHO PERMITIDO, ADICIONE UMA FOTO MENOR <br><br><a href='clienteform.php'>VOLTAR</a>";
+            }
+        }
    }
 }
 new UsuarioControl();

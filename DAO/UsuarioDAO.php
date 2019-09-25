@@ -22,10 +22,11 @@ class UsuarioDAO{
 		try{
 			$stmt = $this->con->prepare('INSERT INTO tbUsuario (nome, email, login, senha, tipo, image) VALUES (:nome, :email, :login, :senha, :tipo, :image)');
 			$stmt->execute(array(':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getLogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo(),':image'=> $usu->getImage()));
-			var_dump($stmt->debugDumpParams());
-		 }
+			return true;
+		}
 		 catch(PDOException $e){
 			 echo "Error: ".$e->getMessage();
+			 return false;
 		 }
    }
    
@@ -58,10 +59,12 @@ class UsuarioDAO{
    function alterar(Usuario $usu){
 		try{
 			$stmt = $this->con->prepare('UPDATE tbUsuario SET nome = :nome, email = :email, login = :login, senha = :senha, tipo = :tipo, image = :image WHERE idusuario = :id');
-			 $stmt->execute(array(':id'=>$usu->getIdusuario(),':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getLogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo(),':image'=> $usu->getImage()));
+			$stmt->execute(array(':id'=>$usu->getIdusuario(),':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getLogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo(),':image'=> $usu->getImage()));
+			return true;
 		}	
 		catch(PDOException $e){
 			echo "Error: ".$e->getMessage();
+			return false;
 		}	  
    }        
    
