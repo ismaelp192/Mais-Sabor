@@ -10,6 +10,16 @@ var obj_gas=[];
 function alerta(oi){
     alert(oi);
 }
+function addScript(callback) {
+    se=document.getElementById(1);
+    if(se != null){
+        se.remove();
+    }
+  var s = document.createElement( 'script' );
+  s.innerHTML=callback;
+  s.id=1;
+  document.body.appendChild( s );
+}
 function get_numeric($val) {
     if (is_numeric($val)) {
       return $val + 0;
@@ -111,9 +121,7 @@ function cal_val(val,id,t){
                         finalf=final.toFixed(2);
                     }
                 }
-            document.getElementById("m_valor_"+id).value=finalf;
-
-            
+            document.getElementById("m_valor_"+id).value=finalf;            
         } 
         valor_ingrediente_final('m');
     }else{
@@ -158,31 +166,59 @@ function lixo(elemento,t){
     }
     att();
 }
-function plus_ingrediente(materias){
-    table = document.getElementById("plus_ingrediente");
-    row = table.insertRow(table.rows.length-1);
-    cell1 = row.insertCell(0);
-    tablem_id++;
-    mat_id.push(tablem_id);
-    mat='<div class="input-group">';
-    mat+='<div class="val_ingre">'; 
-    mat+='<label>Nome:</label>';
-    mat+='<div class="dropdown-cat">';
-    mat+='<input type="text" disabled name="nome" id="m_nome_'+mat_id[mat_id.length-1]+'" class="dropbtn-cat">';
-    mat+='<div class="dropdown-content-cat">';
-    
-    for(a=0; a<materias.length; a++){
-        mat+='<a onclick="sel_mat(&quot; '+materias[a]["nome"]+' &quot;,m_nome_'+mat_id[mat_id.length-1]+',&quot;'+materias[a]["tipo_medida"]+'&quot;,&quot;'+materias[a]["idmateria_prima"]+'&quot;)">'+materias[a]["nome"]+'</a>';
+function plus_ingrediente(materias,ingredientes){
+    if(ingredientes==undefined){
+        repete=1;
+        veri=true;
+    }else{
+        repete=ingredientes.length;
+        veri=false;
     }
-    mat+='</div></div></div>';
-    Gmaterias=materias;
-    mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input onwmousewheel="cal_val(this.value,'+mat_id[mat_id.length-1]+',&quot;m&quot;)" onKeyUp="cal_val(this.value,'+mat_id[mat_id.length-1]+',&quot;m&quot;)" class="middle" type="number" step="0.01" min="0" name="quantidade" id="m_quantidade_'+mat_id[mat_id.length-1]+'" ></div>';
-    mat+='<div class="val_tipo"><input class="middle" type="text" name="tipo" id="m_tipo_'+mat_id[mat_id.length-1]+'" disabled></div>';
-    mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="m_valor_'+mat_id[mat_id.length-1]+'" disabled></div>';
-    mat+='<div class="val_tipo"><input class="middle" type="text" name="sifrao" value="R$" id="m_sifrao_'+mat_id[mat_id.length-1]+'" disabled></div>';
-    mat+='<div class="val_ingre"><button class="lixo" nome="oi" id="m_lixo_'+mat_id[mat_id.length-1]+'" onclick="lixo(this,&quot;m&quot;)"></button></div></div>';
-    cell1.innerHTML= mat;
-    cell1.className = 'td-log';
+    for(r=0;r<repete;r++){
+        if(veri==true){
+            r=repete;
+        }
+        table = document.getElementById("plus_ingrediente");
+        row = table.insertRow(table.rows.length-1);
+        cell1 = row.insertCell(0);
+        tablem_id++;
+        mat_id.push(tablem_id);
+        mat='<div class="input-group">';
+        mat+='<div class="val_ingre">'; 
+        mat+='<label>Nome:</label>';
+        mat+='<div class="dropdown-cat">';
+        mat+='<input type="text" disabled name="nome" id="m_nome_'+mat_id[mat_id.length-1]+'" class="dropbtn-cat">';
+        mat+='<div class="dropdown-content-cat">';
+        
+        for(a=0; a<materias.length; a++){
+            mat+='<a onclick="sel_mat(&quot; '+materias[a]["nome"]+' &quot;,m_nome_'+mat_id[mat_id.length-1]+',&quot;'+materias[a]["tipo_medida"]+'&quot;,&quot;'+materias[a]["idmateria_prima"]+'&quot;)">'+materias[a]["nome"]+'</a>';
+        }
+        mat+='</div></div></div>';
+        Gmaterias=materias;
+        mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input onwmousewheel="cal_val(this.value,'+mat_id[mat_id.length-1]+',&quot;m&quot;)" onKeyUp="cal_val(this.value,'+mat_id[mat_id.length-1]+',&quot;m&quot;)" class="middle" type="number" step="0.01" min="0" name="quantidade" id="m_quantidade_'+mat_id[mat_id.length-1]+'" ></div>';
+        mat+='<div class="val_tipo"><input class="middle" type="text" name="tipo" id="m_tipo_'+mat_id[mat_id.length-1]+'" disabled></div>';
+        mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="m_valor_'+mat_id[mat_id.length-1]+'" disabled></div>';
+        mat+='<div class="val_tipo"><input class="middle" type="text" name="sifrao" value="R$" id="m_sifrao_'+mat_id[mat_id.length-1]+'" disabled></div>';
+        mat+='<div class="val_ingre"><button class="lixo" nome="oi" id="m_lixo_'+mat_id[mat_id.length-1]+'" onclick="lixo(this,&quot;m&quot;)"></button></div></div>';
+        cell1.innerHTML= mat;
+        cell1.className = 'td-log';
+        
+    }
+    if(veri==false){
+        val=0;
+            for(i=0; i<ingredientes.length; i++){
+                for(a=0; a<materias.length; a++){
+                    if(materias[a]["idmateria_prima"]==ingredientes[i]["tbMateria_prima_idmateria_prima"]){
+                        document.getElementById('m_nome_'+[i+1]).value=materias[a]["nome"];
+                    }
+                }
+                document.getElementById('m_quantidade_'+[i+1]).value=ingredientes[i]["quantidade"];
+                document.getElementById('m_valor_'+[i+1]).value=ingredientes[i]["preco"];
+                val+=parseFloat(ingredientes[i]["preco"]);
+            }
+            console.log(val);
+            document.getElementById('ingreT').value=val;
+        }
 }
 function plus_gasto(gastos){
     table = document.getElementById("plus_gasto");
@@ -613,7 +649,13 @@ function receita(acao,idreceita){
         x.onreadystatechange = function () {
 
             if (x.readyState==4 && x.status==200){
-                document.getElementById("conteudo").innerHTML=x.responseText;
+                if(acao==3){
+                    corte=x.responseText.split('script');
+                    document.getElementById("conteudo").innerHTML=corte[1];
+                    console.log(corte);
+                    addScript(corte[0].replace('script',''));
+                }else{
+                document.getElementById("conteudo").innerHTML=x.responseText;}
                     if(acao==4){
                         receita(2);  
                     }        

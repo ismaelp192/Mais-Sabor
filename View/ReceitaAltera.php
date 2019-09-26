@@ -1,11 +1,6 @@
 
 
-<meta charset="utf-8">
-<!DOCTYPE html>
-<html>
-<head>
-	<title>Cadastro de Receita</title>
-</head>
+
 <?php 
  error_reporting(E_ALL);
  ini_set("display_errors", 1);
@@ -34,14 +29,18 @@
  require_once("../Controller/IngredienteControl.php");
  $i= new IngredienteControl();
  $ingredientes=$i->listarPorId($_REQUEST["idreceita"]);
+ $ingredientes=json_encode($ingredientes);
+
+ echo "plus_ingrediente(".$materias.",".$ingredientes.")script";
+
 //  var_dump($ingredientes);
- foreach ($ingredientes as $key => $value) {
-     var_dump($value);
-     echo '<script async >',
-     'const onload(lala=()=>"show");',
-     '</script>'
-;
-echo "<body onload='plus_ingrediente('".$materias."')'>";
+//  foreach ($ingredientes as $key => $value) {
+//      var_dump($value);
+//      echo '<script async >',
+//      'const onload(lala=()=>"show");',
+//      '</script>'
+// ;
+// echo "<body onload='plus_ingrediente('".$materias."')'>";
 // function addScript( src,callback) {
 //     var s = document.createElement( 'script' );
 //     s.setAttribute( 'src', src );
@@ -49,14 +48,20 @@ echo "<body onload='plus_ingrediente('".$materias."')'>";
 //     document.body.appendChild( s );
 //   }
   
- }
+//  }
  //------------------------------------------------------
 //  require_once("../Controller/GastoEspecificoControl.php");
 //  $ge= new GastoEspecificoControl();
 //  $gastos_e=$ge->listarPorId($_REQUEST["idreceita"]);
 //  var_dump($gastos_e);
  ?>
-    <!-- <body> -->
+ <meta charset="utf-8">
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Cadastro de Receita</title>
+</head>
+    <body>
         <div class="row">
              <div class="rece">
                 <table class="tab-receita">
@@ -82,7 +87,7 @@ echo "<body onload='plus_ingrediente('".$materias."')'>";
                         <td class="td-log">
                             <div class="input-group">
                                 <label>Lucro:</label>
-                                <input type="number" onKeyUp="cal_bruto(this.value)" min="0" name="lucro" id="lucro" value="<?php  echo $receita[0]["lucro"]; ?>" placeholder="Lucro">
+                                <input type="number" onload="alert('oi')"  onKeyUp="cal_bruto(this.value)" min="0" name="lucro" id="lucro" value="<?php  echo $receita[0]["lucro"]; ?>" placeholder="Lucro">
                                 <input class="val_ingre_cifrao" type="text" name="por" value="%" id="por" disabled>  
                             </div>
                         </td>       
@@ -131,6 +136,7 @@ echo "<body onload='plus_ingrediente('".$materias."')'>";
                     </tr> 
                         <td class="td-log">
                             <div class="input-group">
+                           
                                 <button onclick='plus_ingrediente(<?php echo $materias ?>)'> <img src="img/plus.png"  width="20" height="20"></button>
                                 <input class="val_ingre_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorIT" disabled>
                                 <input class="val_ingre_total" value="0" type="number" step="0.01" min="0" name="ingreT" id="ingreT" disabled>
