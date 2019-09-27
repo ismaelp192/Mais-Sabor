@@ -133,7 +133,7 @@ CREATE TABLE `tbusuario` (
 --
 
 INSERT INTO `tbusuario` (`idusuario`, `nome`, `login`, `email`, `senha`, `tipo`, `image`) VALUES
-(1, 'Administrador', 'admin', 'admin@admin.com', 'admin', 'Administrador','../imagens/default_user.png');
+(1, 'Administrador', 'admin', 'admin@admin.com', 'admin', 'Administrador','usr_img/default_user.png');
 
 -- --------------------------------------------------------
 
