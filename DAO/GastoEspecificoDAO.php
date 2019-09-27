@@ -38,18 +38,18 @@ class GastoEspecificoDAO{
 // 	}
 //    }
   
-//    public function listarPorId($idmateria_prima){
-// 	try{
-// 		$stmt = $this->con->prepare('SELECT * FROM tbReceita_has_tbMateria_Prima WHERE idmateria_prima='.$idmateria_prima);
-// 		$stmt->execute();
-// 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
-// 		$result = $stmt->fetchAll();
-// 		return $result;
-// 	}
-// 	catch(PDOException $e){
-// 		echo "Error: ".$e->getMessage();
-// 	}
-//    } 
+   public function listarPorId($idreceita){
+	try{
+		$stmt = $this->con->prepare('SELECT * FROM tbReceita_has_tbGastos_extras WHERE  tbReceita_idreceita='.$idreceita);
+		$stmt->execute();
+		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
+		$result = $stmt->fetchAll();
+		return $result;
+	}
+	catch(PDOException $e){
+		echo "Error: ".$e->getMessage();
+	}
+   } 
    
 //    function alterar(GastoEspecifico $GastoEspecifico){
 // 		try{
@@ -61,16 +61,16 @@ class GastoEspecificoDAO{
 // 		}	  
 //    }        
    
-//    function excluir($idmateria_prima){
+   function excluir($idreceita){
 		
-// 	   try{
-// 		$stmt = $this->con->prepare('DELETE FROM tbReceita_has_tbMateria_Prima WHERE idmateria_prima =:idmateria_prima');
-// 		$stmt->execute(array(':idmateria_prima'=>$idmateria_prima));
-// 	   }
-// 	   catch(PDOException $e){
-// 		echo "Error: ".$e->getMessage();
-// 	}
-//    }   
+	   try{
+		$stmt = $this->con->prepare('DELETE FROM tbReceita_has_tbGastos_extras WHERE tbReceita_idreceita =:idreceita');
+		$stmt->execute(array(':idreceita'=>$idreceita));
+	   }
+	   catch(PDOException $e){
+		echo "Error: ".$e->getMessage();
+	}
+   }   
    
 }
 

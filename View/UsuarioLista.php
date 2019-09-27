@@ -8,19 +8,14 @@
 <body >
 <center>
 <?php
-  //incluindo a declaracao da classe ClienteControl
   require_once '../Controller/UsuarioControl.php';
-  
-  //instanciando o objeto da classe ClienteControl
   $objUsuario= new UsuarioControl();
   $lista=$objUsuario->listar();
-  //montagem da tabela com a lita de Usuarios
   if((sizeof($lista))>0){
-	  //recuperando os objetos da lista retornada pela controller
 	  foreach ($lista as $p){
           echo "<div class='list_list_usu'>";
           echo "<table class='list_table_usu'>";
-          echo "<tr><td align=center colspan=2><img id='user' src='".$p["image"]."' alt='descrição da imagem'></td></tr>";
+          echo "<tr><td align=center colspan=2><img id='tab' src='".$p["image"]."' alt='descrição da imagem'></td></tr>";
           echo "<tr><td align=center colspan=2><b>".$p["nome"]."</b></td></tr>";
           echo "<tr><td><b>Login:</b></td><td>".$p["login"]."</td></tr>";
           echo "<tr><td><b>Email:</b></td><td>".$p["email"]."</td></tr>";

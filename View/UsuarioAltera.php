@@ -66,7 +66,7 @@
                            <!-- <input type="hidden" name="MAX_FILE_SIZE" value="500000000">  -->
                            <label>Foto de perfil:</label>
                             <form id="myForm" method="post" enctype="multipart/form-data">
-                                <input type="file" id="file" name="<?php echo $usuario[0]["image"]; ?>" multiple />
+                                <input type="file" id="file" name="<?php echo $usuario[0]["image"]; ?>"/>
                                 <input type="submit" id="upload"value="Upload File" name="Upsubmit" hidden/>
                             </form>
                         </div>

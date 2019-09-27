@@ -28,7 +28,6 @@ class IngredienteControl
                break;
            case 3:
            $DAO = new IngredienteDAO;
-           var_dump($_REQUEST["tbMateria_prima_idmateria_prima"]);
            $DAO->excluir($_REQUEST["tbMateria_prima_idmateria_prima"]);
                break;
        }

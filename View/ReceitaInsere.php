@@ -68,6 +68,17 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Foto da Receita:</label>
+                                <form id="myForm2" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="files" multiple />
+                                    <input type="submit" id="upload"value="Upload File" name="Upsubmit" hidden/>
+                                </form>
+                            </div>
+                        </td>       
+                    </tr> 
+                    <tr>
                         <td class="td-log"> 
                             <div class="input-group">
                                     <label for="valor_receita" >Valor Bruto:</label><label for="valor_valor_final" class="rightf">Valor Final:</label><br>

@@ -8,6 +8,8 @@
         private $valor_final;
         private $tbCategoria_idcategoria;
         private $tbCategoria_nome_categoria;
+        private $image;
+
 
         public function getIdreceita()
         {
@@ -101,6 +103,17 @@
         {
                 $this->tbCategoria_nome_categoria = $tbCategoria_nome_categoria;
 
+                return $this;
+        }
+
+        public function getImage()
+        {
+                return $this->image;
+        }
+    
+        public function setImage($image)
+        {
+                $this->image = $image;
                 return $this;
         }
     }

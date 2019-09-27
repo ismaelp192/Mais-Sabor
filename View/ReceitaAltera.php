@@ -12,48 +12,33 @@
  $categoriaControl=new CategoriaControl();
  $categoria=$categoriaControl->listarPorId(intval($receita[0]["tbCategoria_idcategoria"]));
  //------------------------------------------------
- require_once("../Controller/CategoriaControl.php");
+ require_once '../Controller/CategoriaControl.php';
  $c= new CategoriaControl();
  $categorias=$c->listar();
  //------------------------------------------------
- require_once("../Controller/MateriaPrimaControl.php");
+ require_once '../Controller/MateriaPrimaControl.php';
  $m= new MateriaPrimaControl();
  $materias=$m->listar();
  $materias=json_encode($materias);
  //----------------------------------------------
- require_once("../Controller/GastoExtraControl.php");
+ require_once '../Controller/GastoExtraControl.php';
  $g= new GastoExtraControl();
  $gastos=$g->listar();
  $gastos=json_encode($gastos);
  //---------------------------------------------
- require_once("../Controller/IngredienteControl.php");
+ require_once '../Controller/IngredienteControl.php';
  $i= new IngredienteControl();
  $ingredientes=$i->listarPorId($_REQUEST["idreceita"]);
  $ingredientes=json_encode($ingredientes);
-
- echo "plus_ingrediente(".$materias.",".$ingredientes.")script";
-
-//  var_dump($ingredientes);
-//  foreach ($ingredientes as $key => $value) {
-//      var_dump($value);
-//      echo '<script async >',
-//      'const onload(lala=()=>"show");',
-//      '</script>'
-// ;
-// echo "<body onload='plus_ingrediente('".$materias."')'>";
-// function addScript( src,callback) {
-//     var s = document.createElement( 'script' );
-//     s.setAttribute( 'src', src );
-//     s.onload=callback;
-//     document.body.appendChild( s );
-//   }
-  
-//  }
  //------------------------------------------------------
-//  require_once("../Controller/GastoEspecificoControl.php");
-//  $ge= new GastoEspecificoControl();
-//  $gastos_e=$ge->listarPorId($_REQUEST["idreceita"]);
-//  var_dump($gastos_e);
+ require_once '../Controller/GastoEspecificoControl.php';
+ $ge= new GastoEspecificoControl();
+ $gastos_e=$ge->listarPorId($_REQUEST["idreceita"]);
+ $gastos_e=json_encode($gastos_e);
+ //---------------------------------------------------
+ echo "plus_ingrediente(".$materias.",".$ingredientes.");";
+ echo "plus_gasto(".$gastos.",".$gastos_e.");script";
+var_dump($receita);
  ?>
  <meta charset="utf-8">
 <!DOCTYPE html>
@@ -110,6 +95,17 @@
                         </td>
                     </tr>
                     <tr>
+                        <td class="td-log">
+                            <div class="input-group">
+                                <label>Foto da Receita:</label>
+                                <form id="myForm2" method="post" enctype="multipart/form-data">
+                                    <input type="file" name="files" multiple />
+                                    <input type="submit" id="upload"value="Upload File" name="<?php echo $receita[0]["image"]; ?>" hidden/>
+                                </form>
+                            </div>
+                        </td>       
+                    </tr> 
+                    <tr>
                         <td class="td-log"> 
                             <div class="input-group">
                                     <label for="valor_receita" >Valor Bruto:</label><label for="valor_valor_final" class="rightf">Valor Final:</label><br>
@@ -124,6 +120,7 @@
                     </tr>
                     <tr>
                         <td class="forms" >
+                        <input type="hidden" name="idreceita" id="idreceita" value="<?php echo $_REQUEST["idreceita"]?>">
                         <button onclick="receita(2)" >Voltar</button>
                         <button id="submit" onclick='receita(6)'>Alterar</button>
                         </td>
@@ -152,7 +149,6 @@
                         <td class="td-log">
                             <div class="input-group">
                                 <button onclick='plus_gasto(<?php echo $gastos ?>)'> <img src="img/plus.png"  width="20" height="20"></button>
-                                <input type="hidden" name="idreceita" id="idreceita" value="<?php echo $_REQUEST["idreceita"]?>">
                                 <input class="val_ingre_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorGT" disabled>
                                 <input class="val_ingre_total" value="0" type="number" step="0.01" min="0" name="gastoT" id="gastoT" disabled>
                             </div>

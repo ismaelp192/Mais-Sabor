@@ -61,11 +61,11 @@ class IngredienteDAO{
 		}	  
    }        
    
-   function excluir($idmateria_prima){
+   function excluir($idreceita){
 		
 	   try{
-		$stmt = $this->con->prepare('DELETE FROM tbReceita_has_tbMateria_Prima WHERE idmateria_prima =:idmateria_prima');
-		$stmt->execute(array(':idmateria_prima'=>$idmateria_prima));
+		$stmt = $this->con->prepare('DELETE FROM tbReceita_has_tbMateria_Prima WHERE tbReceita_idreceita =:idreceita');
+		$stmt->execute(array(':idreceita'=>$idreceita));
 	   }
 	   catch(PDOException $e){
 		echo "Error: ".$e->getMessage();

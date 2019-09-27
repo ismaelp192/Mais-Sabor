@@ -79,12 +79,12 @@ class UsuarioControl
         if(sizeof($_FILES)>0){
             $file=$_FILES["files"];
             $fname=$file["name"];
-            $usu->setImage("../imagens/".$fname);
+            $usu->setImage("usr_img/".$fname);
         }else if(isset($_POST["image"])){
             var_dump($_POST["image"]);
             $usu->setImage($_POST["image"]);
         }else{
-            $usu->setImage("../imagens/default_user.png");  
+            $usu->setImage("usr_img/default_user.png");  
         }
         if($acao==1){
             $move=$DAO->inserir($usu);
@@ -92,10 +92,10 @@ class UsuarioControl
             $move=$DAO->alterar($usu); 	   
         }
         if($move==true){
-            if(move_uploaded_file($file["tmp_name"], "../imagens/" . $file["name"])){
+            if(move_uploaded_file($file["tmp_name"], "usr_img/" . $file["name"])){
             }else{
                 echo "<h3>Erro, o arquivo não pode ser enviado:</h3><br>";
-                echo "O ARQUIVO SUPERA O LIMITE DE TAMANHO PERMITIDO, ADICIONE UMA FOTO MENOR <br><br><a href='clienteform.php'>VOLTAR</a>";
+                echo "O ARQUIVO SUPERA O LIMITE DE TAMANHO PERMITIDO, ADICIONE UMA FOTO MENOR <br>";
             }
         }
    }

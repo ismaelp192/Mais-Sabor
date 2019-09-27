@@ -39,13 +39,13 @@ function sel_mat(mat,id,tipo,bdid){
     switch (tipo){
         case "quilo(s)":
             t="Kg";
-            document.getElementById(id_tipo).value = t;
         break;
         case "litro(s)":
             t="L";
-            document.getElementById(id_tipo).value = t;
         break;
     }
+    document.getElementById(id_tipo).value = t;
+
 }
 function sel_gas(mat,id,tipo,bdid){
     document.getElementById(id.id).value = mat;
@@ -54,13 +54,13 @@ function sel_gas(mat,id,tipo,bdid){
     switch (tipo){
         case "hora(s)":
             t="h";
-            document.getElementById(id_tipo).value = t;
         break;
         case "litro(s)":
             t="L";
-            document.getElementById(id_tipo).value = t;
         break;
     }
+    document.getElementById(id_tipo).value = t;
+
 }
 function valor_ingrediente_final(t){
     total=00,00;
@@ -107,6 +107,7 @@ function cal_bruto(por){
 
 }
 function cal_val(val,id,t){
+    val=parseFloat(val);
     if(t=="m"){
         linha = document.getElementById("m_nome_"+id);
         if(!linha.value){
@@ -210,41 +211,94 @@ function plus_ingrediente(materias,ingredientes){
                 for(a=0; a<materias.length; a++){
                     if(materias[a]["idmateria_prima"]==ingredientes[i]["tbMateria_prima_idmateria_prima"]){
                         document.getElementById('m_nome_'+[i+1]).value=materias[a]["nome"];
+                        document.getElementById('m_nome_'+[i+1]).name=materias[a]["idmateria_prima"];
+                        tipo=materias[a]["tipo_medida"];
+                        switch (tipo){
+                            case "quilo(s)":
+                                t="Kg";
+                            break;
+                            case "litro(s)":
+                                t="L";
+                            break;
+                        }
+                        document.getElementById('m_tipo_'+[i+1]).value = t;
+
                     }
                 }
-                document.getElementById('m_quantidade_'+[i+1]).value=ingredientes[i]["quantidade"];
+                document.getElementById('m_quantidade_'+[i+1]).value=parseFloat(ingredientes[i]["quantidade"]);
                 document.getElementById('m_valor_'+[i+1]).value=ingredientes[i]["preco"];
+
                 val+=parseFloat(ingredientes[i]["preco"]);
             }
-            console.log(val);
             document.getElementById('ingreT').value=val;
         }
 }
-function plus_gasto(gastos){
-    table = document.getElementById("plus_gasto");
-    row = table.insertRow(table.rows.length-1);
-    cell1 = row.insertCell(0);
-    tableg_id++;
-    gas_id.push(tableg_id);
-    mat='<div class="input-group">';
-    mat+='<div class="val_ingre">'; 
-    mat+='<label>Nome:</label>';
-    mat+='<div class="dropdown-cat">';
-    mat+='<input type="text" disabled name="nome" id="g_nome_'+gas_id[gas_id.length-1]+'" class="dropbtn-cat">';
-    mat+='<div class="dropdown-content-cat">';
-    
-    for(a=0; a<gastos.length; a++){
-        mat+='<a onclick="sel_gas(&quot; '+gastos[a]["nome"]+' &quot;,g_nome_'+gas_id[gas_id.length-1]+',&quot;'+gastos[a]["tipo_medida"]+'&quot;,&quot;'+gastos[a]["idgastos_extras"]+'&quot;)">'+gastos[a]["nome"]+'</a>';
+function plus_gasto(gastos,gastos_e){
+    if(gastos_e==undefined){
+        repete=1;
+        veri=true;
+    }else{
+        repete=gastos_e.length;
+        veri=false;
     }
-    mat+='</div></div></div>';
-    Ggastos=gastos;
-    mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input onwmousewheel="cal_val(this.value,'+gas_id[gas_id.length-1]+',&quot;g&quot;)" onKeyUp="cal_val(this.value,'+gas_id[gas_id.length-1]+',&quot;g&quot;)" class="middle" type="number" step="0.01" min="0" name="quantidade" id="g_quantidade_'+gas_id[gas_id.length-1]+'" ></div>';
-    mat+='<div class="val_tipo"><input class="middle" type="text" name="tipo" id="g_tipo_'+gas_id[gas_id.length-1]+'" disabled></div>';
-    mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="g_valor_'+gas_id[gas_id.length-1]+'" disabled></div>';
-    mat+='<div class="val_tipo"><input class="middle" type="text" name="sifrao" value="R$" id="g_sifrao_'+gas_id[gas_id.length-1]+'" disabled></div>';
-    mat+='<div class="val_ingre"><button class="lixo" nome="oi" id="g_lixo_'+gas_id[gas_id.length-1]+'" onclick="lixo(this,&quot;g&quot;)"></button></div></div>';
-    cell1.innerHTML= mat;
-    cell1.className = 'td-log';
+    for(r=0;r<repete;r++){
+        if(veri==true){
+            r=repete;
+        }
+        table = document.getElementById("plus_gasto");
+        row = table.insertRow(table.rows.length-1);
+        cell1 = row.insertCell(0);
+        tableg_id++;
+        gas_id.push(tableg_id);
+        mat='<div class="input-group">';
+        mat+='<div class="val_ingre">'; 
+        mat+='<label>Nome:</label>';
+        mat+='<div class="dropdown-cat">';
+        mat+='<input type="text" disabled name="nome" id="g_nome_'+gas_id[gas_id.length-1]+'" class="dropbtn-cat">';
+        mat+='<div class="dropdown-content-cat">';
+        
+        for(a=0; a<gastos.length; a++){
+            mat+='<a onclick="sel_gas(&quot; '+gastos[a]["nome"]+' &quot;,g_nome_'+gas_id[gas_id.length-1]+',&quot;'+gastos[a]["tipo_medida"]+'&quot;,&quot;'+gastos[a]["idgastos_extras"]+'&quot;)">'+gastos[a]["nome"]+'</a>';
+        }
+        mat+='</div></div></div>';
+        Ggastos=gastos;
+        mat+='<div class="val_ingre"><label class="middle">Qtd:</label><input onwmousewheel="cal_val(this.value,'+gas_id[gas_id.length-1]+',&quot;g&quot;)" onKeyUp="cal_val(this.value,'+gas_id[gas_id.length-1]+',&quot;g&quot;)" class="middle" type="number" step="0.01" min="0" name="quantidade" id="g_quantidade_'+gas_id[gas_id.length-1]+'" ></div>';
+        mat+='<div class="val_tipo"><input class="middle" type="text" name="tipo" id="g_tipo_'+gas_id[gas_id.length-1]+'" disabled></div>';
+        mat+='<div class="val_ingre"><label class="right">Valor:</label><input class="right" type="number" step="0.01" min="0" name="valor" id="g_valor_'+gas_id[gas_id.length-1]+'" disabled></div>';
+        mat+='<div class="val_tipo"><input class="middle" type="text" name="sifrao" value="R$" id="g_sifrao_'+gas_id[gas_id.length-1]+'" disabled></div>';
+        mat+='<div class="val_ingre"><button class="lixo" nome="oi" id="g_lixo_'+gas_id[gas_id.length-1]+'" onclick="lixo(this,&quot;g&quot;)"></button></div></div>';
+        cell1.innerHTML= mat;
+        cell1.className = 'td-log';
+    }
+     if(veri==false){
+        val=0;
+        console.log(gastos,gastos_e);
+            for(i=0; i<gastos_e.length; i++){
+                for(a=0; a<gastos.length; a++){
+                    if(gastos[a]["idgastos_extras"]==gastos_e[i]["tbGastos_extras_idgastos_extras"]){
+                        document.getElementById('g_nome_'+[i+1]).value=gastos[a]["nome"];
+                        document.getElementById('g_nome_'+[i+1]).name=gastos[a]["idgastos_extras"];
+                        tipo=gastos[a]["tipo_medida"];
+                        switch (tipo){
+                            case "hora(s)":
+                                t="h";
+                            break;
+                            case "litro(s)":
+                                t="L";
+                            break;
+                        }
+                        document.getElementById('g_tipo_'+[i+1]).value = t;
+
+                    }
+                }
+                document.getElementById('g_quantidade_'+[i+1]).value=parseFloat(gastos_e[i]["quantidade"]);
+                // console.log(gastos_e[i]["preco_gasto_extra"]);
+                document.getElementById('g_valor_'+[i+1]).value=gastos_e[i]["preco_gasto_extra"];
+
+                val+=parseFloat(gastos_e[i]["preco_gasto_extra"]);
+            }
+            document.getElementById('gastoT').value=val;
+        }
 }
 function select(tipo,numero){
     switch (tipo){
@@ -446,7 +500,6 @@ function usu(acao,idusuario){
             case 6:
                 idusuario=document.getElementById("idusuario").value;
                 file=document.getElementById("file").name;
-                console.log(file);
                 url = 'Controller/UsuarioControl.php?nome='+nome+'&email='+email+'&login='+login+'&senha='+senha+'&tipo='+tipo+'&idusuario='+idusuario+'&image='+file+'&acao=2';
             break;
         }
@@ -593,7 +646,6 @@ function categoria(acao,idcategoria){
             if (x.readyState==4 && x.status==200){
                 if(acao==4){
                     if(x.responseText==0){
-                        console.log(x.responseText);
                         document.getElementById("erro-"+idcategoria).innerHTML="*categoria está em uso";
                          document.getElementById("tab-"+idcategoria).style.borderColor = "red";
                     }else{
@@ -636,6 +688,10 @@ function receita(acao,idreceita){
             break;
             case 2:
                 x.open("GET", "View/ReceitaLista.php",true);
+                mat_id=[];
+                gas_id=[];
+                tablem_id=0;
+                tableg_id=0;
             break;
             case 3:
                 x.open("GET", "View/ReceitaAltera.php?idreceita="+idreceita,true);
@@ -652,8 +708,8 @@ function receita(acao,idreceita){
                 if(acao==3){
                     corte=x.responseText.split('script');
                     document.getElementById("conteudo").innerHTML=corte[1];
-                    console.log(corte);
                     addScript(corte[0].replace('script',''));
+                    console.log(corte);
                 }else{
                 document.getElementById("conteudo").innerHTML=x.responseText;}
                     if(acao==4){
@@ -666,9 +722,9 @@ function receita(acao,idreceita){
         valor_receita=document.getElementById("valor_receita").value;
         descricao=document.getElementById("descricao").value;
         lucro=document.getElementById("lucro").value;
+        image=document.getElementById("image");
         valor_final=document.getElementById("valor_final").value;
         tbCategoria_nome_categoria=document.getElementById("tbCategoria_nome_categoria").value;
-        table = document.getElementById("plus_ingrediente");
         for(i=0;i<mat_id.length;i++){
             id_m=document.getElementById("m_nome_"+mat_id[i]).name;
             nome_m=document.getElementById("m_nome_"+mat_id[i]).value;
@@ -685,24 +741,37 @@ function receita(acao,idreceita){
         }
         o_mat=JSON.stringify(obj_mat);
         o_gas=JSON.stringify(obj_gas);
-
-        switch (acao){
+        var obj={};
+        var formData = new FormData()
+        form = document.querySelector('form');
+        oi=document.getElementById("upload");
+            form.addEventListener('click', e => {
+            e.preventDefault()
+            const files = document.querySelector('[type=file]').files
+                for (let i = 0; i < files.length; i++) {
+                    let file = files[i]
+                    formData.append('files', file);
+                }
+            });
+        oi.click();
+         switch (acao){
             case 5:
-                x.open("POST", "Controller/ReceitaControl.php?nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&materiais="+o_mat+"&gastos="+o_gas+"&acao=1", true);
+                url = "Controller/ReceitaControl.php?nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&materiais="+o_mat+"&gastos="+o_gas+"&acao=1";
             break;
             case 6:
-            idreceita=document.getElementById("idreceita").value;
-            x.open("POST", "Controller/ReceitaControl.php?idreceita="+idreceita+"&nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&acao=2", true);
+                idreceita=document.getElementById("idreceita").value;
+                file=document.getElementById("file").name;
+                url = "Controller/ReceitaControl.php?idreceita="+idreceita+"&nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&materiais="+o_mat+"&gastos="+o_gas+"&image="+file+"&acao=2";
             break;
         }
-        x.send();
-        x.onreadystatechange = function() {
-            if (x.readyState == 4 && x.status == 200) {
-                mat_id=[];
-                gas_id=[];
+         fetch(url, {
+            method: 'POST',
+            body: formData,
+        }).then(response => {
+            if (response.status == 200) {
                receita(2);   
             }
-        }
+        }) 
     } 
     
 }
