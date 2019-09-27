@@ -16,7 +16,7 @@ class GastoExtraDAO{
    function inserir(GastoExtra $gas)
    {
 		try{
-			$stmt = $this->con->prepare('INSERT INTO tbGastos_extras (nome, quantidade, valor, tipo_medida) VALUES (:nome, :quantidade, :valor, :tipo_medida)');
+			$stmt = $this->con->prepare('INSERT INTO tbgastos_extras (nome, quantidade, valor, tipo_medida) VALUES (:nome, :quantidade, :valor, :tipo_medida)');
         	$stmt->execute(array(':nome'=> $gas->getNome(),':quantidade'=> $gas->getQuantidade(),':valor'=> $gas->getValor(),':tipo_medida'=> $gas->getTipo_medida()));
 		 }
 		 catch(PDOException $e){
@@ -26,7 +26,7 @@ class GastoExtraDAO{
    
    public function listar() {
 	   try{
-		$stmt = $this->con->prepare('SELECT * FROM tbGastos_extras');
+		$stmt = $this->con->prepare('SELECT * FROM tbgastos_extras');
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
@@ -39,7 +39,7 @@ class GastoExtraDAO{
   
    public function listarPorId($idgastos_extras){
 	try{
-		$stmt = $this->con->prepare('SELECT * FROM tbGastos_extras WHERE idgastos_extras ='.$idgastos_extras);
+		$stmt = $this->con->prepare('SELECT * FROM tbgastos_extras WHERE idgastos_extras ='.$idgastos_extras);
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
@@ -52,7 +52,7 @@ class GastoExtraDAO{
    
    function alterar(GastoExtra $gas){
 		try{
-			$stmt = $this->con->prepare('UPDATE tbGastos_extras SET nome = :nome, quantidade = :quantidade, valor = :valor,tipo_medida = :tipo_medida WHERE idgastos_extras = :id');
+			$stmt = $this->con->prepare('UPDATE tbgastos_extras SET nome = :nome, quantidade = :quantidade, valor = :valor,tipo_medida = :tipo_medida WHERE idgastos_extras = :id');
 			 $stmt->execute(array(':id'=>$gas->getIdgastos_extras(),':nome'=> $gas->getNome(),':quantidade'=> $gas->getQuantidade(),':valor'=> $gas->getValor(),':tipo_medida'=> $gas->getTipo_medida()));
 		}	
 		catch(PDOException $e){
@@ -63,7 +63,7 @@ class GastoExtraDAO{
    function excluir($idgastos_extras){
 		
 	   try{
-		$stmt = $this->con->prepare('DELETE FROM tbGastos_extras WHERE idgastos_extras =:id');
+		$stmt = $this->con->prepare('DELETE FROM tbgastos_extras WHERE idgastos_extras =:id');
 		$stmt->execute(array(':id'=>$idgastos_extras));
 	   }
 	   catch(PDOException $e){

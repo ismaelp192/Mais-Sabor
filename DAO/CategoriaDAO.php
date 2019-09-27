@@ -18,7 +18,7 @@ class CategoriaDAO{
    function inserir(Categoria $categoria)
    {
 		try{
-			$stmt = $this->con->prepare('INSERT INTO tbCategoria (nome_categoria) VALUES (:nome_categoria)');
+			$stmt = $this->con->prepare('INSERT INTO tbcategoria (nome_categoria) VALUES (:nome_categoria)');
         	$stmt->execute(array(':nome_categoria'=> $categoria->getNome_categoria()));
 		 }
 		 catch(PDOException $e){
@@ -28,7 +28,7 @@ class CategoriaDAO{
    
    public function listar() {
 	   try{
-		$stmt = $this->con->prepare('SELECT * FROM tbCategoria');
+		$stmt = $this->con->prepare('SELECT * FROM tbcategoria');
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
@@ -41,7 +41,7 @@ class CategoriaDAO{
   
    public function listarPorId($idcategoria){
 	try{
-		$stmt = $this->con->prepare('SELECT * FROM tbCategoria WHERE idcategoria ='.$idcategoria);
+		$stmt = $this->con->prepare('SELECT * FROM tbcategoria WHERE idcategoria ='.$idcategoria);
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
@@ -54,7 +54,7 @@ class CategoriaDAO{
    
    function alterar(Categoria $categoria){
 		try{
-			$stmt = $this->con->prepare('UPDATE tbCategoria SET nome_categoria = :nome_categoria WHERE idcategoria = :idcategoria');
+			$stmt = $this->con->prepare('UPDATE tbcategoria SET nome_categoria = :nome_categoria WHERE idcategoria = :idcategoria');
 			 $stmt->execute(array(':idcategoria'=>$categoria->getIdcategoria(),':nome_categoria'=> $categoria->getNome_categoria()));
 		}	
 		catch(PDOException $e){
@@ -65,7 +65,7 @@ class CategoriaDAO{
    function excluir($idcategoria){
 		
 	   try{
-		$stmt = $this->con->prepare('DELETE FROM tbCategoria WHERE idcategoria =:idcategoria');
+		$stmt = $this->con->prepare('DELETE FROM tbcategoria WHERE idcategoria =:idcategoria');
 		$stmt->execute(array(':idcategoria'=>$idcategoria));
 	   }
 	   catch(PDOException $e){

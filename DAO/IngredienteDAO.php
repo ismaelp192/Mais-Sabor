@@ -17,7 +17,7 @@ class IngredienteDAO{
    function inserir(Ingrediente $ingrediente)
    {
 		try{
-			$stmt = $this->con->prepare('INSERT INTO tbReceita_has_tbMateria_Prima(tbMateria_prima_idmateria_prima, tbReceita_idreceita, quantidade, preco) VALUES (:tbMateria_prima_idmateria_prima,:tbReceita_idreceita,:quantidade,:preco)');
+			$stmt = $this->con->prepare('INSERT INTO tbreceita_has_tbmateria_prima(tbMateria_prima_idmateria_prima, tbReceita_idreceita, quantidade, preco) VALUES (:tbMateria_prima_idmateria_prima,:tbReceita_idreceita,:quantidade,:preco)');
         	$stmt->execute(array(':tbMateria_prima_idmateria_prima'=> $ingrediente->getTbMateria_prima_idmateria_prima(),':tbReceita_idreceita'=> $ingrediente->getTbReceita_idreceita(),':quantidade'=> $ingrediente->getQuantidade(),':preco'=> $ingrediente->getPreco()));
 		 }
 		 catch(PDOException $e){
@@ -27,7 +27,7 @@ class IngredienteDAO{
    
    public function listar() {
 	   try{
-		$stmt = $this->con->prepare('SELECT * FROM tbReceita_has_tbMateria_Prima');
+		$stmt = $this->con->prepare('SELECT * FROM tbreceita_has_tbmateria_prima');
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
@@ -40,7 +40,7 @@ class IngredienteDAO{
   
    public function listarPorId($idreceita){
 	try{
-		$stmt = $this->con->prepare('SELECT * FROM tbReceita_has_tbMateria_Prima WHERE tbReceita_idreceita='.$idreceita);
+		$stmt = $this->con->prepare('SELECT * FROM tbreceita_has_tbmateria_prima WHERE tbReceita_idreceita='.$idreceita);
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
@@ -53,7 +53,7 @@ class IngredienteDAO{
    
    function alterar(Ingrediente $ingrediente){
 		try{
-			$stmt = $this->con->prepare('UPDATE tbReceita_has_tbMateria_Prima SET nome = :nome, data_validade = :data_validade, quantidade = :quantidade, preco = :preco, =  WHERE idmateria_prima = :idmateria_prima');
+			$stmt = $this->con->prepare('UPDATE tbreceita_has_tbmateria_prima SET nome = :nome, data_validade = :data_validade, quantidade = :quantidade, preco = :preco, =  WHERE idmateria_prima = :idmateria_prima');
 			 $stmt->execute(array(':idmateria_prima'=>$ingrediente->getIdmateria_prima(),':nome'=> $ingrediente->getNome(),':data_validade'=> $ingrediente->getData_validade(),':quantidade'=> $ingrediente->getQuantidade(),':preco'=> $ingrediente->getPreco(),''=> $ingrediente->getTipo_medida()));
 		}	
 		catch(PDOException $e){
@@ -64,7 +64,7 @@ class IngredienteDAO{
    function excluir($idreceita){
 		
 	   try{
-		$stmt = $this->con->prepare('DELETE FROM tbReceita_has_tbMateria_Prima WHERE tbReceita_idreceita =:idreceita');
+		$stmt = $this->con->prepare('DELETE FROM tbreceita_has_tbmateria_prima WHERE tbReceita_idreceita =:idreceita');
 		$stmt->execute(array(':idreceita'=>$idreceita));
 	   }
 	   catch(PDOException $e){

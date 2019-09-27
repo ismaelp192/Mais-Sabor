@@ -38,7 +38,9 @@ CREATE TABLE `tbcategoria` (
 --
 
 INSERT INTO `tbcategoria` (`idcategoria`, `nome_categoria`) VALUES
-(1, 'PÃ£es');
+(1, 'Paes');
+INSERT INTO `tbcategoria` (`idcategoria`, `nome_categoria`) VALUES
+(2, 'Fritura');
 
 -- --------------------------------------------------------
 
@@ -54,6 +56,10 @@ CREATE TABLE `tbgastos_extras` (
   `tipo_medida` varchar(45) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `tbgastos_extras` (`idgastos_extras`, `nome`, `quantidade`, `valor`, `tipo_medida`) VALUES
+(1, 'Eletricidade', 1, 5, 'hora(s)');
+INSERT INTO `tbgastos_extras` (`idgastos_extras`, `nome`, `quantidade`, `valor`, `tipo_medida`) VALUES
+(2, 'Agua', 10, 2, 'litro(s)');
 -- --------------------------------------------------------
 
 --
@@ -69,6 +75,10 @@ CREATE TABLE `tbmateria_prima` (
   `tipo_medida` varchar(30) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
 
+INSERT INTO `tbmateria_prima` (`idmateria_prima`, `nome`, `data_validade`, `quantidade`, `preco`, `tipo_medida`) VALUES
+(1, 'Farinha', '2019-09-30', 10, 2, 'litro(s)');
+INSERT INTO `tbmateria_prima` (`idmateria_prima`, `nome`, `data_validade`, `quantidade`, `preco`, `tipo_medida`) VALUES
+(2, 'Ovo', '2019-10-01', 3, 1, 'quilo(s)');
 -- --------------------------------------------------------
 
 --
@@ -134,6 +144,7 @@ CREATE TABLE `tbusuario` (
 
 INSERT INTO `tbusuario` (`idusuario`, `nome`, `login`, `email`, `senha`, `tipo`, `image`) VALUES
 (1, 'Administrador', 'admin', 'admin@admin.com', 'admin', 'Administrador','usr_img/default_user.png');
+
 
 -- --------------------------------------------------------
 

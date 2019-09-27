@@ -98,24 +98,26 @@ img#tab{
 button#plus_usu{
 	background-image: url("../img/plus.png");
 	background-position: center;
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
+	background-size: 40px 40px;
 	margin: auto;
 	align:center;
 	margin-top: 33%;
 	border-radius: 50px;
-	height: 100px;
-	width: 100px;
+	height: 50px;
+	width: 50px;
 }
 button#plus_gas{
 	background-image: url("../img/plus.png");
 	background-position: center;
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
+	background-size: 40px 40px;
 	margin: auto;
 	align:center;
 	margin-top: 20%;
 	border-radius: 50px;
-	height: 100px;
-	width: 100px;
+	height: 50px;
+	width: 50px;
 }
 button#plus_cat{
 	background-image: url("../img/plus.png");
@@ -132,24 +134,26 @@ button#plus_cat{
 button#plus_mat{
 	background-image: url("../img/plus.png");
 	background-position: center;
-    background-repeat: no-repeat;
+	background-repeat: no-repeat;
+	background-size: 40px 40px;
 	margin: auto;
 	align:center;
-	margin-top: 20%;
+	margin-top: 28%;
 	border-radius: 50px;
-	height: 100px;
-	width: 100px;
+	height: 50px;
+	width: 50px;
 }
 button#plus_rec{
 	background-image: url("../img/plus.png");
 	background-position: center;
+	background-size: 40px 40px;
     background-repeat: no-repeat;
 	margin: auto;
 	align:center;
-	margin-top: 20%;
+	margin-top: 45%;
 	border-radius: 50px;
-	height: 100px;
-	width: 100px;
+	height: 50px;
+	width: 50px;
 }
 .list_til{
 	text-align: center;

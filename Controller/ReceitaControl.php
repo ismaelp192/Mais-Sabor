@@ -58,13 +58,16 @@
        $receita-> setValor_Final($_REQUEST["valor_final"]);
        $receita-> setTbCategoria_nome_categoria($_REQUEST["tbCategoria_nome_categoria"]);
        //--------------------------------------------
+       $deish=false;
+       var_dump($_POST);
        if(sizeof($_FILES)>0){
         $file=$_FILES["files"];
         $fname=$file["name"];
         $receita->setImage("rec_img/".$fname);
-    }else if(isset($_POST["image"])){
-        var_dump($_POST["image"]);
-        $receita->setImage($_POST["image"]);
+        $deish=true;
+    }else if(isset($_REQUEST["image"])){
+        var_dump($_REQUEST["image"]);
+        $receita->setImage($_REQUEST["image"]);
     }else{
         $receita->setImage("rec_img/default_rec.png");  
     }
@@ -93,11 +96,13 @@
             $gastos_e-> setPreco_gasto_extra($gastos[$i]->valor);
             $DAOG->inserir($gastos_e);
         }
-            if(move_uploaded_file($file["tmp_name"], "rec_img/" . $file["name"])){
+        if($deish==true){
+            if(move_uploaded_file($file["tmp_name"], "../rec_img/" . $file["name"])){
             }else{
                 echo "<h3>Erro, o arquivo não pode ser enviado:</h3><br>";
                 echo "O ARQUIVO SUPERA O LIMITE DE TAMANHO PERMITIDO, ADICIONE UMA FOTO MENOR <br>";
             }   
+        }
 }
 	   	public function listar(){
 	   		$receitaDAO = new receitaDAO;

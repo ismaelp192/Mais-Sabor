@@ -81,7 +81,6 @@ class UsuarioControl
             $fname=$file["name"];
             $usu->setImage("usr_img/".$fname);
         }else if(isset($_POST["image"])){
-            var_dump($_POST["image"]);
             $usu->setImage($_POST["image"]);
         }else{
             $usu->setImage("usr_img/default_user.png");  
@@ -92,7 +91,7 @@ class UsuarioControl
             $move=$DAO->alterar($usu); 	   
         }
         if($move==true){
-            if(move_uploaded_file($file["tmp_name"], "usr_img/" . $file["name"])){
+            if(move_uploaded_file($file["tmp_name"],"../usr_img/".$file["name"])){
             }else{
                 echo "<h3>Erro, o arquivo não pode ser enviado:</h3><br>";
                 echo "O ARQUIVO SUPERA O LIMITE DE TAMANHO PERMITIDO, ADICIONE UMA FOTO MENOR <br>";

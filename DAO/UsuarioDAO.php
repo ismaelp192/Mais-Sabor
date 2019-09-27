@@ -20,7 +20,7 @@ class UsuarioDAO{
    {
 	   
 		try{
-			$stmt = $this->con->prepare('INSERT INTO tbUsuario (nome, email, login, senha, tipo, image) VALUES (:nome, :email, :login, :senha, :tipo, :image)');
+			$stmt = $this->con->prepare('INSERT INTO tbusuario (nome, email, login, senha, tipo, image) VALUES (:nome, :email, :login, :senha, :tipo, :image)');
 			$stmt->execute(array(':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getLogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo(),':image'=> $usu->getImage()));
 			return true;
 		}
@@ -32,7 +32,7 @@ class UsuarioDAO{
    
    public function listar() {
 	   try{
-		$stmt = $this->con->prepare('SELECT * FROM tbUsuario');
+		$stmt = $this->con->prepare('SELECT * FROM tbusuario');
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
@@ -45,7 +45,7 @@ class UsuarioDAO{
   
    public function listarPorId($idusuario){
 	try{
-		$stmt = $this->con->prepare('SELECT * FROM tbUsuario WHERE idusuario ='.$idusuario);
+		$stmt = $this->con->prepare('SELECT * FROM tbusuario WHERE idusuario ='.$idusuario);
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
@@ -58,7 +58,7 @@ class UsuarioDAO{
    
    function alterar(Usuario $usu){
 		try{
-			$stmt = $this->con->prepare('UPDATE tbUsuario SET nome = :nome, email = :email, login = :login, senha = :senha, tipo = :tipo, image = :image WHERE idusuario = :id');
+			$stmt = $this->con->prepare('UPDATE tbusuario SET nome = :nome, email = :email, login = :login, senha = :senha, tipo = :tipo, image = :image WHERE idusuario = :id');
 			$stmt->execute(array(':id'=>$usu->getIdusuario(),':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getLogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo(),':image'=> $usu->getImage()));
 			return true;
 		}	
@@ -71,7 +71,7 @@ class UsuarioDAO{
    function excluir($idusuario){
 		
 	   try{	
-		$stmt = $this->con->prepare('DELETE FROM tbUsuario WHERE idusuario =:id');
+		$stmt = $this->con->prepare('DELETE FROM tbusuario WHERE idusuario =:id');
 		$stmt->execute(array(':id'=>$idusuario));
 	   }
 	   catch(PDOException $e){
@@ -87,7 +87,7 @@ class UsuarioDAO{
 
     if ( $login!=null &&  $senha!=null ) {
 		try{
-		$stmt = $this->con->prepare('SELECT * FROM tbUsuario WHERE login=:login');
+		$stmt = $this->con->prepare('SELECT * FROM tbusuario WHERE login=:login');
 		$stmt->execute(array(':login'=>$login));
 		$result = $stmt->fetch(PDO::FETCH_ASSOC);
 		if($result==''){

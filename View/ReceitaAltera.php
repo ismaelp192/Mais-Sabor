@@ -38,7 +38,6 @@
  //---------------------------------------------------
  echo "plus_ingrediente(".$materias.",".$ingredientes.");";
  echo "plus_gasto(".$gastos.",".$gastos_e.");script";
-var_dump($receita);
  ?>
  <meta charset="utf-8">
 <!DOCTYPE html>
@@ -99,8 +98,8 @@ var_dump($receita);
                             <div class="input-group">
                                 <label>Foto da Receita:</label>
                                 <form id="myForm2" method="post" enctype="multipart/form-data">
-                                    <input type="file" name="files" multiple />
-                                    <input type="submit" id="upload"value="Upload File" name="<?php echo $receita[0]["image"]; ?>" hidden/>
+                                    <input type="file" id="file" name="<?php echo $receita[0]["image"]; ?>" />
+                                    <input type="submit" id="upload" value="Upload File"  hidden/>
                                 </form>
                             </div>
                         </td>       

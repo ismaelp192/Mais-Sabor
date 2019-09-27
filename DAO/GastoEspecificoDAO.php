@@ -17,7 +17,7 @@ class GastoEspecificoDAO{
    function inserir(GastoEspecifico $gastoespecifico)
    {
 		try{
-			$stmt = $this->con->prepare('INSERT INTO tbReceita_has_tbGastos_extras(tbGastos_extras_idgastos_extras, tbReceita_idreceita, quantidade, preco_gasto_extra) VALUES (:tbGastos_extras_idgastos_extras,:tbReceita_idreceita,:quantidade,:preco_gasto_extra)');
+			$stmt = $this->con->prepare('INSERT INTO tbreceita_has_tbgastos_extras(tbGastos_extras_idgastos_extras, tbReceita_idreceita, quantidade, preco_gasto_extra) VALUES (:tbGastos_extras_idgastos_extras,:tbReceita_idreceita,:quantidade,:preco_gasto_extra)');
         	$stmt->execute(array(':tbGastos_extras_idgastos_extras'=> $gastoespecifico->getTbGastos_extras_idgastos_extras(),':tbReceita_idreceita'=> $gastoespecifico->getTbReceita_idreceita(),':quantidade'=> $gastoespecifico->getQuantidade(),':preco_gasto_extra'=> $gastoespecifico->getPreco_gasto_extra()));
 		 }
 		 catch(PDOException $e){
@@ -40,7 +40,7 @@ class GastoEspecificoDAO{
   
    public function listarPorId($idreceita){
 	try{
-		$stmt = $this->con->prepare('SELECT * FROM tbReceita_has_tbGastos_extras WHERE  tbReceita_idreceita='.$idreceita);
+		$stmt = $this->con->prepare('SELECT * FROM tbreceita_has_tbgastos_extras WHERE  tbReceita_idreceita='.$idreceita);
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
@@ -64,7 +64,7 @@ class GastoEspecificoDAO{
    function excluir($idreceita){
 		
 	   try{
-		$stmt = $this->con->prepare('DELETE FROM tbReceita_has_tbGastos_extras WHERE tbReceita_idreceita =:idreceita');
+		$stmt = $this->con->prepare('DELETE FROM tbreceita_has_tbgastos_extras WHERE tbReceita_idreceita =:idreceita');
 		$stmt->execute(array(':idreceita'=>$idreceita));
 	   }
 	   catch(PDOException $e){

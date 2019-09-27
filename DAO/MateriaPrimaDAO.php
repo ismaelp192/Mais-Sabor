@@ -18,7 +18,7 @@ class MateriaPrimaDAO{
    function inserir(MateriaPrima $materiaprima)
    {
 		try{
-			$stmt = $this->con->prepare('INSERT INTO tbMateria_prima (nome, data_validade, quantidade, preco, tipo_medida) VALUES (:nome, :data_validade, :quantidade, :preco, :tipo_medida)');
+			$stmt = $this->con->prepare('INSERT INTO tbmateria_prima (nome, data_validade, quantidade, preco, tipo_medida) VALUES (:nome, :data_validade, :quantidade, :preco, :tipo_medida)');
         	$stmt->execute(array(':nome'=> $materiaprima->getNome(),':data_validade'=> $materiaprima->getData_validade(),':quantidade'=> $materiaprima->getQuantidade(),':preco'=> $materiaprima->getPreco(),':tipo_medida'=> $materiaprima->getTipo_medida()));
 		 }
 		 catch(PDOException $e){
@@ -28,7 +28,7 @@ class MateriaPrimaDAO{
    
    public function listar() {
 	   try{
-		$stmt = $this->con->prepare('SELECT * FROM tbMateria_prima');
+		$stmt = $this->con->prepare('SELECT * FROM tbmateria_prima');
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
@@ -43,7 +43,7 @@ class MateriaPrimaDAO{
   
    public function listarPorId($idmateria_prima){
 	try{
-		$stmt = $this->con->prepare('SELECT * FROM tbMateria_prima WHERE idmateria_prima='.$idmateria_prima);
+		$stmt = $this->con->prepare('SELECT * FROM tbmateria_prima WHERE idmateria_prima='.$idmateria_prima);
 		$stmt->execute();
 		$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
 		$result = $stmt->fetchAll();
@@ -56,7 +56,7 @@ class MateriaPrimaDAO{
    
    function alterar(MateriaPrima $materiaprima){
 		try{
-			$stmt = $this->con->prepare('UPDATE tbMateria_prima SET nome = :nome, data_validade = :data_validade, quantidade = :quantidade, preco = :preco, tipo_medida = :tipo_medida WHERE idmateria_prima = :idmateria_prima');
+			$stmt = $this->con->prepare('UPDATE tbmateria_prima SET nome = :nome, data_validade = :data_validade, quantidade = :quantidade, preco = :preco, tipo_medida = :tipo_medida WHERE idmateria_prima = :idmateria_prima');
 			 $stmt->execute(array(':idmateria_prima'=>$materiaprima->getIdmateria_prima(),':nome'=> $materiaprima->getNome(),':data_validade'=> $materiaprima->getData_validade(),':quantidade'=> $materiaprima->getQuantidade(),':preco'=> $materiaprima->getPreco(),':tipo_medida'=> $materiaprima->getTipo_medida()));
 		}	
 		catch(PDOException $e){
@@ -67,7 +67,7 @@ class MateriaPrimaDAO{
    function excluir($idmateria_prima){
 		
 	   try{
-		$stmt = $this->con->prepare('DELETE FROM tbMateria_prima WHERE idmateria_prima =:idmateria_prima');
+		$stmt = $this->con->prepare('DELETE FROM tbmateria_prima WHERE idmateria_prima =:idmateria_prima');
 		$stmt->execute(array(':idmateria_prima'=>$idmateria_prima));
 	   }
 	   catch(PDOException $e){
