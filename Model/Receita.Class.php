@@ -3,7 +3,7 @@
         private $idreceita;
         private $nome;
         private $valor_receita;
-        private $descricao;
+        private $preparo;
         private $lucro;
         private $valor_final;
         private $tbCategoria_idcategoria;
@@ -47,14 +47,14 @@
                 return $this;
         }
  
-        public function getDescricao()
+        public function getPreparo()
         {
-                return $this->descricao;
+                return $this->preparo;
         }
 
-        public function setDescricao($descricao)
+        public function setPreparo($preparo)
         {
-                $this->descricao = $descricao;
+                $this->preparo = $preparo;
 
                 return $this;
         }

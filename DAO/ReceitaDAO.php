@@ -19,8 +19,8 @@
 				$result2 = $stmt2->SetFetchMode(PDO::FETCH_ASSOC);
 				$result2 = $stmt2->fetchAll();
 				$receita->setTbCategoria_idcategoria($result2[0]["idcategoria"]);
-				$stmt = $this->con->prepare('INSERT INTO tbreceita (nome, valor_receita, descricao, lucro, valor_final,tbCategoria_idcategoria, image) VALUES (:nome, :valor_receita, :descricao, :lucro, :valor_final, :tbCategoria_idcategoria, :image)');
-				$stmt->execute(array(':nome'=> $receita->getNome(),':valor_receita'=> $receita->getValor_receita(),':descricao'=> $receita->getDescricao(),':lucro'=> $receita->getLucro(),':valor_final'=> $receita->getValor_final(),
+				$stmt = $this->con->prepare('INSERT INTO tbreceita (nome, valor_receita, preparo, lucro, valor_final,tbCategoria_idcategoria, image) VALUES (:nome, :valor_receita, :preparo, :lucro, :valor_final, :tbCategoria_idcategoria, :image)');
+				$stmt->execute(array(':nome'=> $receita->getNome(),':valor_receita'=> $receita->getValor_receita(),':preparo'=> $receita->getPreparo(),':lucro'=> $receita->getLucro(),':valor_final'=> $receita->getValor_final(),
 				':tbCategoria_idcategoria'=>$receita->getTbCategoria_idcategoria(),':image'=>$receita->getImage()));
 				$last_id=$this->con->lastInsertId();
 				return $last_id;
@@ -36,8 +36,8 @@
 				$result2 = $stmt2->SetFetchMode(PDO::FETCH_ASSOC);
 				$result2 = $stmt2->fetchAll();
 				$receita->setTbCategoria_idcategoria($result2[0]["idcategoria"]);
-				$stmt = $this->con->prepare('UPDATE tbreceita SET nome = :nome, valor_receita = :valor_receita, descricao = :descricao, lucro = :lucro, valor_final = :valor_final, tbCategoria_idcategoria = :tbCategoria_idcategoria, image = :image WHERE idreceita = :id');
-				$stmt->execute(array(':id'=>$receita->getIdreceita(),':nome'=> $receita->getNome(),':valor_receita'=> $receita->getValor_receita(),':descricao'=> $receita->getDescricao(),':lucro'=> $receita->getLucro(),':valor_final'=> $receita->getValor_final(),
+				$stmt = $this->con->prepare('UPDATE tbreceita SET nome = :nome, valor_receita = :valor_receita, preparo = :preparo, lucro = :lucro, valor_final = :valor_final, tbCategoria_idcategoria = :tbCategoria_idcategoria, image = :image WHERE idreceita = :id');
+				$stmt->execute(array(':id'=>$receita->getIdreceita(),':nome'=> $receita->getNome(),':valor_receita'=> $receita->getValor_receita(),':preparo'=> $receita->getPreparo(),':lucro'=> $receita->getLucro(),':valor_final'=> $receita->getValor_final(),
 				':tbCategoria_idcategoria'=>$receita->getTbCategoria_idcategoria(),':image'=>$receita->getImage()));
 				
 				}	

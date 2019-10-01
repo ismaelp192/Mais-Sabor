@@ -1,3 +1,6 @@
+<?php
+require_once '../Controller/PHPFunction.php';
+?>
 <html>
 <meta charset="utf-8">
    <head>
@@ -20,7 +23,8 @@
                   <td class="td-log">
                      <div class="input-group">
                         <label>Senha:</label>
-                        <input type="password" name="senha" id="senha" placeholder=" Senha"><br>
+                        <input type="password" name="senha" id="senha" onKeyUp="Encript()" placeholder=" Senha"><br>
+                        <input type="password" name="senhac" id="senhac"  hidden><br>
                         <div class="erro-msg" id="erro-senha"></div>
                      <div>
                   </td>    

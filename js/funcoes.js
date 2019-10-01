@@ -10,6 +10,11 @@ var obj_gas=[];
 function alerta(oi){
     alert(oi);
 }
+function Encript(){
+    b = "<?php myfunction();?>";
+    console.log("oi");
+    alert(b);
+}
 function addScript(callback) {
     se=document.getElementById(1);
     if(se != null){
@@ -692,7 +697,7 @@ function receita(acao,idreceita){
                 gas_id=[];
                 tablem_id=0;
                 tableg_id=0;
-            break;
+            break;onChange="ILovePHP();"
             case 3:
                 x.open("GET", "View/ReceitaAltera.php?idreceita="+idreceita,true);
             break;
@@ -720,7 +725,7 @@ function receita(acao,idreceita){
     }else{
         nome=document.getElementById("nome").value;
         valor_receita=document.getElementById("valor_receita").value;
-        descricao=document.getElementById("descricao").value;
+        preparo=document.getElementById("preparo").value;
         lucro=document.getElementById("lucro").value;
         image=document.getElementById("image");
         valor_final=document.getElementById("valor_final").value;
@@ -756,12 +761,12 @@ function receita(acao,idreceita){
         oi.click();
          switch (acao){
             case 5:
-                url = "Controller/ReceitaControl.php?nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&materiais="+o_mat+"&gastos="+o_gas+"&acao=1";
+                url = "Controller/ReceitaControl.php?nome="+nome+"&valor_receita="+valor_receita+"&preparo="+preparo+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&materiais="+o_mat+"&gastos="+o_gas+"&acao=1";
             break;
             case 6:
                 idreceita=document.getElementById("idreceita").value;
                 file=document.getElementById("file").name;
-                url = "Controller/ReceitaControl.php?idreceita="+idreceita+"&nome="+nome+"&valor_receita="+valor_receita+"&descricao="+descricao+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&materiais="+o_mat+"&gastos="+o_gas+"&image="+file+"&acao=2";
+                url = "Controller/ReceitaControl.php?idreceita="+idreceita+"&nome="+nome+"&valor_receita="+valor_receita+"&preparo="+preparo+"&lucro="+lucro+"&valor_final="+valor_final+"&tbCategoria_nome_categoria="+tbCategoria_nome_categoria+"&materiais="+o_mat+"&gastos="+o_gas+"&image="+file+"&acao=2";
             break;
         }
          fetch(url, {

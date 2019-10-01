@@ -61,8 +61,8 @@
                     <tr>
                         <td class="td-log">
                             <div class="input-group">
-                                <label>Descrição:</label>
-                                <textarea rows="5" cols="30" name="descricao" id="descricao" placeholder="Descrição"><?php echo $receita[0]["descricao"]; ?></textarea>
+                                <label>Preparo:</label>
+                                <textarea rows="5" cols="30" name="preparo" id="preparo" placeholder="Preparo"><?php echo $receita[0]["preparo"]; ?></textarea>
                             </div>
                         </td>      
                     </tr> 

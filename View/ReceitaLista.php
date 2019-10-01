@@ -16,7 +16,7 @@
             foreach ($lista as $p){
               echo "<div class='list_list_rec'>";
               echo "<table class='list_table_rec'>";
-              echo "<tr><td align=center colspan=2><img id='tab' src='".$p["image"]."' alt='descrição da imagem'></td></tr>";
+              echo "<tr><td align=center colspan=2><img id='tab' src='".$p["image"]."'></td></tr>";
               echo "<tr><td class='list_til' colspan=2><b>".$p["nome"]."</b></td></tr>";
               echo "<tr><td>Categoria:</td><td>".$p["tbCategoria_idcategoria"]."</td></tr>";
               echo "<tr><td>Valor Bruto:</td><td>R$".get_numeric($p["valor_receita"])."</td></tr>";

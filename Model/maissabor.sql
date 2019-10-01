@@ -89,7 +89,7 @@ CREATE TABLE `tbreceita` (
   `idreceita` int(11) NOT NULL,
   `nome` varchar(45) NOT NULL,
   `valor_receita` decimal(5,2) NOT NULL,
-  `descricao` text NOT NULL,
+  `preparo` text NOT NULL,
   `lucro` int(11) NOT NULL,
   `valor_final` decimal(5,2) NOT NULL,
   `tbCategoria_idcategoria` int(11) NOT NULL,

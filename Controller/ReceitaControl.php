@@ -53,7 +53,7 @@
 
        $receita-> setNome($_REQUEST["nome"]);
        $receita-> setValor_Receita($_REQUEST["valor_receita"]);
-       $receita-> setDescricao($_REQUEST["descricao"]);
+       $receita-> setPreparo($_REQUEST["preparo"]);
        $receita-> setLucro($_REQUEST["lucro"]);
        $receita-> setValor_Final($_REQUEST["valor_final"]);
        $receita-> setTbCategoria_nome_categoria($_REQUEST["tbCategoria_nome_categoria"]);

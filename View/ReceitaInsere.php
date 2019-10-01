@@ -35,8 +35,8 @@
                     <tr>
                         <td class="td-log">
                             <div class="input-group">
-                                <label>Descrição:</label>
-                                <textarea rows="5" cols="30" name="descricao" id="descricao" placeholder="Descrição"></textarea>
+                                <label>Preparo:</label>
+                                <textarea rows="5" cols="30" name="preparo" id="preparo" placeholder="preparo"></textarea>
                             </div>
                         </td>      
                     </tr> 
