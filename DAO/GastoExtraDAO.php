@@ -61,10 +61,19 @@ class GastoExtraDAO{
    }        
    
    function excluir($idgastos_extras){
-		
 	   try{
-		$stmt = $this->con->prepare('DELETE FROM tbgastos_extras WHERE idgastos_extras =:id');
-		$stmt->execute(array(':id'=>$idgastos_extras));
+		$stmt2 = $this->con->prepare('SELECT tbGastos_extras_idgastos_extras FROM tbreceita_has_tbgastos_extras WHERE tbGastos_extras_idgastos_extras =:id');
+		$stmt2->execute(array(':id'=>$idgastos_extras));
+		$result2 = $stmt2->SetFetchMode(PDO::FETCH_ASSOC);
+		$result2 = $stmt2->fetchAll();
+		if(isset($result2[0]["tbGastos_extras_idgastos_extras"])){
+			echo 0;
+		}else{
+			$stmt = $this->con->prepare('DELETE FROM tbgastos_extras WHERE idgastos_extras =:id');
+			$stmt->execute(array(':id'=>$idgastos_extras));
+			echo 1;
+		}
+		
 	   }
 	   catch(PDOException $e){
 		echo "Error: ".$e->getMessage();

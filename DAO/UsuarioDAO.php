@@ -93,7 +93,7 @@ class UsuarioDAO{
 		if($result==''){
 			echo 2;
 		}else{
-			if ( $senha === $result['senha']) {
+			if ( password_verify($senha, $result['senha'])) {
 				$_SESSION['login'] = $result['login'];
 				$_SESSION['senha'] = $result['senha'];
 				$_SESSION['tipo'] = $result['tipo'];

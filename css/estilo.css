@@ -1,7 +1,9 @@
-body{
+/* body{
 	margin: 0;
+	height: 100%;
 	background-color: rgb(252, 246, 245);
-}
+} 
+
 table{
 
 	border:1px solid black;
@@ -65,18 +67,18 @@ td{
 	border-left: none;
 }
   
-ul{
+ ul{
 	list-style-type: none;
 	margin: 0;
 	padding: 0px;
-	width: 10%;
+	 width: 10%; 
 	background-color: #f1f1f1;
-	position: fixed; 
+	 position: relativ;  
 	height: 100%;
 	overflow: auto;
 	border:1px #f8d0c7;
 	border-right: 1px solid  #f8d0c7;
-}
+} 
 span.tipo{
 	background: #fff;
 	border: 1px solid #999;
@@ -274,10 +276,11 @@ input[type=number]::-webkit-outer-spin-button {
 }
 
 .top{	 
-	margin-left: 10%;
+	 margin-left: 10%; 
 	background-color:  #FF887C;
-	width: 90%;
-	height: 2.8%;
+	 width: 90%; 
+	height: 3%;
+	position: fixed; 
 	color: #fff;
 	font-weight: bold;
 	font-size: 18px;
@@ -311,13 +314,14 @@ input[type=number]::-webkit-outer-spin-button {
 	color: #fff;
 }
 .conteudo{	 
-	margin-left:10%;
+	 margin-left:10%;
 	padding: 8px;
-	height: 100%;
+	height: 100%; 
 }
 .row{
-	width: 100%;
-	margin-left: 9%;
+	content: "";
+	clear: both;
+	display: table;
 }
 .rece{
 	width: 30%;
@@ -390,7 +394,7 @@ input[type=number]::-webkit-outer-spin-button {
 }
 .val_tipo{
 	width: 10%;
-	padding-top: 6%;/*6 */
+	padding-top: 6%;6 
 	float: left;
 }
 .val_ingre_total{
@@ -444,7 +448,7 @@ input[type=number]::-webkit-outer-spin-button {
 
 .show {display: block;}
 
-/* ----------------------------------------------------------------------------------------------- */
+ ----------------------------------------------------------------------------------------------- 
 
    .dropbtn-tipo, .dropbtn-cat {
 	background-color: #fff;
@@ -492,7 +496,7 @@ input[type=number]::-webkit-outer-spin-button {
   .dropdown-tipo:hover .dropbtn-tipo {background-color: white;}
   .dropdown-cat:hover .dropbtn-cat {background-color: white;}
 
-  /* ------------------------------------------------------------------------------------------------- */
+   ------------------------------------------------------------------------------------------------- 
   
 .col-1 {width: 8.33%;}
 .col-2 {width: 16.66%;}
@@ -506,3 +510,102 @@ input[type=number]::-webkit-outer-spin-button {
 .col-10 {width: 83.33%;}
 .col-11 {width: 91.66%;}
 .col-12 {width: 100%;}
+
+[class*="col-"] {
+	float: left;
+	padding: 15px;
+	border: 1px solid red;
+  } */
+
+
+  * {
+	box-sizing: border-box;
+  }
+  
+  .row::after {
+	content: "";
+	clear: both;
+	display: table;
+  }
+  
+  [class*="col-"] {
+	float: left;
+	/* padding: 15px; */
+  }
+  
+  .col-1 {width: 8.33%;}
+  .col-2 {width: 16.66%;}
+  .col-3 {width: 25%;}
+  .col-4 {width: 33.33%;}
+  .col-5 {width: 41.66%;}
+  .col-6 {width: 50%;}
+  .col-7 {width: 58.33%;}
+  .col-8 {width: 66.66%;}
+  .col-9 {width: 75%;}
+  .col-10 {width: 83.33%;}
+  .col-11 {width: 91.66%;}
+  .col-12 {width: 100%;}
+  
+  html {
+	font-family: "Lucida Sans", sans-serif;
+  }
+  .header {
+	background-color: #FF887C;
+	color: #ffffff;
+	padding: 15px;
+  }
+  
+
+  /* .menu ul {
+	list-style-type: none;
+	margin: 0;
+	padding: 0;
+	background-color: #f1f1f1;
+  } */
+  .list{
+	padding: 10px;
+	background-color: #FF887C;
+	color: black;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.list-click{
+	color: white;
+	background-color: rgb(85, 85, 85);
+	padding: 10px;
+	color: #ffffff;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+.list:hover:not(.active){
+	background-color: rgb(194, 189, 189);
+	color: #fff;
+}
+.list:active{
+	background-color: black;
+	color: #fff;
+} 
+
+
+/* 
+.dropdown-content {
+	display: none;
+	position: absolute;
+	background-color: #f1f1f1;
+	min-width: 6.5%;
+	overflow: auto;
+	border-radius: 8px;
+	border-top-left-radius:2px;
+	border-top-right-radius:2px;
+	box-shadow: 10px 10px 20px 3px rgba(0,0,0,0.5);
+	z-index: 1;
+}
+
+.dropdown-content a {
+	color: black;
+	padding: 12px 15px;
+	text-decoration: none;
+	display: block;
+}
+
+.dropdown a:hover {background-color: blue;}
+
+.show {display: block;} */

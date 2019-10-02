@@ -17,8 +17,8 @@ ini_set('display_errors', 1);
   if((sizeof($lista))>0){
       foreach ($lista as $p){
         echo "<div class='list_list_gas'>";
-        echo "<table class='list_table_gas'>";
-        echo "<tr><td class='list_til' colspan=2><b>".$p["nome"]."</b></td></tr>";
+        echo "<table id='tab-".$p['idgastos_extras']."' class='list_table_gas'>";
+        echo "<tr><td class='list_til' colspan=2><b>".$p["nome"]."</b><br><div class='erro-msg' id='erro-".$p['idgastos_extras']."'></div></td></tr>";
         echo "<tr><td>Quantidade:</td><td>".get_numeric($p["quantidade"])."</td></tr>";
         echo "<tr><td>Tipo:</td><td>".$p["tipo_medida"]."</td></tr>";
         echo "<tr><td>Valor:</td><td>R$".get_numeric($p["valor"])."</td></tr>";

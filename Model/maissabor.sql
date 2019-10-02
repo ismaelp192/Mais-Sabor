@@ -133,7 +133,7 @@ CREATE TABLE `tbusuario` (
   `nome` varchar(45) NOT NULL,
   `login` varchar(45) NOT NULL,
   `email` varchar(65) NOT NULL,
-  `senha` varchar(45) NOT NULL,
+  `senha` varchar(100) NOT NULL,
   `tipo` varchar(45) NOT NULL,
   `image` varchar(200) NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8;
@@ -143,7 +143,7 @@ CREATE TABLE `tbusuario` (
 --
 
 INSERT INTO `tbusuario` (`idusuario`, `nome`, `login`, `email`, `senha`, `tipo`, `image`) VALUES
-(1, 'Administrador', 'admin', 'admin@admin.com', 'admin', 'Administrador','usr_img/default_user.png');
+(1, 'Administrador', 'admin', 'admin@admin.com', '$2a$10$FhT/VtLxsp2SxNEblStQHe3j/jOhI1VcLWfe1jixyqcqw4KMPo0Oi', 'Administrador','usr_img/default_user.png');
 
 
 -- --------------------------------------------------------

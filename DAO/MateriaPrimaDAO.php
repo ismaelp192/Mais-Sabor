@@ -65,10 +65,20 @@ class MateriaPrimaDAO{
    }        
    
    function excluir($idmateria_prima){
+	
 		
 	   try{
-		$stmt = $this->con->prepare('DELETE FROM tbmateria_prima WHERE idmateria_prima =:idmateria_prima');
-		$stmt->execute(array(':idmateria_prima'=>$idmateria_prima));
+		$stmt2 = $this->con->prepare('SELECT tbMateria_prima_idmateria_prima FROM tbreceita_has_tbmateria_prima WHERE tbMateria_prima_idmateria_prima =:id');
+		$stmt2->execute(array(':id'=>$idmateria_prima));
+		$result2 = $stmt2->SetFetchMode(PDO::FETCH_ASSOC);
+		$result2 = $stmt2->fetchAll();
+		if(isset($result2[0]["tbMateria_prima_idmateria_prima"])){
+			echo 0;
+		}else{
+			$stmt = $this->con->prepare('DELETE FROM tbmateria_prima WHERE idmateria_prima =:idmateria_prima');
+			$stmt->execute(array(':idmateria_prima'=>$idmateria_prima));
+			echo 1;
+		}
 	   }
 	   catch(PDOException $e){
 		echo "Error: ".$e->getMessage();

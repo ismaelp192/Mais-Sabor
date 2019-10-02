@@ -59,7 +59,7 @@
                                     <div class="dropdown-content-cat">
                                          <?php
                                             for($i=0; $i<sizeof($categorias); $i++){
-                                                echo "<a onclick='sel_cat(&quot;" .$categorias[$i]["nome_categoria"]. "&quot; ,tbCategoria_nome_categoria )' >" .$categorias[$i]["nome_categoria"]."</a>";
+                                                echo "<a onclick='sel_cat(&quot;" .$categorias[$i]["nome_categoria"]. "&quot;)' >" .$categorias[$i]["nome_categoria"]."</a>";
                                             }
                                         ?> 
                                     </div>

@@ -5,8 +5,4 @@ function get_numeric($val) {
     }
     return 0;
   } 
-  function myfunction(){
-    $x="I love PHP  by Arman de Guzman de Castro :-)!";
-    return $x;
-    }
   ?>

@@ -10,11 +10,6 @@ var obj_gas=[];
 function alerta(oi){
     alert(oi);
 }
-function Encript(){
-    b = "<?php myfunction();?>";
-    console.log("oi");
-    alert(b);
-}
 function addScript(callback) {
     se=document.getElementById(1);
     if(se != null){
@@ -34,7 +29,7 @@ function get_numeric($val) {
 function Drop() {
     document.getElementById("myDropdown").classList.toggle("show");
 }
-function sel_cat(cat,id){
+function sel_cat(cat){
       document.getElementById("tbCategoria_nome_categoria").value = cat;
 }
 function sel_mat(mat,id,tipo,bdid){
@@ -277,7 +272,6 @@ function plus_gasto(gastos,gastos_e){
     }
      if(veri==false){
         val=0;
-        console.log(gastos,gastos_e);
             for(i=0; i<gastos_e.length; i++){
                 for(a=0; a<gastos.length; a++){
                     if(gastos[a]["idgastos_extras"]==gastos_e[i]["tbGastos_extras_idgastos_extras"]){
@@ -297,7 +291,6 @@ function plus_gasto(gastos,gastos_e){
                     }
                 }
                 document.getElementById('g_quantidade_'+[i+1]).value=parseFloat(gastos_e[i]["quantidade"]);
-                // console.log(gastos_e[i]["preco_gasto_extra"]);
                 document.getElementById('g_valor_'+[i+1]).value=gastos_e[i]["preco_gasto_extra"];
 
                 val+=parseFloat(gastos_e[i]["preco_gasto_extra"]);
@@ -541,10 +534,17 @@ function gastos(acao,idgastos_extras){
         x.onreadystatechange = function () {
 
             if (x.readyState==4 && x.status==200){
-                document.getElementById("conteudo").innerHTML=x.responseText;
-                    if(acao==4){
+                if(acao!=4){
+                    document.getElementById("conteudo").innerHTML=x.responseText;
+                }else{
+                    if(x.responseText==0){
+                        document.getElementById("erro-"+idgastos_extras).innerHTML="*gasto em uso";
+                        document.getElementById("tab-"+idgastos_extras).style.borderColor = "red";
+                    }else{
                         gastos(2);  
-                    }        
+                    }
+                }
+                          
             } 
         }
     }else{
@@ -594,12 +594,18 @@ function materiaprima(acao,idmateria_prima){
         x.onreadystatechange = function () {
 
             if (x.readyState==4 && x.status==200){
-                document.getElementById("conteudo").innerHTML=x.responseText;
-                    if(acao==4){
+                if(acao!=4){
+                    document.getElementById("conteudo").innerHTML=x.responseText;
+                }else{
+                    if(x.responseText==0){
+                        document.getElementById("erro-"+idmateria_prima).innerHTML="*matéria em uso";
+                        document.getElementById("tab-"+idmateria_prima).style.borderColor = "red";
+                    }else{
                         materiaprima(2);  
-                    }   
-                }      
-            } 
+                    }
+                }  
+            }       
+        } 
     }else{
         nome=document.getElementById("nome").value;
         data_validade=document.getElementById("data_validade").value;

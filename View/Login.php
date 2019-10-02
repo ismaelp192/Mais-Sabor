@@ -23,8 +23,7 @@ require_once '../Controller/PHPFunction.php';
                   <td class="td-log">
                      <div class="input-group">
                         <label>Senha:</label>
-                        <input type="password" name="senha" id="senha" onKeyUp="Encript()" placeholder=" Senha"><br>
-                        <input type="password" name="senhac" id="senhac"  hidden><br>
+                        <input type="password" name="senha" id="senha" placeholder=" Senha"><br>
                         <div class="erro-msg" id="erro-senha"></div>
                      <div>
                   </td>    
