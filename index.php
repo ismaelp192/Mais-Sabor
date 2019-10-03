@@ -13,15 +13,24 @@
 		session_start();
 	if ( isset( $_SESSION['login']) && isset($_SESSION['senha'])  ) {
 			echo'
-				<div class="header">
-					<span class="titulo">Padaria Mais Sabor</span>';
-				
-					echo '
-						<button id="Drop" onclick="Drop()" class="drop">'.$_SESSION['login'].'</button>
-						
-						';
-				
-				echo'</div>';
+			
+				<div class="header col-12">
+					<div class="col-1">
+						<img class="menu-img" src="css/pao.ico">
+					</div>
+					<div class="col-10">
+						<li class="titulo">Padaria Mais Sabor</li>
+					</div>
+					<div class="col-1">
+						<ul class="ul-drop">
+							<li  class="list" id="usr"  onclick="Drop()">'.$_SESSION['login'].'</li>
+							<li  class="list" name="drop" id="d1" onclick="login(4)">Perfil</li>
+							<li  class="list" name="drop" id="d2" onclick="login(3)">Deslogar</li>
+						</ul>
+					</div>	
+					
+				</div>
+				';
 				
 			echo'<div class="row">
 				<div class="col-1 menu"><ul>	
@@ -33,10 +42,7 @@
 				</ul></div>
 			<div class="col-11 conteudo" id="conteudo">
 			</div>
-			<div id="myDropdown" class=" col-1 dropdown-content">
-				<a class="list" onclick="login(4)">Perfil</a>
-				<a class="list" onclick="login(3)" >Deslogar</a>
-			</div>
+			
 			</div>';
 		} else {
 			echo"<body onload='login(2)'>
@@ -51,8 +57,17 @@
 	</body>
 </html>
 
-
-
-	
-				
+<!-- <div class="col-12 rela">
+					<div class="col-3">
+						<div id="myDropdown" class="dropdown-content">
+							<li class="list" onclick="login(4)">Perfil</li>
+							<li class="list" onclick="login(3)" >Deslogar</li>
+						</div>
+					</div>
+				</div> -->
+<!-- 
+				<div id="myDropdown" class="dropdown-content">
+							<li class="list" onclick="login(4)">Perfil</li>
+							<li class="list" onclick="login(3)" >Deslogar</li>
+					</div>				 -->
 				

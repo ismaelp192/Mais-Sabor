@@ -27,7 +27,9 @@ function get_numeric($val) {
     return 0;
   } 
 function Drop() {
-    document.getElementById("myDropdown").classList.toggle("show");
+    console.log(document.getElementsByName("d1"));
+    document.getElementById("d1").classList.toggle("show");
+    document.getElementById("d2").classList.toggle("show");
 }
 function sel_cat(cat){
       document.getElementById("tbCategoria_nome_categoria").value = cat;
@@ -330,16 +332,19 @@ document.addEventListener ('keypress', (event) => {
         document.getElementById("submit").click();
     }
   });
+
 window.onclick = function(event) {
-    if (event.target.id!="Drop" ) {
-      var dropdowns = document.getElementsByClassName("dropdown-content");
+    if (event.target.id!="usr") {
+      var dropdowns1 = document.getElementById("d1");
+      var dropdowns2 = document.getElementById("d2");
       var i;
-      for (i = 0; i < dropdowns.length; i++) {
-        var openDropdown = dropdowns[i];
-        if (openDropdown.classList.contains('show')) {
-          openDropdown.classList.remove('show');
+
+        if (dropdowns1.classList.contains('show')) {
+            dropdowns1.classList.remove('show');
         }
-      }
+        if (dropdowns2.classList.contains('show')) {
+            dropdowns2.classList.remove('show');
+        }
     }
   }
 
