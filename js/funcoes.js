@@ -338,12 +338,13 @@ window.onclick = function(event) {
       var dropdowns1 = document.getElementById("d1");
       var dropdowns2 = document.getElementById("d2");
       var i;
-
-        if (dropdowns1.classList.contains('show')) {
-            dropdowns1.classList.remove('show');
-        }
-        if (dropdowns2.classList.contains('show')) {
-            dropdowns2.classList.remove('show');
+        if(dropdowns1!=null){
+            if (dropdowns1.classList.contains('show')) {
+                dropdowns1.classList.remove('show');
+            }
+            if (dropdowns2.classList.contains('show')) {
+                dropdowns2.classList.remove('show');
+            }
         }
     }
   }
@@ -355,6 +356,7 @@ function selecao(e){
     document.getElementById("categoria").className = "list";
     document.getElementById("materiaprima").className = "list";
     document.getElementById("receita").className = "list";
+    console.log(document.getElementById("usu").value);
     switch (e){
         case 1:
             usu(2);

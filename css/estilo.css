@@ -1,7 +1,8 @@
- body{
+ body {
 	margin: 0;
 	background-color: rgb(252, 246, 245);
-} 
+}
+ 
 table{
 
 	border:1px solid black;
@@ -546,21 +547,27 @@ li{
 	position: relative;
 	/* padding: 10px; */
 }
+.conteudo{	 
+	float:right;
+	margin-top: 60px;
+}
 .menu-img{
 	height: 50px;
 	width:50px;
 	position: relative;
 }
- 
+.fix{
+	position:fixed;
+}
 .header {
 	background-color: #FF887C;
 	color: black;
-	position: relative;
+	position:fixed;
 	padding: 0;
 }
-
   .menu ul {
-	margin: 0;
+	height: 100vh;
+	margin-top: 50px;
 	padding: 0;
 	background-color: #f1f1f1;
 	position: relative;
@@ -572,15 +579,18 @@ li{
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 	display: block;
 }
+
 .ul-drop{
 	position: absolute;
+	right: 0;
+	clear:right;
 	padding: 0;
 	margin: 0;
 	height: 100%;
-	
+	min-width:91px;
 }
 .list[id="usr"]{
-	padding: 15px 20px 10px 20px;
+	padding: 15px 19.5px 10px 20px;
 	box-shadow: none;
 	text-align: center;
 	height: 100%;
@@ -611,7 +621,7 @@ li{
 	color: #ffffff;
 	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
-.list:hover:not(.active){
+.list:hover{
 	background-color: rgb(194, 189, 189);
 	color: #fff;
 }
