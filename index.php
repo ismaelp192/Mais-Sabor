@@ -16,7 +16,9 @@
 			
 				<div class="header col-12">
 					<div class="col-1">
+						<center>
 						<img class="menu-img" src="css/pao.ico">
+						<center>
 					</div>
 					<div class="col-10">
 						<li class="titulo">Padaria Mais Sabor</li>
