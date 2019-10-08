@@ -13,7 +13,7 @@
   $lista=$objUsuario->listar();
   if((sizeof($lista))>0){
 	  foreach ($lista as $p){
-          echo "<div class='list_list_usu'>";
+          echo "<div class='col-2 '>";
           echo "<table class='list_table_usu'>";
           echo "<tr><td align=center colspan=2><img id='tab' src='".$p["image"]."'></td></tr>";
           echo "<tr><td align=center colspan=2><b>".$p["nome"]."</b></td></tr>";
@@ -24,14 +24,14 @@
           echo "</table>";
           echo "</div>";
       }
-      echo "<div class='list_list_usu'>";
+      echo "<div class='col-2'>";
       echo "<button onclick='usu(1)' id='plus_usu'></button>";
       echo "</div>";
       
   }
   else
   {
-    echo "<div class='list_list_usu'>";
+    echo "<div class='col-2'>";
     echo "<button onclick='usu(1)' id='plus_usu'></button>";
     echo "</div>";
   }

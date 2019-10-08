@@ -15,13 +15,9 @@
 			echo'
 			
 				<div class="header col-12">
-					<div class="col-1">
-						<center>
+					<div class="col-2">
 						<img class="menu-img" src="css/pao.ico">
-						</center>
-					</div>
-					<div class="col-9">
-						<li class="titulo">Padaria Mais Sabor</li>
+						<b><li class="titulo">Padaria Mais Sabor</li></b>
 					</div>
 					<div class="col-2">
 							<ul class="ul-drop ">
@@ -35,7 +31,7 @@
 				';
 				
 			echo'<div class="row">
-					<div class="col-1 menu fix">
+					<div class="col-1-5 menu fix">
 						<ul>	
 							<li class="list" id="usu" onclick="selecao(1)">Usuario</li>
 							<li class="list" id="gastos" onclick="selecao(2)">Gasto</li>
@@ -44,7 +40,7 @@
 							<li class="list" id="receita" onclick="selecao(5)">Receita</li>
 						</ul>	
 				</div>
-			<div class="col-11 conteudo" id="conteudo">
+			<div class="col-10-5 conteudo" id="conteudo">
 			</div>
 			
 			</div>';
