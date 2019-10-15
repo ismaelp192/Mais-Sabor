@@ -31,7 +31,7 @@
 				';
 				
 			echo'<div class="row">
-					<div class="col-1-5 menu fix">
+					<div class="col-1-5 menu ">
 						<ul>	
 							<li class="list" id="usu" onclick="selecao(1)">Usuario</li>
 							<li class="list" id="gastos" onclick="selecao(2)">Gasto</li>
