@@ -32,7 +32,7 @@
 				
 			echo'<div class="row">
 					<div class="col-1-5 menu ">
-						<ul>	
+						<ul id="sidebar">	
 							<li class="list" id="usu" onclick="selecao(1)">Usuario</li>
 							<li class="list" id="gastos" onclick="selecao(2)">Gasto</li>
 							<li class="list" id="categoria" onclick="selecao(3)">Categoria</li>

@@ -25,14 +25,12 @@
           echo "</div>";
       }
       echo "<div class='col-3'>";
-      // echo "<button onclick='usu(1)' id='plus_usu'></button>";
-      echo "<table class='list_table_usu new_usu' onclick='usu(1)'>";
+      echo "<table class='list_table_usu ghost' onclick='usu(1)'>";
       echo "<tr><td align=center colspan=4><img id='tab' src='img/plus.png'></td></tr>";
       echo "<tr><td align=center colspan=4><b>Novo Usuário</b></td></tr>";
-      echo "<tr><td><b>Login:</b></td><td colspan=3></td></tr>";
-      echo "<tr><td><b>Email:</b></td><td colspan=3></td></tr>";
-      echo "<tr><td><b>Tipo:</b></td><td colspan=3></td></tr>";
-      // echo "<tr><td colspan=2><button class='but' >Alterar</button></td><td colspan=2><button class='but exi'>Excluir</button></td></tr>";   
+      // echo "<tr><td><b>Login:</b></td><td colspan=3></td></tr>";
+      // echo "<tr><td><b>Email:</b></td><td colspan=3></td></tr>";
+      // echo "<tr><td><b>Tipo:</b></td><td colspan=3></td></tr>";
       echo "</table>";
       echo "</div>";
       
@@ -40,7 +38,13 @@
   else
   {
     echo "<div class='col-3'>";
-    echo "<button onclick='usu(1)' id='plus_usu'></button>";
+    echo "<table class='list_table_usu ghost' onclick='usu(1)'>";
+    echo "<tr><td align=center colspan=4><img id='tab' src='img/plus.png'></td></tr>";
+    echo "<tr><td align=center colspan=4><b>Novo Usuário</b></td></tr>";
+    echo "<tr><td><b>Login:</b></td><td colspan=3></td></tr>";
+    echo "<tr><td><b>Email:</b></td><td colspan=3></td></tr>";
+    echo "<tr><td><b>Tipo:</b></td><td colspan=3></td></tr>";
+    echo "</table>";
     echo "</div>";
   }
 

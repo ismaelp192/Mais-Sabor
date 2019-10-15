@@ -22,11 +22,27 @@ table{
 	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
 	transition:0.4s;
 }
-table:hover{
+.list_table_usu:hover{
 	width: 75%;
 	height: 390px;
 	margin-top:20px;
 }
+
+.list_table_gas{
+	table-layout: fixed ;
+	margin-left: 10%;
+	width: 82%;
+	height: 207px;
+	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
+	transition:0.4s;
+}
+
+.list_table_gas:hover{
+	width: 87%;
+	height: 240px;
+	margin-top:27px;
+}
+
 td{
 	border-radius: 0px;
 	border-width: 0px;
@@ -41,11 +57,11 @@ img#tab{
 	border-radius: 8px;
 }
 
-.new_usu{
+.ghost{
 	opacity: 0.5;
 	border:2px dashed;
 }
-.new_usu:hover{
+.ghost:hover{
 	opacity: 1;
 }
 
@@ -661,6 +677,19 @@ li{
 	-webkit-transition:0.2s;
 	transition:0.2s;
 }
+ul[id="sidebar"] .list:hover{
+	font-size: 20px;
+}
+.list-click{
+	color: white;
+	background-color:  #dc143c52 ;
+	padding: 10px;
+	color: #ffffff;
+	font-size: 20px;
+	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+	-webkit-transition:0.2s;
+	transition:0.2s;
+}
 
 .ul-drop{
 	position: absolute;
@@ -697,16 +726,8 @@ li{
 }
 .show {display: block !important;} 
 
-.list-click{
-	color: white;
-	background-color:  #dc143c52 ;
-	padding: 10px;
-	color: #ffffff;
-	box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
-}
-.list:hover{
-	font-size: 20px;
-}
+
+
 .list_hover{
 	background-color: #eca7a7;
 	color: #fff;
