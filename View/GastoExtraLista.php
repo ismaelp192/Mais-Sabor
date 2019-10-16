@@ -5,7 +5,6 @@
     <title>Lista de Gasto extras</title>
 </head>
 <body >
-<center>
 <?php
 error_reporting(E_ALL);
 ini_set('display_errors', 1);
@@ -26,30 +25,15 @@ ini_set('display_errors', 1);
         echo "</table>";
         echo "</div>";
     }
-        echo "<div class='col-2'>";
-        echo "<table id='tab-".$p['idgastos_extras']."' onclick='gastos(1)' class='list_table_gas ghost'>";
-        echo "<tr><td align=center colspan=4><img id='tab' src='img/plus.png'></td></tr>";
-        echo "<tr><td class='list_til' align=center colspan=4><b>Novo Gasto</b></td></tr>";
-        // echo "<tr><td>Quantidade:</td><td></td></tr>";
-        // echo "<tr><td>Tipo:</td><td></td></tr>";
-        // echo "<tr><td>Valor:</td><td></td></tr>";
-        echo "</table>";
-        echo "</div>";
   }
-  else
-  {
     echo "<div class='col-2'>";
     echo "<table id='tab-".$p['idgastos_extras']."' onclick='gastos(1)' class='list_table_gas ghost'>";
-    echo "<tr><td align=center colspan=4><img id='tab' src='img/plus.png'></td></tr>";
+    echo "<tr><td align=center colspan=4><img id='tab-1' src='img/plus.png'></td></tr>";
     echo "<tr><td class='list_til' align=center colspan=4><b>Novo Gasto</b></td></tr>";
-    // echo "<tr><td>Quantidade:</td><td></td></tr>";
-    // echo "<tr><td>Tipo:</td><td></td></tr>";
-    // echo "<tr><td>Valor:</td><td></td></tr>";
     echo "</table>";
     echo "</div>";
-  }
+
 
 ?> 
-</center>
 </body>
 </html>

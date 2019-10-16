@@ -71,10 +71,12 @@ class UsuarioControl
 	   if (isset ($_POST["idusuario"])){
             $usu->setIdusuario($_POST["idusuario"]);
         }
+        if (isset ($_POST["senha"])){
+            $usu->setSenha($_POST["senha"]);
+        }
         $usu->setNome($_POST["nome"]);
         $usu->setEmail($_POST["email"]);
-        $usu->setLogin($_POST["login"]);
-        $usu->setSenha($_POST["senha"]);
+        $usu->setlogin($_POST["login"]);
         $usu->setTipo($_POST["tipo"]);
         if(sizeof($_FILES)>0){
             $file=$_FILES["files"];

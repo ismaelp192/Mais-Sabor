@@ -6,7 +6,6 @@
     <title>Lista de Matéria Prima</title>
 </head>
 <body >
-<center>
 
 <?php
   //incluindo a declaracao da classe ClienteControl
@@ -22,7 +21,7 @@
       if((sizeof($lista))>0){
         foreach ($lista as $p){
           $p["data_validade"] = implode("/",array_reverse(explode("-",$p["data_validade"])));
-          echo "<div class='list_list_mat'>";
+          echo "<div class='col-2'>";
           echo "<table id='tab-".$p['idmateria_prima']."' class='list_table_mat'>";
           echo "<tr><td class='list_til' colspan=2><b>".$p["nome"]."</b><br><div class='erro-msg' id='erro-".$p['idmateria_prima']."'></div></td></tr>";
           echo "<tr><td>Data de Validade:</td><td>".$p["data_validade"]."</td></tr>";
@@ -33,19 +32,13 @@
           echo "</table>";
           echo "</div>";
       }
-      echo "<div class='list_list_mat'>";
-      echo "<button onclick='materiaprima(1)' id='plus_mat'></button>";
-      echo "</div>";
     }
-  
-  else
-  {
-    echo "<div class='list_list_mat'>";
-    echo "<button onclick='materiaprima(1)' id='plus_mat'></button>";
+    echo "<div class='col-2'>";
+    echo "<table onclick='materiaprima(1)' class='list_table_mat ghost'>";
+    echo "<tr><td align=center ><img id='tab-1' src='img/plus.png'></td></tr>";
+    echo "<tr><td align=center  class='list_til'><b>Nova Materia Prima</b></td></tr>";
+    echo "</table>";
     echo "</div>";
-  }
-
 ?> 
-</center>
 </body>
 </html>

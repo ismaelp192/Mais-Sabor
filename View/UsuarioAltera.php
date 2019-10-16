@@ -2,6 +2,13 @@
   require_once '../Controller/UsuarioControl.php';
     $usuarioControl=new UsuarioControl();
     $usuario=$usuarioControl->listarPorId($_REQUEST["idusuario"]);
+    $sac=$_REQUEST["sac"];
+    $nsac=$sac;
+    if($sac==2){
+        $sac='usu(2)';
+    }else if($sac==4){
+        $sac='log_in(4)';
+    }
 ?>
 <meta charset="utf-8">
 <!DOCTYPE html>
@@ -40,14 +47,6 @@
                 </tr>   
                 <tr>
                     <td class="td-log">
-                    <div class="input-group">
-                        <label>Senha:</label>
-                        <input type="password" name="senha" id="senha" value="<?php  echo $usuario[0]["senha"]; ?>">
-                    </div>
-                    </td>      
-                </tr> 
-                <tr>
-                    <td class="td-log">
                         <div class="input-group">
                             <label>Tipo:</label><br>
                             <div class="dropdown-tipo">
@@ -74,9 +73,8 @@
                 </tr> 
                 <tr>
                     <td class="forms" >
-                        <input type="hidden" name="idusuario" id="idusuario" value="<?php echo $_REQUEST["idusuario"]?>">
-                        <button onclick="usu(2)" >Voltar</button>
-                        <button id="submit" onclick='usu(6)'>Salvar</button>
+                        <button onclick='<?php echo $sac?>' >Voltar</button>
+                        <button id="submit" onclick='usu(6,<?php echo $_REQUEST["idusuario"].",".$nsac?>)'>Salvar</button>
                     </td>
                 </tr>  
             </table> 

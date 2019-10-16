@@ -11,12 +11,12 @@ class Usuario {
 
 
 	
-    public function getLogin()
+    public function getlogin()
     {
         return $this->login;
     }
  
-    public function setLogin($login)
+    public function setlogin($login)
     {
         $this->login = $login;
         return $this;

@@ -21,9 +21,9 @@
 					</div>
 					<div class="col-2">
 							<ul class="ul-drop ">
-								<li  class="list" id="usr"  onclick="Drop()">'.$_SESSION['login'].'</li>
-								<li  class="list" name="drop" id="d1" onclick="login(4)">Perfil</li>
-								<li  class="list" name="drop" id="d2" onclick="login(3)">Deslogar</li>
+								<li  class="list" id="usr" onclick="Drop()">'.$_SESSION['login'].'</li>
+								<li  class="list" name="drop" id="d1" onclick="log_in(4)">Perfil</li>
+								<li  class="list" name="drop" id="d2" onclick="log_in(3)">Deslogar</li>
 							</ul>
 					</div>	
 					
@@ -45,7 +45,7 @@
 			
 			</div>';
 		} else {
-			echo"<body onload='login(2)'>
+			echo"<body onload='log_in(2)'>
 			<div class='col-11 conteudo' id='conteudo'>
 			</div>";	
 		}	
@@ -57,17 +57,3 @@
 	</body>
 </html>
 
-<!-- <div class="col-12 rela">
-					<div class="col-3">
-						<div id="myDropdown" class="dropdown-content">
-							<li class="list" onclick="login(4)">Perfil</li>
-							<li class="list" onclick="login(3)" >Deslogar</li>
-						</div>
-					</div>
-				</div> -->
-<!-- 
-				<div id="myDropdown" class="dropdown-content">
-							<li class="list" onclick="login(4)">Perfil</li>
-							<li class="list" onclick="login(3)" >Deslogar</li>
-					</div>				 -->
-				

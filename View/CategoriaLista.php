@@ -6,7 +6,6 @@
     <title>Lista de Categorias</title>
 </head>
 <body >
-<center>
 <?php
   //incluindo a declaracao da classe ClienteControl
   require_once '../Controller/CategoriaControl.php';
@@ -20,27 +19,20 @@
 
       if((sizeof($lista))>0){
         foreach ($lista as $p){
-          echo "<div class='list_list_cat'>";
+          echo "<div class='col-2'>";
           echo "<table id='tab-".$p['idcategoria']."'class='list_table_cat'>";
-          echo "<tr><td class='list_til' colspan=2><b>".$p["nome_categoria"]."</b><br><div class='erro-msg' id='erro-".$p['idcategoria']."'></div></td></tr>";
+          echo "<tr><td align=center class='list_til' colspan=2><b>".$p["nome_categoria"]."</b><br><div class='erro-msg' id='erro-".$p['idcategoria']."'></div></td></tr>";
           echo "<tr><td> <button onclick='categoria(3,".$p['idcategoria'].")' >Alterar</button></td><td><button onclick='categoria(4,".$p['idcategoria'].")'>Excluir</button></td></tr>";   
           echo "</table>";
           echo "</div>";
       }
-      echo "<div class='list_list_cat'>";
-      echo "<button onclick='categoria(1)' id='plus_cat'></button>";
-      echo "</div>";
     }
-      
-  
-  else
-  {
-    echo "<div class='list_list_cat'>";
-    echo "<button onclick='categoria(1)' id='plus_cat'></button>";
+    echo "<div class='col-2'>";
+    echo "<table onclick='categoria(1)' class='list_table_cat ghost'>";
+    echo "<tr><td align=center ><img id='tab-2' src='img/plus.png'></td></tr>";
+    echo "<tr><td class='list_til' align=center><b>Nova Categoria</b></td></tr>";
+    echo "</table>";
     echo "</div>";
-  }
-
 ?> 
-</center>
 </body>
 </html>

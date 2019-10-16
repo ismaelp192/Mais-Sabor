@@ -27,7 +27,6 @@ function get_numeric($val) {
     return 0;
   } 
 function Drop() {
-    console.log(document.getElementsByName("d1"));
     document.getElementById("d1").classList.toggle("show");
     document.getElementById("d2").classList.toggle("show");
 }
@@ -351,12 +350,12 @@ window.onclick = function(event) {
 
 
 function selecao(e){
+    document.getElementById("usr").className = "list";
     document.getElementById("usu").className = "list";
     document.getElementById("gastos").className = "list";
     document.getElementById("categoria").className = "list";
     document.getElementById("materiaprima").className = "list";
     document.getElementById("receita").className = "list";
-    console.log(document.getElementById("usu").value);
     switch (e){
         case 1:
             usu(2);
@@ -392,11 +391,11 @@ function ajaxIni(){
 	return xmlhttp;
 }
 
-function login(acao){
+function log_in(acao){
 x = ajaxIni();
     switch (acao){
         case 1:
-            log=document.getElementById("login").value;
+            log=document.getElementById("log-in").value;
             senha=document.getElementById("senha").value;
             x.open("POST", "Controller/UsuarioControl.php?login="+log+"&senha="+senha+"&acao=4", true);
         break;
@@ -407,6 +406,12 @@ x = ajaxIni();
             x.open("POST", "Controller/UsuarioControl.php?acao=5", true);
         break;
         case 4:
+            document.getElementById("usr").className = "list-click";
+            document.getElementById("usu").className = "list";
+            document.getElementById("gastos").className = "list";
+            document.getElementById("categoria").className = "list";
+            document.getElementById("materiaprima").className = "list";
+            document.getElementById("receita").className = "list";
             x.open("GET", "View/Perfil.php",true);
         break;
     }  
@@ -449,7 +454,7 @@ x = ajaxIni();
         }      
     }  
 }
-function usu(acao,idusuario){
+function usu(acao,idusuario,sac){
     
     x = ajaxIni();
     if(acao<5){
@@ -461,7 +466,7 @@ function usu(acao,idusuario){
                 x.open("GET", "View/UsuarioLista.php",true);
             break;
             case 3:
-                x.open("GET", "View/UsuarioAltera.php?idusuario="+idusuario,true);
+                x.open("GET", "View/UsuarioAltera.php?idusuario="+idusuario+"&sac="+sac,true);
             break;
             case 4:
             x.open("POST", "Controller/UsuarioControl.php?idusuario="+idusuario+"&acao=3", true);
@@ -482,7 +487,6 @@ function usu(acao,idusuario){
         nome=document.getElementById("nome").value;
         email=document.getElementById("email").value;
         login=document.getElementById("login").value;
-        senha=document.getElementById("senha").value;
         tipo=document.getElementById("tipo").value;
         image=document.getElementById("image");
         var obj={};
@@ -500,12 +504,12 @@ function usu(acao,idusuario){
         oi.click();
          switch (acao){
             case 5:
+                senha=document.getElementById("senha").value;
                 url = 'Controller/UsuarioControl.php?nome='+nome+'&email='+email+'&login='+login+'&senha='+senha+'&tipo='+tipo+'&acao=1';
             break;
             case 6:
-                idusuario=document.getElementById("idusuario").value;
                 file=document.getElementById("file").name;
-                url = 'Controller/UsuarioControl.php?nome='+nome+'&email='+email+'&login='+login+'&senha='+senha+'&tipo='+tipo+'&idusuario='+idusuario+'&image='+file+'&acao=2';
+                url = 'Controller/UsuarioControl.php?nome='+nome+'&email='+email+'&login='+login+'&tipo='+tipo+'&idusuario='+idusuario+'&image='+file+'&acao=2';
             break;
         }
          fetch(url, {
@@ -513,7 +517,12 @@ function usu(acao,idusuario){
             body: formData,
         }).then(response => {
             if (response.status == 200) {
-               usu(2);   
+                console.log(sac);
+                if(sac==2){
+                    usu(2);   
+                }else if(sac==4){
+                    log_in(4);
+                }
             }
         })        
     } 

@@ -5,7 +5,6 @@
     <title>Lista de Receitas</title>
 </head>
     <body >
-        <center>
 
         <?php
         require_once '../Controller/ReceitaControl.php';
@@ -14,28 +13,25 @@
         $lista=$objReceita->listar();
         if((sizeof($lista))>0){
             foreach ($lista as $p){
-              echo "<div class='list_list_rec'>";
+              echo "<div class='col-2'>";
               echo "<table class='list_table_rec'>";
-              echo "<tr><td align=center colspan=2><img id='tab' src='".$p["image"]."'></td></tr>";
-              echo "<tr><td class='list_til' colspan=2><b>".$p["nome"]."</b></td></tr>";
-              echo "<tr><td>Categoria:</td><td>".$p["tbCategoria_idcategoria"]."</td></tr>";
-              echo "<tr><td>Valor Bruto:</td><td>R$".get_numeric($p["valor_receita"])."</td></tr>";
-              echo "<tr><td>Lucro:</td><td>".$p["lucro"]."%</td></tr>";
-              echo "<tr><td>Valor Líquido:</td><td>R$".get_numeric($p["valor_final"])."</td></tr>";
-              echo "<tr><td><button onclick='receita(3,".$p['idreceita'].")' >Alterar</button></td><td><button onclick='receita(4,".$p['idreceita'].")'>Excluir</button></td></tr>";   
+              echo "<tr><td align=center colspan=2><img id='tab-1' src='".$p["image"]."'></td></tr>";
+              echo "<tr><td align=center class='list_til' colspan=2><b>".$p["nome"]."</b></td></tr>";
+              echo "<tr><td>Categoria:</td><td colspan=2>".$p["tbCategoria_idcategoria"]."</td></tr>";
+              echo "<tr><td>Valor Bruto:</td><td colspan=2>R$".get_numeric($p["valor_receita"])."</td></tr>";
+              echo "<tr><td>Lucro:</td><td colspan=2>".$p["lucro"]."%</td></tr>";
+              echo "<tr><td>Valor Líquido:</td><td colspan=2>R$".get_numeric($p["valor_final"])."</td></tr>";
+              echo "<tr><td><button onclick='receita(3,".$p['idreceita'].")' >Alterar</button></td><td><button class='exi' onclick='receita(4,".$p['idreceita'].")'>Excluir</button></td></tr>";   
               echo "</table>";
               echo "</div>";
           }
-          echo "<div class='list_list_rec'>";
-          echo "<button onclick='receita(1)' id='plus_rec'></button>";
-          echo "</div>";
         }
-        else{
-        echo "<div class='list_list_rec'>";
-        echo "<button onclick='receita(1)' id='plus_rec'></button>";
+        echo "<div class='col-2'>";
+        echo "<table onclick='receita(1)'class='list_table_rec ghost'>";
+        echo "<tr><td align=center ><img id='tab-1' src='img/plus.png'></td></tr>";
+        echo "<tr><td align=center class='list_til' ><b>Nova Receita</b></td></tr>";
+        echo "</table>";
         echo "</div>";
-        }
         ?> 
-        </center>
     </body>
 </html>

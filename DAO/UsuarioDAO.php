@@ -21,7 +21,7 @@ class UsuarioDAO{
 	   
 		try{
 			$stmt = $this->con->prepare('INSERT INTO tbusuario (nome, email, login, senha, tipo, image) VALUES (:nome, :email, :login, :senha, :tipo, :image)');
-			$stmt->execute(array(':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getLogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo(),':image'=> $usu->getImage()));
+			$stmt->execute(array(':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getlogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo(),':image'=> $usu->getImage()));
 			return true;
 		}
 		 catch(PDOException $e){
@@ -58,8 +58,16 @@ class UsuarioDAO{
    
    function alterar(Usuario $usu){
 		try{
-			$stmt = $this->con->prepare('UPDATE tbusuario SET nome = :nome, email = :email, login = :login, senha = :senha, tipo = :tipo, image = :image WHERE idusuario = :id');
-			$stmt->execute(array(':id'=>$usu->getIdusuario(),':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getLogin(),':senha'=> $usu->getSenha(),':tipo'=> $usu->getTipo(),':image'=> $usu->getImage()));
+			$stmt = $this->con->prepare('UPDATE tbusuario SET nome = :nome, email = :email, login = :login, tipo = :tipo, image = :image WHERE idusuario = :id');
+			$stmt->execute(array(':id'=>$usu->getIdusuario(),':nome'=> $usu->getNome(),':email'=> $usu->getEmail(),':login'=> $usu->getlogin(),':tipo'=> $usu->getTipo(),':image'=> $usu->getImage()));
+			if($_SESSION['idusuario'] == $usu->getIdusuario()){
+				$_SESSION['login'] =$usu->getlogin();
+				$_SESSION['tipo'] = $usu->getTipo();
+				$_SESSION['email'] = $usu->getEmail();
+				$_SESSION['nome'] = $usu->getNome();
+				$_SESSION['image'] = $usu->getImage();
+			}
+			
 			return true;
 		}	
 		catch(PDOException $e){
@@ -99,7 +107,7 @@ class UsuarioDAO{
 				$_SESSION['tipo'] = $result['tipo'];
 				$_SESSION['email'] = $result['email'];
 				$_SESSION['nome'] = $result['nome'];
-				$_SESSION['senha'] = $result['senha'];
+				$_SESSION['image'] = $result['image'];
 				$_SESSION['idusuario'] = $result['idusuario'];
 				echo 0;
 			}else{

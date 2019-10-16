@@ -6,13 +6,29 @@
  
 table{
 	margin-top: 60px;
+	margin-bottom: 20px;
 	border:1px solid black;
 	width: 20%;
 	position: relative;
 	border-collapse: inherit;
 	border-radius: 8px;
 	background-color: rgb(240, 255, 255);
+	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
+	transition:0.4s;
+}
+table:focus-within{
 	box-shadow: 15px 15px 20px 3px rgba(0,0,0,0.5);
+}
+table:hover{
+	box-shadow: 15px 15px 20px 3px rgba(0,0,0,0.5);
+}
+
+.list_table_profile{
+	table-layout: fixed ;
+	width: 20%;
+	height: 350px;
+	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
+	transition:0.4s;
 }
 .list_table_usu{
 	table-layout: fixed ;
@@ -43,6 +59,44 @@ table{
 	margin-top:27px;
 }
 
+.list_table_cat{
+	margin-left: 10%;
+	width: 70%;
+	height: 96px;
+	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
+	transition:0.4s;
+}
+.list_table_cat:hover{
+	width: 75%;
+	height: 136px;
+	margin-top:20px;
+}
+
+.list_table_mat{
+	width: 80%;
+	margin-left: 10%;
+	height: 263px;
+	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
+	transition:0.4s;
+}
+.list_table_mat:hover{
+	width: 85%;
+	height: 303px;
+	margin-top:20px;
+}
+.list_table_rec{
+	margin-left: 10%;
+	width: 90%;
+	height: 354px;
+	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
+	transition:0.4s;
+}
+.list_table_rec:hover{
+	margin-top: 7%;
+	width: 95%;
+	height: 394px;
+}
+
 td{
 	border-radius: 0px;
 	border-width: 0px;
@@ -51,10 +105,15 @@ td{
 	border-left: none;
 	overflow: hidden;
 }
-img#tab{
+img#tab-1{
 	width:100px;
 	height:100px;
-	border-radius: 8px;
+	border-radius: 50px;
+}
+img#tab-2{
+	width:37px;
+	height:37px;
+	border-radius: 50px;
 }
 
 .ghost{
@@ -633,13 +692,11 @@ li{
 	padding: 15px 0px 16px 80px;  
 	position: relative;
 	display: flex;
-	/* padding: 10px; */
 }
 .conteudo{	 
 	float:right;
 	height: 94.6vh;
 	overflow: auto;
-	/* margin-top: 60px; */
 }
 .menu-img{
 	height: 50px;
@@ -657,18 +714,15 @@ li{
 	color: black;
 	position:relative;
 	padding: 0;
-	/* z-index: 1; */
 }
 /* #f08080b5 coralbonitoclaro*/
 /* #dc143ca6 crimsonclaro */
   .menu ul {
-	height: 94.6vh;
-	/* margin-top: 50px; */
+	height: 100%;
 	padding: 0;
 	margin: 0;
 	background-color: rgb(255, 241, 240);
 	position: relative;
-	/* z-index: 1; */
   }
   .list{
 	padding: 10px 10px 10px 10px;	
@@ -708,14 +762,19 @@ ul[id="sidebar"] .list:hover{
 	width: 100%;
 	margin: 0;	
 }
-.list[id="d1"]{
-	/* box-shadow: 10px 0px 10px 0px rgba(0,0,0,0.5); */
+.list-click[id="usr"]{
+	padding: 15px 19.5px 10px 20px;
+	box-shadow: none;
+	text-align: center;
+	height: 100%;
+	width: 100%;
+	margin: 0;	
 }
+
 .list[id="d2"]{
 	border-radius: 8px;
 	border-top-left-radius:0px;
 	border-top-right-radius:0px;
-	/* box-shadow: 1px 10px 5px 1px rgba(0,0,0,0.5); */
 }
 .list[name="drop"]{
 	text-align:center;
@@ -726,7 +785,10 @@ ul[id="sidebar"] .list:hover{
 }
 .show {display: block !important;} 
 
-
+.list[name="drop"]:hover{
+	background-color: #eca7a7;
+	color: #fff;
+}
 
 .list_hover{
 	background-color: #eca7a7;

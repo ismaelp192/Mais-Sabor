@@ -30,7 +30,7 @@ require_once '../Controller/PHPFunction.php';
                </tr> 
                <tr >
                   <td >
-                     <button class="log-button" onclick='login(1)' id="submit">Entrar</button> 
+                     <button class="log-button" onclick='log_in(1)' id="submit">Entrar</button> 
                   </td>
                <tr>  
          </table> 
