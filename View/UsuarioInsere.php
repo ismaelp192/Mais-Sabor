@@ -74,7 +74,7 @@
                
                 <tr>
                         
-                        <td class="forms" >
+                        <td  >
                         <button onclick="usu(2)" >Voltar</button>
                         <button id="submit" onclick='usu(5)'>Salvar</button>
                         </td>

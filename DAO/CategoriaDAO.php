@@ -63,10 +63,10 @@ class CategoriaDAO{
    }        
    
    function excluir($idcategoria){
-		
 	   try{
 		$stmt = $this->con->prepare('DELETE FROM tbcategoria WHERE idcategoria =:idcategoria');
 		$stmt->execute(array(':idcategoria'=>$idcategoria));
+		echo 1;
 	   }
 	   catch(PDOException $e){
 		// echo "Error: ".$e->getMessage();

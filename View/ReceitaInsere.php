@@ -21,11 +21,11 @@
  ?>
     <body>
         <div class="row">
-             <div class="rece">
+             <div class="col-4">
                 <table class="tab-receita">
                     <tr><td>Receita</td></tr>
                     </tr> 
-                        <td class="td-log">
+                        <td colspan=2 class="td-log">
                             <div class="input-group">
                                 <label>Nome:</label>
                                 <input type="text" name="nome" id="nome" placeholder="Nome">
@@ -33,7 +33,7 @@
                         </td> 
 
                     <tr>
-                        <td class="td-log">
+                        <td colspan=2 class="td-log">
                             <div class="input-group">
                                 <label>Preparo:</label>
                                 <textarea rows="5" cols="30" name="preparo" id="preparo" placeholder="preparo"></textarea>
@@ -42,16 +42,16 @@
                     </tr> 
 
                     <tr>
-                        <td class="td-log">
+                        <td colspan=2 class="td-log">
                             <div class="input-group">
                                 <label>Lucro:</label>
                                 <input type="number" onKeyUp="cal_bruto(this.value)" min="0" name="lucro" id="lucro" placeholder="Lucro">
-                                <input class="val_ingre_cifrao" type="text" name="por" value="%" id="por" disabled>  
+                                <input class="val_ingre_pcifrao" type="text" name="por" value="%" id="por" disabled>  
                             </div>
                         </td>       
                     </tr> 
                     <tr> 
-                    <td class="td-log">
+                    <td colspan=2 class="td-log">
                             <div class="input-group">
                                 <label>Categoria:</label>
                                 <div class="dropdown-cat">
@@ -68,7 +68,7 @@
                         </td>
                     </tr>
                     <tr>
-                        <td class="td-log">
+                        <td colspan=2 class="td-log">
                             <div class="input-group">
                                 <label>Foto da Receita:</label>
                                 <form id="myForm2" method="post" enctype="multipart/form-data">
@@ -81,47 +81,62 @@
                     <tr>
                         <td class="td-log"> 
                             <div class="input-group">
-                                    <label for="valor_receita" >Valor Bruto:</label><label for="valor_valor_final" class="rightf">Valor Final:</label><br>
+                                    <label for="valor_receita" >Valor Bruto:</label><br>
                                     <input type="number" class="val_bruto" value="0" step="0.01" min="0" name="valor_receita" id="valor_receita" disabled>  
                                     <input class="val_bruto_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorGT" disabled>
-                                    <input class="val_ingre_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorGT" disabled>
-                                    <input class="val_ingre_total" type="number" step="0.01" value="0" min="0" name="valor_final" id="valor_final" disabled>
+                                   
                             </div>
                             
                         </td> 
-                        
+                        <td class="td-log"> 
+                            <div class="input-group">
+                                    <label for="valor_valor_final" class="rightf">Valor Final:</label><br>
+                                    <input class="val_ingre_total" type="number" step="0.01" value="0" min="0" name="valor_final" id="valor_final" disabled>
+                                    <input class="val_ingre_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorGT" disabled>
+                            </div>
+                            
+                        </td> 
+                       
                     </tr>
                     <tr>
-                        <td class="forms" >
+                        <td  >
                         <button onclick="receita(2)" >Voltar</button>
                         <button id="submit" onclick='receita(5)'>Salvar</button>
                         </td>
                     </tr>  
                 </table> 
             </div>  
-             <div class="rece">
+             <div class="col-4">
                 <table id="plus_ingrediente" class="tab-receita" >
                     <tr><td>Ingredientes</td></tr>
-                    </tr> 
+                    </tr>
+                        <td class="td-log">
+                            <div  class="input-group">
+                                <button onclick='plus_ingrediente(<?php echo $materias ?>)'> <img src="img/plus.png"  width="20" height="20"></button>
+                            </div>
+                        </td> 
                         <td class="td-log">
                             <div class="input-group">
-                                <button onclick='plus_ingrediente(<?php echo $materias ?>)'> <img src="img/plus.png"  width="20" height="20"></button>
-                                <input class="val_ingre_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorIT" disabled>
                                 <input class="val_ingre_total" value="0" type="number" step="0.01" min="0" name="ingreT" id="ingreT" disabled>
+                                <input class="val_ingre_pcifrao" type="text" name="sifrao" value="R$" id="sifrao_valorIT" disabled>
                             </div>
                         </td> 
                     </tr>
                 </table> 
             </div>
-            <div class="rece">
+            <div class="col-4">
                 <table id="plus_gasto" class="tab-receita" >
                     <tr><td>Gastos</td></tr>
                     </tr> 
                         <td class="td-log">
                             <div class="input-group">
                                 <button onclick='plus_gasto(<?php echo $gastos ?>)'> <img src="img/plus.png"  width="20" height="20"></button>
-                                <input class="val_ingre_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorGT" disabled>
+                            </div>
+                        </td> 
+                        <td class="td-log">
+                            <div class="input-group">
                                 <input class="val_ingre_total" value="0" type="number" step="0.01" min="0" name="gastoT" id="gastoT" disabled>
+                                <input class="val_ingre_pcifrao" type="text" name="sifrao" value="R$" id="sifrao_valorGT" disabled>
                             </div>
                         </td> 
                     </tr>

@@ -61,7 +61,7 @@
                   </td>      
                </tr> 
                <tr>
-                    <td class="forms">
+                    <td >
                     <input type="hidden" name="idmateria_prima" id="idmateria_prima" value="<?php echo $_REQUEST["idmateria_prima"]?>">
                     <button onclick="materiaprima(2)" >Voltar</button>
                     <button id="submit" onclick='materiaprima(6)'>Salvar</button>

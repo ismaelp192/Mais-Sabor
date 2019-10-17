@@ -56,7 +56,7 @@
                     </td>         
                </tr> 
                <tr>
-                    <td class="forms" >
+                    <td  >
                     <input type="hidden" name="idgastos_extras" id="idgastos_extras" value="<?php echo $_REQUEST["idgastos_extras"]?>">
                     <button onclick="gastos(2)" >Voltar</button>
                     <button id="submit" onclick='gastos(6)'>Salvar</button>

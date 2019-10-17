@@ -17,7 +17,7 @@
                </tr> 
               
                <tr>
-                    <td class="forms">
+                    <td >
                     <button onclick="categoria(2)" >Voltar</button>
                     <button id="submit" onclick='categoria(5)'>Salvar</button>
                     </td>

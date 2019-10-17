@@ -51,7 +51,7 @@
                     </td>         
                </tr> 
                <tr>
-                    <td class="forms" >
+                    <td  >
                     <button onclick="gastos(2)" >Voltar</button>
                     <button id="submit" onclick='gastos(5)'>Salvar</button>
                     </td>

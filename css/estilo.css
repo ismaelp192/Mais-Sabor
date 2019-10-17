@@ -13,8 +13,14 @@ table{
 	border-collapse: inherit;
 	border-radius: 8px;
 	background-color: rgb(240, 255, 255);
+	box-shadow: 15px 15px 20px 3px rgba(0,0,0,0.5);
 	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
 	transition:0.4s;
+	-webkit-animation-name: example; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: 1s; /* Safari 4.0 - 8.0 */
+	animation-name: example;
+	animation-duration: 1s;
+	animation-fill-mode: forwards;
 }
 table:focus-within{
 	box-shadow: 15px 15px 20px 3px rgba(0,0,0,0.5);
@@ -33,11 +39,31 @@ table:hover{
 .list_table_usu{
 	table-layout: fixed ;
 	width: 70%;
-	margin-left: 10%;
+	margin-left: -300%;
 	height: 350px;
 	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
 	transition:0.4s;
+	
+	
 }
+/* Safari 4.0 - 8.0 */
+@-webkit-keyframes example {
+	from { margin-left:-300%;box-shadow: 15px 15px 20px 3px rgba(0,0,0,0.5);}
+	to {margin-left: 10%;box-shadow:0}
+  }
+  
+  /* Standard syntax */
+  @keyframes example {
+	0% {
+		margin-left:-300%;box-shadow: 15px 15px 20px 3px rgba(0,0,0,0.5);
+	}
+	97% {
+		box-shadow: 15px 15px 20px 3px rgba(0,0,0,0.5);
+	}
+	100% {
+		margin-left: 10%;box-shadow: 0 0 0 0 rgba(0,0,0,0.5);
+	}
+  }
 .list_table_usu:hover{
 	width: 75%;
 	height: 390px;
@@ -96,6 +122,85 @@ table:hover{
 	width: 95%;
 	height: 394px;
 }
+.tab-receita{
+	margin-left: 10%;
+	width: 75%;
+	float: left;
+}
+span.tipo{
+	background: #fff;
+	border: 1px solid #999;
+	border-radius:6px;
+	float: left;
+	font-size: 13px;
+	height: 33px;
+	margin: 0;
+	padding: 0 0 0 0px;
+	width: 10%;
+	-webkit-appearance:none;
+	-moz-appearance:textfield;
+}
+textarea{
+	resize: none;
+	background: #fff;
+	border: 1px solid #999;
+	border-radius:6px;
+	float: left;
+	font-size: 13px;
+	margin: 0;
+	padding: 0 0 0 8px;
+	width: 100%;
+	-webkit-appearance:none;
+}
+.input-erro{
+	background-color: #fce4e4;
+	border-color:#cc0033;
+	border-radius: 7px;
+}
+.lixo{
+	margin: 22% 0% 0% 35%;
+}
+.val_ingre{
+	width: 20%;
+	float: left;
+}
+.val_tipo{
+	width: 10%;
+	padding-top: 6%;
+	float: left;
+}
+.val_ingre_total{
+	width: 40%;
+	text-align: left;
+	float: left ;
+	border-top-right-radius:0px; 
+	border-bottom-right-radius:0px; 
+}
+.val_ingre_cifrao{
+	width: 20%;
+	float: left ;
+	border-top-left-radius:0px; 
+	border-bottom-left-radius:0px; 
+}
+.val_ingre_pcifrao{
+	width: 10%;
+	float: left ;
+	border-top-left-radius:0px; 
+	border-bottom-left-radius:0px; 
+}
+.val_bruto{
+	width: 40%;
+	text-align: left;
+	float: left ;
+	border-top-right-radius:0px; 
+	border-bottom-right-radius:0px; 
+}
+.val_bruto_cifrao{
+	float: left ;
+	width: 20%;
+	border-top-left-radius:0px; 
+	border-bottom-left-radius:0px; 
+}
 
 td{
 	border-radius: 0px;
@@ -104,6 +209,50 @@ td{
 	box-shadow: 0px 0px 0px 0px;
 	border-left: none;
 	overflow: hidden;
+}
+input{
+	background: #fff;
+	border: 1px solid #999;
+	border-radius:6px;
+	float: left;
+	font-size: 13px;
+	height: 33px;
+	margin: 0;
+	padding: 0 0 0 8px;
+	width: 100%;
+	-webkit-appearance:none;
+	-moz-appearance:textfield;
+}
+
+input[id="lucro"]{
+	border-top-right-radius:0px; 
+	border-bottom-right-radius:0px;
+	width: 90%; 
+}
+input[name="quantidade"].middle{
+	border-top-right-radius:0px; 
+	border-bottom-right-radius:0px; 
+}
+input[name="valor"].middle{
+	color: black;
+	border-top-right-radius:0px; 
+	border-bottom-right-radius:0px; 
+}
+input[name="tipo"].middle{
+	border-top-left-radius:0px; 
+	border-bottom-left-radius:0px; 
+}
+input[name="sifrao"].middle{
+	border-top-left-radius:0px; 
+	border-bottom-left-radius:0px; 
+}
+input[type=number]::-webkit-inner-spin-button, 
+input[type=number]::-webkit-outer-spin-button { 
+
+  -webkit-appearance: none; 
+
+  margin: 0; 
+
 }
 img#tab-1{
 	width:100px;
@@ -115,7 +264,12 @@ img#tab-2{
 	height:37px;
 	border-radius: 50px;
 }
-
+.erro-msg{
+	color:rgb(161, 55, 55);
+	float: left;
+	font-family: Helvetica, Arial, sans-serif;
+	font-size: 10px;
+}
 .ghost{
 	opacity: 0.5;
 	border:2px dashed;
@@ -697,7 +851,9 @@ li{
 	float:right;
 	height: 94.6vh;
 	overflow: auto;
+	
 }
+
 .menu-img{
 	height: 50px;
 	width:50px;

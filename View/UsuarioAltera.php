@@ -72,7 +72,7 @@
                     </td>      
                 </tr> 
                 <tr>
-                    <td class="forms" >
+                    <td  >
                         <button onclick='<?php echo $sac?>' >Voltar</button>
                         <button id="submit" onclick='usu(6,<?php echo $_REQUEST["idusuario"].",".$nsac?>)'>Salvar</button>
                     </td>

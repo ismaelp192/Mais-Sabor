@@ -118,7 +118,7 @@
                         
                     </tr>
                     <tr>
-                        <td class="forms" >
+                        <td>
                         <input type="hidden" name="idreceita" id="idreceita" value="<?php echo $_REQUEST["idreceita"]?>">
                         <button onclick="receita(2)" >Voltar</button>
                         <button id="submit" onclick='receita(6)'>Alterar</button>

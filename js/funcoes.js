@@ -395,7 +395,7 @@ function log_in(acao){
 x = ajaxIni();
     switch (acao){
         case 1:
-            log=document.getElementById("log-in").value;
+            log=document.getElementById("login").value;
             senha=document.getElementById("senha").value;
             x.open("POST", "Controller/UsuarioControl.php?login="+log+"&senha="+senha+"&acao=4", true);
         break;
@@ -672,11 +672,12 @@ function categoria(acao,idcategoria){
 
             if (x.readyState==4 && x.status==200){
                 if(acao==4){
-                    if(x.responseText==0){
+                    console.log(x.responseText);
+                    if(x.responseText!=0){
+                         categoria(2);  
+                    }else{
                         document.getElementById("erro-"+idcategoria).innerHTML="*categoria está em uso";
                          document.getElementById("tab-"+idcategoria).style.borderColor = "red";
-                    }else{
-                        categoria(2);  
                     }
                 }else{
                     document.getElementById("conteudo").innerHTML=x.responseText;
