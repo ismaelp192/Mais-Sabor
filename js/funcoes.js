@@ -10,6 +10,22 @@ var obj_gas=[];
 function alerta(oi){
     alert(oi);
 }
+function anime(id){
+    element= document.getElementById(id);
+    element.style.marginTop="60px";
+}
+function anime2(id,tipo){
+    element= document.getElementById(id);
+    
+    switch (tipo){
+        case 1:
+            element.className="list_table_usu_a";
+        break;
+        case 2:
+            element.className="list_table_gas_a";
+        break;
+    }
+}
 function addScript(callback) {
     se=document.getElementById(1);
     if(se != null){
@@ -517,7 +533,6 @@ function usu(acao,idusuario,sac){
             body: formData,
         }).then(response => {
             if (response.status == 200) {
-                console.log(sac);
                 if(sac==2){
                     usu(2);   
                 }else if(sac==4){

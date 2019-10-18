@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html><head>
+<meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <meta charset="utf-8">
+  <style type="text/css">
+    .item {
+      display: inline-block;
+      background-color: #fff;
+      width: 120px;
+      height: 120px;
+      border-radius: 5px;
+      margin: 10px
+    }
+    
+    .correct-item {
+      box-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+      position: relative;
+      border-radius: 5px;
+      -webkit-transform: translateY(0);
+      -webkit-transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1)
+    }
+    
+    .correct-item:after {
+      content: "";
+      border-radius: 5px;
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+      opacity: 0;
+      -webkit-transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1);
+      transition: all .6s cubic-bezier(0.165, 0.84, 0.44, 1)
+    }
+    
+    .correct-item:hover:after {
+      opacity: 1
+    }
+    
+    .correct-item:hover {
+      -webkit-transform: scale(1.25, 1.25);
+      transform: scale(1.25, 1.25)
+    }
+    </style>
+</head>
+<body>
+  <div class="demo-area">
+    <div class="correct-way a-way">
+      <div class="correct-wrapper item-wrapper">
+        <div class="correct-item item"></div>
+        <div class="correct-item item"></div>
+        <div class="correct-item item"></div>
+      </div>
+    </div>
+  </div>
+</body></html>

@@ -15,7 +15,7 @@
 	  foreach ($lista as $p){
       if($_SESSION["idusuario"]!=$p["idusuario"]){
         echo "<div class='col-3'>";
-        echo "<table style='animation-delay:".$i."s; ' class='list_table_usu'>";
+        echo "<table id='tab-".$p["idusuario"]."' onanimationend='anime2(this.id,1)' onanimationstart='anime(this.id)' style='animation-delay:".$i."s; ' class='list_table_usu'>";
         echo "<tr><td align=center colspan=4><img id='tab-1' src='".$p["image"]."'></td></tr>";
         echo "<tr><td align=center colspan=4><b>".$p["nome"]."</b></td></tr>";
         echo "<tr><td><b>Login:</b></td><td colspan=3>".$p["login"]."</td></tr>";
@@ -24,12 +24,12 @@
         echo "<tr><td colspan=2><button class='but' onclick='usu(3,".$p['idusuario'].", 2)' >Alterar</button></td><td colspan=2><button class='but exi' onclick='usu(4,".$p['idusuario'].")'>Excluir</button></td></tr>";   
         echo "</table>";
         echo "</div>";
-      $i+=0.9/sizeof($lista);
+      $i+=0.8/sizeof($lista);
       }
     }  
   }
     echo "<div class='col-3'>";
-    echo "<table style='animation-delay:".$i."s; ' class='list_table_usu ghost' onclick='usu(1)'>";
+    echo "<table id='tab-x'  onanimationstart='anime(this.id)' style='animation-delay:".$i."s; ' class='list_table_usu ghost' onclick='usu(1)'>";
     echo "<tr><td align=center colspan=4><img id='tab-1' src='img/plus.png'></td></tr>";
     echo "<tr><td align=center colspan=4><b>Novo Usuário</b></td></tr>";
     echo "</table>";
