@@ -25,7 +25,7 @@ ini_set('display_errors', 1);
         echo "<tr><td colspan=2><button onclick='gastos(3,".$p['idgastos_extras'].")'>Alterar</button></td><td colspan=2><button class='but exi' onclick='gastos(4,".$p['idgastos_extras'].")'>Excluir</button> </td></tr>";   
         echo "</table>";
         echo "</div>";
-        $i+=0.8/sizeof($lista);
+        $i+=0.4/sizeof($lista);
     }
   }
     echo "<div class='col-2'>";

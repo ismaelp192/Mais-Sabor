@@ -372,29 +372,36 @@ function selecao(e){
     document.getElementById("categoria").className = "list";
     document.getElementById("materiaprima").className = "list";
     document.getElementById("receita").className = "list";
-    switch (e){
-        case 1:
-            usu(2);
-            document.getElementById("usu").className = "list-click";
-        break;
-        case 2:
-            gastos(2);
-            document.getElementById("gastos").className = "list-click";
-        break;
-        case 3:
-            categoria(2);
-            document.getElementById("categoria").className = "list-click";
-        break;
-        case 4:
-            materiaprima(2);
-            document.getElementById("materiaprima").className = "list-click";
-        break;
-        case 5:
-            receita(2);
-            document.getElementById("receita").className = "list-click";
-        break;
-    }
+    
 
+        switch (e){
+            case 1:
+                usu(2,0,0,()=>{if(document.getElementsByTagName("table")[0]!=undefined){
+        for(a=0;a<document.getElementsByTagName("table").length; a++){
+            console.log(document.getElementsByTagName("table")[a].id);
+              setTimeout(function(){             document.getElementsByTagName("table")[a].classList.add("sair");
+ }, 5000);
+        }
+    }});
+                document.getElementById("usu").className = "list-click";
+            break;
+            case 2:
+                gastos(2);
+                document.getElementById("gastos").className = "list-click";
+            break;
+            case 3:
+                categoria(2);
+                document.getElementById("categoria").className = "list-click";
+            break;
+            case 4:
+                materiaprima(2);
+                document.getElementById("materiaprima").className = "list-click";
+            break;
+            case 5:
+                receita(2);
+                document.getElementById("receita").className = "list-click";
+            break;
+        }
 }
 function ajaxIni(){
 	if (window.XMLHttpRequest) {
@@ -470,7 +477,7 @@ x = ajaxIni();
         }      
     }  
 }
-function usu(acao,idusuario,sac){
+function usu(acao,idusuario,sac,callback){
     
     x = ajaxIni();
     if(acao<5){
@@ -493,6 +500,10 @@ function usu(acao,idusuario,sac){
         x.onreadystatechange = function () {
 
             if (x.readyState==4 && x.status==200){
+                console.log(typeof callback);
+                if(typeof callback === "function"){
+                    callback();
+                }
                 document.getElementById("conteudo").innerHTML=x.responseText;
                     if(acao==4){
                         usu(2);  

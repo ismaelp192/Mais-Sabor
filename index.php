@@ -46,7 +46,7 @@
 			</div>';
 		} else {
 			echo"<body onload='log_in(2)'>
-			<div class='col-11 conteudo' id='conteudo'>
+			<div class='col-12 conteudo' id='conteudo'>
 			</div>";	
 		}	
 		
