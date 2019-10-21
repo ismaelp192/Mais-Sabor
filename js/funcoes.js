@@ -16,15 +16,27 @@ function anime(id){
 }
 function anime2(id,tipo){
     element= document.getElementById(id);
-    
-    switch (tipo){
+    // console.log(element.className);
+    // if(element.className!= "sair"){
+        switch (tipo){
         case 1:
             element.className="list_table_usu_a";
         break;
         case 2:
             element.className="list_table_gas_a";
         break;
-    }
+        case 3:
+            element.className="list_table_cat_a";
+        break;
+        case 4:
+            element.className="list_table_mat_a";
+        break;
+        case 5:
+            element.className="list_table_rec_a";
+        break;
+        }
+        
+   
 }
 function addScript(callback) {
     se=document.getElementById(1);
@@ -372,17 +384,16 @@ function selecao(e){
     document.getElementById("categoria").className = "list";
     document.getElementById("materiaprima").className = "list";
     document.getElementById("receita").className = "list";
-    
+    // table= document.getElementsByTagName("table");
 
         switch (e){
             case 1:
-                usu(2,0,0,()=>{if(document.getElementsByTagName("table")[0]!=undefined){
-        for(a=0;a<document.getElementsByTagName("table").length; a++){
-            console.log(document.getElementsByTagName("table")[a].id);
-              setTimeout(function(){             document.getElementsByTagName("table")[a].classList.add("sair");
- }, 5000);
-        }
-    }});
+    //             ,null,null,async ()=>{if(document.getElementsByTagName("table")[0]!=undefined){
+    //     for(a=0;a<document.getElementsByTagName("table").length; a++){
+    //         await new Promise(done => setTimeout(() => { table[a].className="sair";console.log(table[a]);done();}, 500));  
+    //     }
+    // }}
+                usu(2);
                 document.getElementById("usu").className = "list-click";
             break;
             case 2:
@@ -477,7 +488,7 @@ x = ajaxIni();
         }      
     }  
 }
-function usu(acao,idusuario,sac,callback){
+ function usu(acao,idusuario,sac,callback){
     
     x = ajaxIni();
     if(acao<5){
@@ -497,14 +508,14 @@ function usu(acao,idusuario,sac,callback){
         }
         x.send();
 
-        x.onreadystatechange = function () {
+        x.onreadystatechange = async function () {
 
             if (x.readyState==4 && x.status==200){
-                console.log(typeof callback);
-                if(typeof callback === "function"){
-                    callback();
-                }
                 document.getElementById("conteudo").innerHTML=x.responseText;
+            //     if(typeof callback === "function"){
+            //         callback();
+            //     } 
+            // await new Promise(done => setTimeout(() => {document.getElementById("conteudo").innerHTML=x.responseText;done();}, 2200));  
                     if(acao==4){
                         usu(2);  
                     }        

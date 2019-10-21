@@ -51,12 +51,13 @@ table:hover{
 	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
 	transition:0.4s;
 }
-.sair{
-	-webkit-animation-name: sair; /* Safari 4.0 - 8.0 */
-	-webkit-animation-duration: 0.7s; /* Safari 4.0 - 8.0 */
+/* .sair{
+	-webkit-animation-name: sair; 
+	-webkit-animation-duration: 0.7s; 
 	animation-name: sair;
 	animation-duration: 0.7s;
-}
+	animation-fill-mode: forwards;
+} */
 /* Spawn */
 /* @keyframes anime {
 	0% {
@@ -70,14 +71,14 @@ table:hover{
 	}
   } */
   /* De baixo pra cima */
-  @keyframes sair {
+  /* @keyframes sair {
 	0% {
-		margin-top: 60px;box-shadow: 0 0 0 0 rgba(0,0,0,0.5);
+		box-shadow: 15px 15px 20px 3px rgba(0,0,0,0.5);
 	}
 	100% {
 		margin-top: -300%;box-shadow: 15px 15px 20px 3px rgba(0,0,0,0.5);
 	}
-  }
+  } */
   @keyframes anime {
 	0% {
 		margin-top: 300%;box-shadow: 15px 15px 20px 3px rgba(0,0,0,0.5);
@@ -101,8 +102,6 @@ table:hover{
 	margin-top: 1000%;
 	width: 82%;
 	height: 207px;
-	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
-	transition:0.4s;
 	-webkit-animation-name: anime; /* Safari 4.0 - 8.0 */
 	-webkit-animation-duration: 0.4s; /* Safari 4.0 - 8.0 */
 	animation-name: anime;
@@ -125,40 +124,76 @@ table:hover{
 
 .list_table_cat{
 	margin-left: 10%;
+	margin-top: 1000%;
+	width: 70%;
+	height: 96px;
+	-webkit-animation-name: anime; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: 0.4s; /* Safari 4.0 - 8.0 */
+	animation-name: anime;
+	animation-duration: 0.4s;
+}
+.list_table_cat_a{
+	table-layout: fixed ;
+	margin-left: 10%;
+	margin-top: 1000%;
 	width: 70%;
 	height: 96px;
 	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
 	transition:0.4s;
 }
-.list_table_cat:hover{
+.list_table_cat_a:hover{
 	width: 75%;
 	height: 136px;
-	margin-top:20px;
+	margin-top:20px !important;
 }
 
 .list_table_mat{
 	width: 80%;
 	margin-left: 10%;
+	margin-top: 1000%;
+	height: 263px;
+	-webkit-animation-name: anime; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: 0.4s; /* Safari 4.0 - 8.0 */
+	animation-name: anime;
+	animation-duration: 0.4s;
+}
+.list_table_mat_a{
+	width: 80%;
+	table-layout: fixed ;
+	margin-left: 10%;
+	margin-top: 1000%;
 	height: 263px;
 	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
 	transition:0.4s;
 }
-.list_table_mat:hover{
+.list_table_mat_a:hover{
 	width: 85%;
 	height: 303px;
-	margin-top:20px;
+	margin-top:20px !important;
 }
 .list_table_rec{
 	margin-left: 10%;
 	width: 90%;
+	margin-top: 1000%;
+	height: 354px;
+	-webkit-animation-name: anime; /* Safari 4.0 - 8.0 */
+	-webkit-animation-duration: 0.4s; /* Safari 4.0 - 8.0 */
+	animation-name: anime;
+	animation-duration: 0.4s;
+}
+.list_table_rec_a{
+	margin-left: 10%;
+	table-layout: fixed ;
+	width: 90%;
+	margin-top: 1000%;
 	height: 354px;
 	-webkit-transition: 0.4s; /* For Safari 3.1 to 6.0 */
 	transition:0.4s;
 }
-.list_table_rec:hover{
+.list_table_rec_a:hover{
 	margin-top: 7%;
 	width: 95%;
-	height: 394px;
+	height: 394px !important;
 }
 .tab-receita{
 	margin-left: 10%;
