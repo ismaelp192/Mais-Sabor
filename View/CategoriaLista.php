@@ -20,7 +20,7 @@
       if((sizeof($lista))>0){
         foreach ($lista as $p){
           echo "<div class='col-2'>";
-          echo "<table id='tab-".$p['idcategoria']."' onanimationend='anime2(this.id,5)' onanimationstart='anime(this.id)' style='animation-delay:".$i."s'; class='list_table_cat'>";
+          echo "<table id='tab-".$p['idcategoria']."' onanimationend='anime2(this.id,3)' onanimationstart='anime(this.id)' style='animation-delay:".$i."s'; class='list_table_cat'>";
           echo "<tr><td align=center class='list_til' colspan=2><b>".$p["nome_categoria"]."</b><br><div  class='erro-msg' id='erro-".$p['idcategoria']."'></div></td></tr>";
           echo "<tr><td> <button onclick='categoria(3,".$p['idcategoria'].")' >Alterar</button></td><td><button onclick='categoria(4,".$p['idcategoria'].")'>Excluir</button></td></tr>";   
           echo "</table>";

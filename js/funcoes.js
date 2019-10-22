@@ -355,8 +355,16 @@ function select(tipo,numero){
 }
 document.addEventListener ('keypress', (event) => {
     if (event.keyCode === 13 ) {
-        event.preventDefault();
-        document.getElementById("submit").click();
+        if(document.getElementById("preparo")!=undefined){
+            foco=document.getElementById("preparo");
+            if(document.activeElement!=foco){
+                event.preventDefault();
+                document.getElementById("submit").click();
+            }
+        }else{
+            event.preventDefault();
+            document.getElementById("submit").click();
+        }
     }
   });
 
@@ -709,7 +717,6 @@ function categoria(acao,idcategoria){
 
             if (x.readyState==4 && x.status==200){
                 if(acao==4){
-                    console.log(x.responseText);
                     if(x.responseText!=0){
                          categoria(2);  
                     }else{
@@ -748,6 +755,9 @@ function receita(acao,idreceita){
     x = ajaxIni();
     if(acao<5){
         switch (acao){
+            case 0:
+                x.open("GET", "View/ReceitaExpandida.php?idreceita="+idreceita,true);
+            break;
             case 1:
                 x.open("GET", "View/ReceitaInsere.php",true);
             break;
@@ -774,7 +784,6 @@ function receita(acao,idreceita){
                     corte=x.responseText.split('script');
                     document.getElementById("conteudo").innerHTML=corte[1];
                     addScript(corte[0].replace('script',''));
-                    console.log(corte);
                 }else{
                 document.getElementById("conteudo").innerHTML=x.responseText;}
                     if(acao==4){

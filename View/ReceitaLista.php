@@ -15,7 +15,7 @@
         if((sizeof($lista))>0){
             foreach ($lista as $p){
               echo "<div class='col-2'>";
-              echo "<table id='tab-".$p['idreceita']."' onanimationend='anime2(this.id,5)' onanimationstart='anime(this.id)' style='animation-delay:".$i."s';class='list_table_rec'>";
+              echo "<table id='tab-".$p['idreceita']."'  onanimationend='anime2(this.id,5)' onanimationstart='anime(this.id)' style='animation-delay:".$i."s'; class='list_table_rec'>";
               echo "<tr><td align=center colspan=2><img id='tab-1' src='".$p["image"]."'></td></tr>";
               echo "<tr><td align=center class='list_til' colspan=2><b>".$p["nome"]."</b></td></tr>";
               echo "<tr><td>Categoria:</td><td colspan=2>".$p["tbCategoria_idcategoria"]."</td></tr>";
@@ -25,7 +25,7 @@
               echo "<tr><td><button onclick='receita(3,".$p['idreceita'].")' >Alterar</button></td><td><button class='exi' onclick='receita(4,".$p['idreceita'].")'>Excluir</button></td></tr>";   
               echo "</table>";
               echo "</div>";
-                $i+=0.4/sizeof($lista);
+              $i+=0.4/sizeof($lista);
           }
         }
         echo "<div class='col-2'>";

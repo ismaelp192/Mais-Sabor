@@ -43,7 +43,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-	<title>Cadastro de Receita</title>
+	<title>Receita</title>
 </head>
     <body>
         <div class="row">
@@ -62,7 +62,7 @@
                         <td class="td-log">
                             <div class="input-group">
                                 <label>Preparo:</label>
-                                <textarea rows="5" cols="30" name="preparo" id="preparo" placeholder="Preparo"><?php echo $receita[0]["preparo"]; ?></textarea>
+                                <textarea rows="5" cols="30" name="preparo" id="preparo" disabled placeholder="Preparo"><?php echo $receita[0]["preparo"]; ?></textarea>
                             </div>
                         </td>      
                     </tr> 
@@ -121,7 +121,6 @@
                         <td>
                         <input type="hidden" name="idreceita" id="idreceita" value="<?php echo $_REQUEST["idreceita"]?>">
                         <button onclick="receita(2)" >Voltar</button>
-                        <button id="submit" onclick='receita(6)'>Alterar</button>
                         </td>
                     </tr>  
                 </table> 
@@ -132,8 +131,6 @@
                     </tr> 
                         <td class="td-log">
                             <div class="input-group">
-                           
-                                <button onclick='plus_ingrediente(<?php echo $materias ?>)'> <img src="img/plus.png"  width="20" height="20"></button>
                                 <input class="val_ingre_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorIT" disabled>
                                 <input class="val_ingre_total" value="0" type="number" step="0.01" min="0" name="ingreT" id="ingreT" disabled>
                             </div>
@@ -147,7 +144,6 @@
                     </tr> 
                         <td class="td-log">
                             <div class="input-group">
-                                <button onclick='plus_gasto(<?php echo $gastos ?>)'> <img src="img/plus.png"  width="20" height="20"></button>
                                 <input class="val_ingre_cifrao" type="text" name="sifrao" value="R$" id="sifrao_valorGT" disabled>
                                 <input class="val_ingre_total" value="0" type="number" step="0.01" min="0" name="gastoT" id="gastoT" disabled>
                             </div>

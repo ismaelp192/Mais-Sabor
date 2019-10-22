@@ -10,9 +10,9 @@
         $sac='log_in(4)';
     }
 ?>
-<meta charset="utf-8">
 <!DOCTYPE html>
 <html>
+<meta charset="utf-8">
 <head>
 	<title>Alterações no usuario</title>
 </head>

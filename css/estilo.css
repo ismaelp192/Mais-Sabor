@@ -183,7 +183,7 @@ table:hover{
 }
 .list_table_rec_a{
 	margin-left: 10%;
-	table-layout: fixed ;
+	/* table-layout: fixed ; */
 	width: 90%;
 	margin-top: 1000%;
 	height: 354px;
@@ -191,7 +191,7 @@ table:hover{
 	transition:0.4s;
 }
 .list_table_rec_a:hover{
-	margin-top: 7%;
+	margin-top: 7% !important;
 	width: 95%;
 	height: 394px !important;
 }
