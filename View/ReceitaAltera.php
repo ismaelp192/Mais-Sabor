@@ -62,7 +62,7 @@
                         <td class="td-log">
                             <div class="input-group">
                                 <label>Preparo:</label>
-                                <textarea rows="5" cols="30" name="preparo" id="preparo" placeholder="Preparo"><?php echo $receita[0]["preparo"]; ?></textarea>
+                                <div name="preparo" id="preparo" contentEditable="true" class="editable"><?php echo $receita[0]["preparo"]; ?></div>
                             </div>
                         </td>      
                     </tr> 

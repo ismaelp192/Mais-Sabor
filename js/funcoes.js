@@ -353,6 +353,28 @@ function select(tipo,numero){
     }
     // document.getElementById("dropdown-content-tipo").style.display = "none"; 
 }
+document.addEventListener ('click', (event) => {
+    tag=event.target.tagName;
+    if(tag=="TABLE"){
+        id=event.target.id;
+        id=id.slice(4);
+        if(id!="tab-x"){
+            receita(0,id);
+        }
+    }else if(tag=="TH"){
+        id=event.target.offsetParent.id;
+          id=id.slice(4);
+        if(id!="tab-x"){
+            receita(0,id);
+        }
+    }else if(tag=="TD"){
+        id=event.target.offsetParent.id;
+          id=id.slice(4);
+        if(id!="tab-x"){
+            receita(0,id);
+        }
+    }
+});
 document.addEventListener ('keypress', (event) => {
     if (event.keyCode === 13 ) {
         if(document.getElementById("preparo")!=undefined){
@@ -767,7 +789,7 @@ function receita(acao,idreceita){
                 gas_id=[];
                 tablem_id=0;
                 tableg_id=0;
-            break;onChange="ILovePHP();"
+            break;
             case 3:
                 x.open("GET", "View/ReceitaAltera.php?idreceita="+idreceita,true);
             break;
@@ -780,7 +802,7 @@ function receita(acao,idreceita){
         x.onreadystatechange = function () {
 
             if (x.readyState==4 && x.status==200){
-                if(acao==3){
+                if(acao==3 || acao==0){
                     corte=x.responseText.split('script');
                     document.getElementById("conteudo").innerHTML=corte[1];
                     addScript(corte[0].replace('script',''));
@@ -794,7 +816,7 @@ function receita(acao,idreceita){
     }else{
         nome=document.getElementById("nome").value;
         valor_receita=document.getElementById("valor_receita").value;
-        preparo=document.getElementById("preparo").value;
+        preparo=document.getElementById("preparo").innerHTML;
         lucro=document.getElementById("lucro").value;
         image=document.getElementById("image");
         valor_final=document.getElementById("valor_final").value;

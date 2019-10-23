@@ -16,8 +16,8 @@
       if($_SESSION["idusuario"]!=$p["idusuario"]){
         echo "<div class='col-3'>";
         echo "<table id='tab-".$p["idusuario"]."' onanimationend='anime2(this.id,1)' onanimationstart='anime(this.id)' style='animation-delay:".$i."s; ' class='list_table_usu'>";
-        echo "<tr><td align=center colspan=4><img id='tab-1' src='".$p["image"]."'></td></tr>";
-        echo "<tr><td align=center colspan=4><b>".$p["nome"]."</b></td></tr>";
+        echo "<tr><th colspan=4><img id='tab-1' src='".$p["image"]."'></th></tr>";
+        echo "<tr><th colspan=4>".$p["nome"]."</th></tr>";
         echo "<tr><td><b>Login:</b></td><td colspan=3>".$p["login"]."</td></tr>";
         echo "<tr><td><b>Email:</b></td><td colspan=3>".$p["email"]."</td></tr>";
         echo "<tr><td><b>Tipo:</b></td><td colspan=3>".$p["tipo"]."</td></tr>";

@@ -57,6 +57,7 @@
        $receita-> setLucro($_REQUEST["lucro"]);
        $receita-> setValor_Final($_REQUEST["valor_final"]);
        $receita-> setTbCategoria_nome_categoria($_REQUEST["tbCategoria_nome_categoria"]);
+       echo $_REQUEST["preparo"];
        //--------------------------------------------
        $deish=false;
        var_dump($_POST);

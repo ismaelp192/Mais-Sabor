@@ -23,7 +23,7 @@
           $p["data_validade"] = implode("/",array_reverse(explode("-",$p["data_validade"])));
           echo "<div class='col-2'>";
           echo "<table id='tab-".$p['idmateria_prima']."' onanimationend='anime2(this.id,4)' onanimationstart='anime(this.id)' style='animation-delay:".$i."s';  class='list_table_mat'>";
-          echo "<tr><td class='list_til' colspan=2><b>".$p["nome"]."</b><br><div class='erro-msg' id='erro-".$p['idmateria_prima']."'></div></td></tr>";
+          echo "<tr><th class='list_til' colspan=2>".$p["nome"]."<br><div class='erro-msg' id='erro-".$p['idmateria_prima']."'></div></th></tr>";
           echo "<tr><td>Data de Validade:</td><td>".$p["data_validade"]."</td></tr>";
           echo "<tr><td>Quantidade:</td><td>".get_numeric($p["quantidade"])."</td></tr>";
           echo "<tr><td>Tipo:</td><td>".$p["tipo_medida"]."</td></tr>";

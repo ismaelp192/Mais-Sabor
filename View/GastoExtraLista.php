@@ -18,7 +18,7 @@ ini_set('display_errors', 1);
       foreach ($lista as $p){
         echo "<div class='col-2'>";
         echo "<table id='tab-".$p['idgastos_extras']."' onanimationend='anime2(this.id,2)' onanimationstart='anime(this.id)' style='animation-delay:".$i."s'; class='list_table_gas'>";
-        echo "<tr><td class='list_til' align=center colspan=4><b>".$p["nome"]."</b><br><div class='erro-msg' id='erro-".$p['idgastos_extras']."'></div></td></tr>";
+        echo "<tr><th class='list_til' colspan=4>".$p["nome"]."<br><div class='erro-msg' id='erro-".$p['idgastos_extras']."'></div></th></tr>";
         echo "<tr><td colspan=2>Quantidade:</td><td colspan=2>".get_numeric($p["quantidade"])."</td></tr>";
         echo "<tr><td colspan=2>Tipo:</td><td  colspan=2>".$p["tipo_medida"]."</td></tr>";
         echo "<tr><td colspan=2>Valor:</td><td  colspan=2>R$".get_numeric($p["valor"])."</td></tr>";
