@@ -128,5 +128,32 @@ class UsuarioDAO{
 			
 		}
 	} 
+	function recuEmail($email){
+		try{
+			$stmt = $this->con->prepare('SELECT * FROM tbusuario WHERE email ="'.$email.'"');
+			$stmt->execute();
+			$result = $stmt->SetFetchMode(PDO::FETCH_ASSOC);
+			$result = $stmt->fetch();
+			if ($result != null){
+				$key = md5(microtime().rand());
+				$to_email = 'ismaelp192@gmail.com';
+				$subject = 'Testing PHP Mail';
+				$message = 'oi';
+				$headers = 'From: ismael270@live.com';
+				if(mail($to_email,$subject,$message,$headers)){
+					echo "yes";
+				}else{
+					echo "no";
+				}
+			}else{
+				echo"no";
+			}
+			// return $result;
+		}
+		catch(PDOException $e){
+			echo "Error: ".$e->getMessage();
+		}
+		
+	}
 }
 ?>

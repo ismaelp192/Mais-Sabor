@@ -3,9 +3,7 @@ require_once '../Controller/PHPFunction.php';
 ?>
 <html>
 <meta charset="utf-8">
-   <head>
-      <title>Cadastro da Usuario</title>
-   </head>
+
    <body>
           <table class="login">
             <tr><td >Entrar no Sistema</td></tr>
@@ -25,6 +23,13 @@ require_once '../Controller/PHPFunction.php';
                         <label>Senha:</label>
                         <input type="password" name="senha" id="senha" placeholder=" Senha"><br>
                         <div class="erro-msg" id="erro-senha"></div>
+                     <div>
+                  </td>    
+               </tr>
+               <tr> 
+                  <td class="td-log">
+                     <div class="input-group">
+                        <div class="erro-msg" onclick='senha(1)' id="recu-senha">Esqueceu o login ou senha?</div>
                      <div>
                   </td>    
                </tr> 

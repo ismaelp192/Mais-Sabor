@@ -354,24 +354,32 @@ function select(tipo,numero){
     // document.getElementById("dropdown-content-tipo").style.display = "none"; 
 }
 document.addEventListener ('click', (event) => {
-    tag=event.target.tagName;
-    if(tag=="TABLE"){
-        id=event.target.id;
-        id=id.slice(4);
-        if(id!="tab-x"){
-            receita(0,id);
-        }
-    }else if(tag=="TH"){
-        id=event.target.offsetParent.id;
-          id=id.slice(4);
-        if(id!="tab-x"){
-            receita(0,id);
-        }
-    }else if(tag=="TD"){
-        id=event.target.offsetParent.id;
-          id=id.slice(4);
-        if(id!="tab-x"){
-            receita(0,id);
+    if(document.getElementById("receita")!=null){
+        rece=document.getElementById("receita");
+        if(rece.className=="list-click"){
+            po=document.getElementsByTagName("table").length-1;
+            if(document.getElementsByTagName("table")[po].id=="tab-x"){
+                tag=event.target.tagName;
+                if(tag=="TABLE"){
+                    id=event.target.id;
+                    id=id.slice(4);
+                    if(id!="x"){
+                        receita(0,id);
+                    }
+                }else if(tag=="TH" || tag=="TD"){
+                    id=event.target.offsetParent.id;
+                    id=id.slice(4);
+                    if(id!="x"){
+                        receita(0,id);
+                    }
+                }else if(tag=="IMG"){
+                    id=event.target.offsetParent.offsetParent.id;
+                    id=id.slice(4);
+                    if(id!="x"){
+                        receita(0,id);
+                    }
+                }
+            }
         }
     }
 });
@@ -871,4 +879,36 @@ function receita(acao,idreceita){
     } 
     
 }
+function senha(acao,email){
+    
+    x = ajaxIni();
+    if(acao<3){
 
+        switch (acao){
+            case 1:
+                x.open("GET", "View/EsqueceuSenha.php",true);
+            break;
+        }
+        x.send();
+
+        x.onreadystatechange = async function () {
+            if (x.readyState==4 && x.status==200){
+                document.getElementById("conteudo").innerHTML=x.responseText;      
+            } 
+        }
+    }else{
+         switch (acao){
+            case 4:
+                email=document.getElementById("recu-email").value;
+                url='Controller/UsuarioControl.php?email='+email+'&acao=6',true;
+            break;
+        }
+         fetch(url, {
+            method: 'POST',
+        }).then(response => {
+            if (response.status == 200) {
+                log_in(2);  
+            }
+        })        
+    } 
+}

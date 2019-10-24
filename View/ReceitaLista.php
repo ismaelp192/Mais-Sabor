@@ -16,7 +16,7 @@
             foreach ($lista as $p){
               echo "<div class='col-2'>";
               echo "<table id='tab-".$p['idreceita']."' onanimationend='anime2(this.id,5)' onanimationstart='anime(this.id)' style='animation-delay:".$i."s'; class='list_table_rec'>";
-              echo "<tr><th align=center colspan=2><img id='tab-1' src='".$p["image"]."'></th></tr>";
+              echo "<tr><th colspan=2><img id='tab-1' src='".$p["image"]."'></th></tr>";
               echo "<tr><th class='list_til' colspan=2>".$p["nome"]."</th></tr>";
               echo "<tr><td>Categoria:</td><td >".$p["tbCategoria_idcategoria"]."</td></tr>";
               echo "<tr><td >Valor Bruto:</td><td >R$".get_numeric($p["valor_receita"])."</td></tr>";

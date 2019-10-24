@@ -30,13 +30,30 @@ table:hover{
 div.editable {
     width: 375px;
     height: 100px;
-    border: 1px solid #ccc;
 	padding: 5px;
 	word-break: break-all;
 	cursor: text;
 	overflow-y: auto;
 	background: #fff;
 	border: 1px solid #999;
+	border-radius:6px;
+	float: left;
+	font-size: 13px;
+	margin: 0;
+	padding: 0 0 0 8px;
+	width: 100%;
+	-webkit-appearance:none;
+	-moz-appearance:textfield;
+}
+div.editable-show {
+    width: 375px;
+    height: 100px;
+	padding: 5px;
+	border: 1px solid #999;
+	word-break: break-all;
+	cursor: text;
+	overflow-y: auto;
+	background: rgb(240, 255, 255);
 	border-radius:6px;
 	float: left;
 	font-size: 13px;
@@ -365,6 +382,9 @@ img#tab-2{
 	float: left;
 	font-family: Helvetica, Arial, sans-serif;
 	font-size: 10px;
+}
+.erro-msg[id="recu-senha"]:hover{
+	color:rgb(230, 174, 174);
 }
 .ghost{
 	opacity: 0.3;

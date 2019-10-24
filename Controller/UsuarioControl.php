@@ -23,25 +23,29 @@ class UsuarioControl
             $this->verificaAcao($acao);
     }
    }
-   function verificaAcao($acao){
-       switch ($acao){
-           case 1:
-           $this->setObj($acao);
-               break;
-           case 2:
-           $this->setObj($acao);
-               break;
-           case 3:
-           $DAO = new UsuarioDAO;
-           $DAO->excluir($_POST["idusuario"]);
-               break;
-           case 4:
-           $DAO = new UsuarioDAO;  
-           $DAO->login($_POST["login"],$_POST["senha"]);
-               break;
-           case 5:
-           $DAO = new UsuarioDAO;  
-            $DAO->deslogar();
+    function verificaAcao($acao){
+        switch ($acao){
+            case 1:
+                $this->setObj($acao);
+            break;
+            case 2:
+                $this->setObj($acao);
+            break;
+            case 3:
+                $DAO = new UsuarioDAO;
+                $DAO->excluir($_POST["idusuario"]);
+            break;
+            case 4:
+                $DAO = new UsuarioDAO;  
+                $DAO->login($_POST["login"],$_POST["senha"]);
+            break;
+            case 5:
+                $DAO = new UsuarioDAO;  
+                $DAO->deslogar();
+            break;
+            case 6:
+                $DAO = new UsuarioDAO;  
+                $DAO->recuEmail($_POST["email"]);
             break;
        }
    }
